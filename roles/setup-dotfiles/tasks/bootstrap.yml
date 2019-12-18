@@ -13,9 +13,10 @@
     chdir: "{{ home }}"
 
 - name: check if remote exists
-  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" remote get-url origin
+  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" remote get-url domus
   register: dotfiles
   changed_when: dotfiles.stdout != thirdparty ~ "/dotfiles"
+  failed_when: '"domus" not in dotfiles.stderr and dotfiles.stderr != ""'
   notify:
     - add the dotfiles remote url
     - fetch dotfiles
@@ -25,6 +26,6 @@
 - meta: flush_handlers
 
 - name: pull latest dotfiles
-  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" pull
+  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" pull domus master
   register: dotfiles
   changed_when: dotfiles.stdout != "Already up to date."
