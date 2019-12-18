@@ -1,0 +1,39 @@
+- name: install qutebrowser
+  pacman: name=qutebrowser
+  become_user: root
+
+- name: fetch release
+  git:
+    repo: git@github.com:DictumMortuum/release.git
+    dest: "{{ thirdparty }}/assets"
+    update: yes
+    accept_hostkey: yes
+    ssh_opts: "-F /dev/null"
+  become_user: dimitris
+
+- name: create {{ ansible_env.HOME }}/.local/share/qutebrowser/pdfjs
+  file: dest="{{ ansible_env.HOME }}/.local/share/qutebrowser/pdfjs" state=directory
+
+- name: install unzip
+  pacman: name=unzip
+  become_user: root
+
+- name: unzip pdfjs for qutebrowser
+  unarchive:
+    src: "{{ thirdparty }}/assets/pdfjs-2.1.266-dist.zip"
+    dest: "{{ ansible_env.HOME }}/.local/share/qutebrowser/pdfjs"
+    remote_src: yes
+
+- name: fetch nord-qutebrowser
+  git:
+    repo: https://github.com/Linuus/nord-qutebrowser.git
+    dest: "{{ thirdparty }}/nord-qutebrowser"
+    update: yes
+  become_user: consul
+
+- name: copy nord-qutebrowser config file
+  copy:
+    src: "{{ thirdparty }}/nord-qutebrowser/nord-qutebrowser.py"
+    dest: "{{ ansible_env.HOME }}/.config/qutebrowser/nord-qutebrowser.py"
+    mode: "0644"
+    remote_src: yes

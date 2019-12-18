@@ -1,0 +1,30 @@
+- name: install git
+  pacman: name=git
+  become_user: root
+
+- name: install tcl
+  pacman: name=tcl
+  become_user: root
+
+- name: initialize dotfiles for {{ home }}
+  command: git --git-dir="{{ git_dir }}" init
+  args:
+    creates: "{{ git_dir }}"
+    chdir: "{{ home }}"
+
+- name: check if remote exists
+  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" remote
+  register: dotfiles
+  changed_when: dotfiles.stdout != "origin"
+  notify:
+    - add the dotfiles remote url
+    - fetch dotfiles
+    - checkout master
+    - set local master to track remote master branch
+
+- meta: flush_handlers
+
+- name: pull latest dotfiles
+  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" pull
+  register: dotfiles
+  changed_when: dotfiles.stdout != "Already up to date."

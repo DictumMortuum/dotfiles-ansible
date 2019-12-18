@@ -1,0 +1,37 @@
+- name: make i3-utils
+  make:
+    chdir: "{{ thirdparty }}/i3-utils"
+    target: install
+  become_user: root
+
+- name: copy dmenu config
+  template:
+    src: config.h.j2
+    dest: "{{ thirdparty }}/dmenu/config.h"
+  become_user: consul
+
+- name: make dmenu
+  make:
+    chdir: "{{ thirdparty }}/dmenu"
+    target: install
+  become_user: root
+
+- name: make permutations
+  make:
+    chdir: "{{ thirdparty }}/permutations"
+    target: install
+  become_user: root
+
+- name: make st
+  make:
+    chdir: "{{ thirdparty }}/st"
+    target: install
+  become_user: root
+
+#- name: enable greenclip service
+#  systemd:
+#    name: greenclip
+#    enabled: yes
+#    masked: no
+#    scope: user
+#    state: started

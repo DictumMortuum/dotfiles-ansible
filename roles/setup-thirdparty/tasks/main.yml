@@ -1,0 +1,15 @@
+- name: install git
+  pacman: name=git
+  become: yes
+  become_user: root
+
+- name: create domus directory
+  file: name="{{ thirdparty }}" group=domus mode='0775' state=directory
+  become: yes
+  become_user: root
+
+- name: clone dotfiles
+  git:
+    repo: https://github.com/DictumMortuum/dotfiles.git
+    dest: "{{ thirdparty }}/dotfiles"
+    update: yes

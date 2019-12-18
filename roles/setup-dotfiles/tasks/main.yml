@@ -1,0 +1,22 @@
+- include: bootstrap.yml
+- include: zsh.yml
+- include: fzf.yml
+- include: xurls.yml
+
+- name: install ansible
+  pacman: name=ansible
+  become_user: root
+
+- name: install ag
+  pacman: name=the_silver_searcher
+  become_user: root
+
+- name: install youtube-dl
+  pacman: name=youtube-dl
+  become_user: root
+
+- name: install openvpn
+  pacman: name=openvpn
+  become_user: root
+
+- include: vim.yml
