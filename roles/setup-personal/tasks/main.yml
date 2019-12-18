@@ -1,3 +1,4 @@
 - include: ssh.yml
 - include: notes.yml
 - include: pass.yml
+- include: apps.yml
