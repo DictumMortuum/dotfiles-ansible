@@ -13,9 +13,9 @@
     chdir: "{{ home }}"
 
 - name: check if remote exists
-  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" remote
+  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" remote get-url origin
   register: dotfiles
-  changed_when: dotfiles.stdout != "origin"
+  changed_when: dotfiles.stdout != thirdparty ~ "/dotfiles"
   notify:
     - add the dotfiles remote url
     - fetch dotfiles
