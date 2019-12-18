@@ -2,3 +2,4 @@
 - include: notes.yml
 - include: pass.yml
 - include: apps.yml
+- include: dotfiles.yml
