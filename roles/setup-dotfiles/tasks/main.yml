@@ -20,3 +20,4 @@
   become_user: root
 
 - include: vim.yml
+- include: ssh.yml
