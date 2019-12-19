@@ -1,6 +1,8 @@
 - name: install zsh
   pacman: name=zsh
   become_user: root
+  tags:
+    - packages
 
 - name: clone pure
   git:

@@ -1,6 +1,8 @@
 - name: install gcc
   pacman: name=gcc
   become_user: root
+  tags:
+    - packages
 
 #- name: install pkgconfig
 #  pacman: name=pkgconfig
@@ -9,14 +11,20 @@
 - name: install fontconfig
   pacman: name=fontconfig
   become_user: root
+  tags:
+    - packages
 
 - name: install libxft
   pacman: name=libxft
   become_user: root
+  tags:
+    - packages
 
 - name: install libxinerama
   pacman: name=libxinerama
   become_user: root
+  tags:
+    - packages
 
 - name: fetch dmenu
   git:

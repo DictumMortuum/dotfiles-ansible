@@ -1,13 +1,19 @@
 - name: install gnome
   pacman: name=gnome
   become_user: root
+  tags:
+    - packages
 
 - name: install psutils
   pacman: name=python-psutil
   become_user: root
+  tags:
+    - packages
 
 - name: install dash to dock
   aur: name=gnome-shell-extension-dash-to-dock skip_installed=true
+  tags:
+    - packages
 
 - name: enable passwordless login
   lineinfile:

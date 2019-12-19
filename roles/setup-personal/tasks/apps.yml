@@ -1,15 +1,23 @@
 - name: install ansible
   pacman: name=ansible
   become_user: root
+  tags:
+    - packages
 
 - name: install ag
   pacman: name=the_silver_searcher
   become_user: root
+  tags:
+    - packages
 
 - name: install youtube-dl
   pacman: name=youtube-dl
   become_user: root
+  tags:
+    - packages
 
 - name: install openvpn
   pacman: name=openvpn
   become_user: root
+  tags:
+    - packages

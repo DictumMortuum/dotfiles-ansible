@@ -24,9 +24,13 @@
 
 - name: install sudo
   pacman: name=sudo state=present
+  tags:
+    - packages
 
 - name: install vi
   pacman: name=vi state=present
+  tags:
+    - packages
 
 - name: make dimitris a sudoer
   lineinfile:

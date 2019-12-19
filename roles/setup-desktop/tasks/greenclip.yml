@@ -1,4 +1,6 @@
 - name: install greenclip
   aur: name=rofi-greenclip skip_installed=true
+  tags:
+    - packages
   #notify:
   #  - enable greenclip service

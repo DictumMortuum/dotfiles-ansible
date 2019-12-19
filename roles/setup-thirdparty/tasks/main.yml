@@ -2,6 +2,8 @@
   pacman: name=git
   become: yes
   become_user: root
+  tags:
+    - packages
 
 - name: create domus directory
   file: name="{{ thirdparty }}" group=domus mode='0775' state=directory

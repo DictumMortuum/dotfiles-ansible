@@ -1,6 +1,8 @@
 - name: install qutebrowser
   pacman: name=qutebrowser
   become_user: root
+  tags:
+    - packages
 
 - name: fetch release
   git:
@@ -17,6 +19,8 @@
 - name: install unzip
   pacman: name=unzip
   become_user: root
+  tags:
+    - packages
 
 - name: unzip pdfjs for qutebrowser
   unarchive:

@@ -1,9 +1,13 @@
 - name: install vim
   pacman: name=gvim
   become_user: root
+  tags:
+    - packages
 
 - name: install vundle
   aur: name=vundle-git skip_installed=true
+  tags:
+    - packages
 
 #- name: vim - install vundle plugins
 #  shell: vim -E -s -c "source {{ ansible_env.HOME }}/.vimrc" -c PluginInstall -c qa

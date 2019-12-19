@@ -1,6 +1,8 @@
 - name: install pass
   pacman: name=pass
   become_user: root
+  tags:
+    - packages
 
 - name: clone password store
   git:
@@ -13,6 +15,8 @@
 - name: install cronie
   pacman: name=cronie
   become_user: root
+  tags:
+    - packages
 
 - name: install notes cronjob sync
   cron:

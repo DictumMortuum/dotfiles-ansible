@@ -9,6 +9,8 @@
 - name: install cronie
   pacman: name=cronie
   become_user: root
+  tags:
+    - packages
 
 - name: install notes cronjob sync
   cron:
