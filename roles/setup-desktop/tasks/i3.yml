@@ -84,3 +84,9 @@
   become_user: root
   tags:
     - packages
+
+- name: install bind-tools
+  pacman: name=bind-tools
+  become_user: root
+  tags:
+    - packages
