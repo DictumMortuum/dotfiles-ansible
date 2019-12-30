@@ -90,3 +90,9 @@
   become_user: root
   tags:
     - packages
+
+- name: install scrot
+  pacman: name=scrot
+  become_user: root
+  tags:
+    - packages
