@@ -1,0 +1,30 @@
+- name: install bluez
+  pacman: name=bluez
+  become_user: root
+  tags:
+    - packages
+
+- name: install bluez-utils
+  pacman: name=bluez-utils
+  become_user: root
+  tags:
+    - packages
+
+- name: install pulseaudio-bluetooth
+  pacman: name=pulseaudio-bluetooth
+  become_user: root
+  tags:
+    - packages
+
+- name: install bluetooth connect service file
+  template:
+    src: bluetooth.service.j2
+    dest: /usr/lib/systemd/system/bluetooth-connect.service
+  become_user: root
+
+- name: enable bluetooth connect service
+  systemd:
+    name: bluetooth-connect
+    enabled: yes
+    masked: no
+    state: started
