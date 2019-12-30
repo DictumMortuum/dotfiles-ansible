@@ -11,3 +11,10 @@
 #    - shaunlebron.vscode-parinfer
 #    - sleutho.tcl
 #    - EditorConfig.EditorConfig
+
+- name: create Code - OSS to Code settings.json symlink
+  file:
+    src: "{{ ansible_env.HOME }}/.config/Code/User/settings.json"
+    dest: "{{ ansible_env.HOME }}/.config/Code - OSS/User/settings.json"
+    force: yes
+    state: link
