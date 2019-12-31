@@ -2,5 +2,11 @@
   aur: name=rofi-greenclip skip_installed=true
   tags:
     - packages
-  #notify:
-  #  - enable greenclip service
+
+- name: enable greenclip service
+  systemd:
+    name: greenclip
+    enabled: yes
+    masked: no
+    scope: user
+    state: started
