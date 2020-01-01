@@ -21,10 +21,3 @@
     src: bluetooth.service.j2
     dest: /usr/lib/systemd/system/bluetooth-connect.service
   become_user: root
-
-- name: enable bluetooth connect service
-  systemd:
-    name: bluetooth-connect
-    enabled: yes
-    masked: no
-    state: started
