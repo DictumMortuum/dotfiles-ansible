@@ -32,24 +32,29 @@
   tags:
     - packages
 
-- name: make dimitris a sudoer
+- name: create sudoers
   lineinfile:
-    path: /etc/sudoers.d/dimitris
+    path: "/etc/sudoers.d/{{ item }}"
     state: present
-    line: 'dimitris ALL=(ALL) NOPASSWD: ALL'
+    line: "{{ item }} ALL=(ALL) NOPASSWD: ALL"
     create: True
     validate: /usr/sbin/visudo -cf %s
-
-- name: make consul a sudoer
-  lineinfile:
-    path: /etc/sudoers.d/consul
-    state: present
-    line: 'consul ALL=(ALL) NOPASSWD: ALL'
-    create: True
-    validate: /usr/sbin/visudo -cf %s
+  loop:
+    - dimitris
+    - consul
+    - diabolus
 
 - name: create consul
   user: name=consul group=domus uid=161
+
+- name: create diabolus
+  user:
+    name: diabolus
+    group: arcanum
+    uid: 666
+    create_home: True
+    password: "{{ 'default' | password_hash('sha512') }}"
+    update_password: on_create
 
 - name: create dimitris
   user:
