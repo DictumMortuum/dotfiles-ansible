@@ -1,0 +1,9 @@
+- name: install qutebrowser
+  pacman: name=qutebrowser
+  tags:
+    - packages
+
+- name: install pdfjs
+  pacman: name=pdfjs
+  tags:
+    - packages

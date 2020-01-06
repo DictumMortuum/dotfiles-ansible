@@ -1,0 +1,21 @@
+- name: install notable
+  aur: name=notable-bin skip_installed=true
+  become_user: consul
+  tags:
+    - packages
+
+- name: install greenclip
+  aur: name=rofi-greenclip skip_installed=true
+  become_user: consul
+  tags:
+    - packages
+
+- name: install syncthing
+  pacman: name=syncthing
+  tags:
+    - packages
+
+- name: install vscode
+  pacman: name=code
+  tags:
+    - packages

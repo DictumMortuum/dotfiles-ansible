@@ -1,0 +1,22 @@
+- name: install gnome
+  pacman: name=gnome
+  tags:
+    - packages
+
+- name: install psutils
+  pacman: name=python-psutil
+  tags:
+    - packages
+
+- name: install dash to dock
+  aur: name=gnome-shell-extension-dash-to-dock skip_installed=true
+  become_user: consul
+  tags:
+    - packages
+
+- name: enable passwordless login
+  lineinfile:
+    path: "/etc/pam.d/gdm-password"
+    line: "auth sufficient pam_succeed_if.so user ingroup nonsignum"
+    insertbefore: BOF
+    state: present

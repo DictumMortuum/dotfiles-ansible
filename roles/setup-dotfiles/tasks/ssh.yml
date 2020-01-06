@@ -1,2 +1,0 @@
-- name: create the .cache/ssh directory
-  file: path="{{ ansible_env.HOME }}/.cache/ssh" state=directory

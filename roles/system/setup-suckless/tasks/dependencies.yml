@@ -1,0 +1,14 @@
+- name: install gcc
+  pacman: name=gcc
+
+- name: install fontconfig
+  pacman: name=fontconfig
+
+- name: install libxft
+  pacman: name=libxft
+
+#- name: install pkgconfig
+#  pacman: name=pkgconfig
+
+- name: install libxinerama
+  pacman: name=libxinerama

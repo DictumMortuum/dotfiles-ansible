@@ -1,0 +1,38 @@
+- name: install i3-gaps
+  pacman: name=i3-gaps
+
+- name: install gcc
+  pacman: name=gcc
+
+- name: install arandr
+  pacman: name=arandr
+
+- name: install i3lock
+  pacman: name=i3lock
+
+- name: install i3blocks
+  pacman: name=i3blocks
+
+- name: install compton
+  pacman: name=picom
+
+- name: install thunar
+  pacman: name=thunar
+
+- name: install pavucontrol
+  pacman: name=pavucontrol
+
+- name: install xclip
+  pacman: name=xclip
+
+- name: install xdotool
+  pacman: name=xdotool
+
+- name: install dunst
+  pacman: name=dunst
+
+- name: install bind-tools
+  pacman: name=bind-tools
+
+- name: install scrot
+  pacman: name=scrot

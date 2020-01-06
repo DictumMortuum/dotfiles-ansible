@@ -1,0 +1,9 @@
+- name: create domus directory
+  file: name="{{ thirdparty }}" group=domus mode='0775' state=directory
+
+- name: clone dotfiles
+  git:
+    repo: https://github.com/DictumMortuum/dotfiles.git
+    dest: "{{ thirdparty }}/dotfiles"
+    update: yes
+  become_user: consul

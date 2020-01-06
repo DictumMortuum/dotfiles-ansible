@@ -1,0 +1,26 @@
+- name: initialize dotfiles for {{ home }}
+  command: git --git-dir="{{ git_dir }}" init
+  args:
+    creates: "{{ git_dir }}"
+    chdir: "{{ home }}"
+
+- name: check if remote exists
+  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" remote get-url domus
+  register: dotfiles
+  changed_when: dotfiles.stdout != thirdparty ~ "/dotfiles"
+  failed_when: '"domus" not in dotfiles.stderr and dotfiles.stderr != ""'
+  notify:
+    - add the dotfiles remote url
+    - fetch dotfiles
+    - checkout master
+    - set local master to track remote master branch
+
+- meta: flush_handlers
+
+- name: pull latest dotfiles
+  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" pull domus master
+  register: dotfiles
+  changed_when: dotfiles.stdout != "Already up to date."
+
+#- name: vim - install vundle plugins
+#  shell: vim -E -s -c "source {{ ansible_env.HOME }}/.vimrc" -c PluginInstall -c qa

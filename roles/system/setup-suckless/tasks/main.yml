@@ -1,0 +1,21 @@
+- include: dependencies.yml
+  tags:
+    - packages
+
+- name: fetch dmenu
+  git:
+    repo: git://git.suckless.org/dmenu
+    dest: "{{ thirdparty }}/dmenu"
+    update: yes
+  become_user: consul
+  notify:
+    - copy dmenu config
+    - make dmenu
+
+- name: fetch st
+  git:
+    repo: https://github.com/DictumMortuum/st.git
+    dest: "{{ thirdparty }}/st"
+    update: yes
+  become_user: consul
+  notify: make st

@@ -1,0 +1,20 @@
+- name: chsh to zsh for {{ ansible_user_id }}
+  user:
+    user: "{{ ansible_user_id }}"
+    shell: /bin/zsh
+  become_user: root
+
+- name: create {{ ansible_env.HOME }}/.cache/zsh
+  file: dest="{{ ansible_env.HOME }}/.cache/zsh" state=directory
+
+- name: create async.zsh link
+  file:
+    src: "{{ thirdparty }}/zsh-async/async.zsh"
+    dest: "{{ ansible_env.HOME }}/.cache/zsh/async"
+    state: link
+
+- name: create pure.zsh link
+  file:
+    src: "{{ thirdparty }}/pure/pure.zsh"
+    dest: "{{ ansible_env.HOME }}/.cache/zsh/prompt_pure_setup"
+    state: link

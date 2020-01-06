@@ -1,0 +1,10 @@
+- name: install vim
+  pacman: name=gvim
+  tags:
+    - packages
+
+- name: install vundle
+  aur: name=vundle-git skip_installed=true
+  become_user: consul
+  tags:
+    - packages

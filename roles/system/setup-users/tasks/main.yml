@@ -1,0 +1,161 @@
+- name: create domus group
+  group: name=domus gid=1992 state=present
+
+- name: create arcanum group
+  group: name=arcanum gid=16180 state=present
+
+- name: create nonsignum group
+  group: name=nonsignum gid=27182 state=present
+
+- name: create dimitris group
+  group: name=dimitris gid=1986 state=present
+
+- name: create petrina group
+  group: name=petrina gid=1993 state=present
+
+- name: create manolis group
+  group: name=manolis gid=1956 state=present
+
+- name: create fofi group
+  group: name=fofi gid=1960 state=present
+
+- name: create theoni group
+  group: name=theoni gid=1989 state=present
+
+- name: install sudo
+  pacman: name=sudo state=present
+  tags:
+    - packages
+
+- name: install vi
+  pacman: name=vi state=present
+  tags:
+    - packages
+
+- name: create sudoers
+  lineinfile:
+    path: "/etc/sudoers.d/{{ item }}"
+    state: present
+    line: "{{ item }} ALL=(ALL) NOPASSWD: ALL"
+    create: True
+    validate: /usr/sbin/visudo -cf %s
+  loop:
+    - dimitris
+    - consul
+    - diabolus
+
+- name: create consul
+  user:
+    name: consul
+    group: domus
+    uid: 161
+
+- name: create diabolus
+  user:
+    name: diabolus
+    group: arcanum
+    uid: 666
+    password: "{{ 'default' | password_hash('sha512') }}"
+    update_password: on_create
+
+- name: create diabolus
+  user:
+    name: diabolus
+    group: arcanum
+    uid: 666
+    create_home: True
+    password: "{{ 'default' | password_hash('sha512') }}"
+    update_password: on_create
+
+- name: create dimitris
+  user:
+    name: dimitris
+    group: dimitris
+    groups: arcanum,domus
+    append: yes
+    uid: 1986
+    comment: "Dimitris Raviolos,,,"
+    password: "{{ 'default' | password_hash('sha512') }}"
+    update_password: on_create
+
+- name: create petrina
+  user:
+    name: petrina
+    group: petrina
+    groups: domus
+    append: yes
+    uid: 1993
+    comment: "Petrina Raviolou,,,"
+    password: "{{ 'default' | password_hash('sha512') }}"
+    update_password: on_create
+  notify:
+    - reset petrina password
+
+- name: create manolis
+  user:
+    name: manolis
+    group: manolis
+    groups: domus,nonsignum
+    append: yes
+    uid: 1956
+    comment: "Manolis Raviolos,,,"
+    password: "{{ 'default' | password_hash('sha512') }}"
+    update_password: on_create
+
+- name: create fofi
+  user:
+    name: fofi
+    group: fofi
+    groups: domus,nonsignum
+    append: yes
+    uid: 1960
+    comment: "Fofi Klironomou,,,"
+    password: "{{ 'default' | password_hash('sha512') }}"
+    update_password: on_create
+
+- name: create theoni
+  user:
+    name: theoni
+    group: theoni
+    groups: domus
+    append: yes
+    uid: 1989
+    comment: "Theoni Fytrou,,,"
+    password: "{{ 'default' | password_hash('sha512') }}"
+    update_password: on_create
+  notify:
+    - reset theoni password
+
+- name: create .ssh directory
+  file: path="/home/{{ item }}/.ssh" state=directory
+  loop:
+    - dimitris
+    - consul
+
+- name: create the .cache/ssh directory
+  file: path="/home/{{ item }}/.cache/ssh" state=directory
+  loop:
+    - dimitris
+    - consul
+
+- name: copy dimitris ssh keys
+  copy:
+    src: "~/Sync/Secret/{{ item }}"
+    dest: "/home/dimitris/.ssh/{{ item }}"
+    mode: 0600
+    owner: "dimitris"
+    group: "dimitris"
+  loop:
+    - id_rsa
+    - id_rsa.pub
+
+- name: copy consul ssh keys
+  copy:
+    src: "~/Sync/Secret/{{ item }}"
+    dest: "/home/consul/.ssh/{{ item }}"
+    mode: 0600
+    owner: "consul"
+    group: "domus"
+  loop:
+    - id_rsa
+    - id_rsa.pub

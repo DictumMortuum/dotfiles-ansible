@@ -1,0 +1,9 @@
+- name: install avahi
+  pacman: name=avahi
+  tags:
+    - packages
+
+- name: install nss-mdns
+  pacman: name=nss-mdns
+  tags:
+    - packages

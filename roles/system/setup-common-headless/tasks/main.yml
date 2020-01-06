@@ -1,0 +1,39 @@
+- name: install ansible
+  pacman: name=ansible
+  tags:
+    - packages
+
+- name: install git
+  pacman: name=git
+  tags:
+    - packages
+
+- name: install tcl
+  pacman: name=tcl
+  tags:
+    - packages
+
+- name: install ag
+  pacman: name=the_silver_searcher
+  tags:
+    - packages
+
+- name: install youtube-dl
+  pacman: name=youtube-dl
+  tags:
+    - packages
+
+- name: install openvpn
+  pacman: name=openvpn
+  tags:
+    - packages
+
+- name: install fzf
+  pacman: name=fzf
+  tags:
+    - packages
+
+- name: install cronie
+  pacman: name=cronie
+  tags:
+    - packages
