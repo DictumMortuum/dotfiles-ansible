@@ -23,6 +23,7 @@
     - user/setup-dotfiles
     - user/setup-dotfiles-url
     - user/setup-gnome
+    - user/setup-gnome-avatar
     - user/setup-zsh
     - user/setup-greenclip
     - user/setup-notable
@@ -36,6 +37,7 @@
   roles:
     - user/setup-dotfiles
     - user/setup-gnome
+    - user/setup-gnome-avatar
     - user/setup-zsh
 
 - hosts: all
@@ -44,6 +46,7 @@
   roles:
     - user/setup-dotfiles
     - user/setup-gnome
+    - user/setup-gnome-avatar
     - user/setup-zsh
 
 - hosts: all
@@ -52,11 +55,21 @@
   roles:
     - user/setup-dotfiles
     - user/setup-gnome
+    - user/setup-gnome-avatar
     - user/setup-zsh
 
 - hosts: all
   become: yes
   become_user: theoni
+  roles:
+    - user/setup-dotfiles
+    - user/setup-gnome
+    - user/setup-gnome-avatar
+    - user/setup-zsh
+
+- hosts: all
+  become: yes
+  become_user: diabolus
   roles:
     - user/setup-dotfiles
     - user/setup-gnome
