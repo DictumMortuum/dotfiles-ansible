@@ -1,0 +1,19 @@
+- name: isntall cups
+  pacman: name=cups
+
+- name: install brother-hll2340d
+  aur: name=brother-hll2340d skip_installed=true
+  become_user: consul
+  tags:
+    - packages
+
+- name: add domus as a printer administrator group
+  lineinfile:
+    path: /etc/cups/cups-files.conf
+    regexp: '^SystemGroup'
+    line: 'SystemGroup sys root domus'
+
+- name: enable cups service
+  service:
+    name: org.cups.cupsd
+    enabled: yes

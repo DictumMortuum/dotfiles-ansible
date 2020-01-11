@@ -15,6 +15,7 @@
     - system/setup-gnome
     - system/setup-avahi
     - system/setup-avatars
+    - system/setup-printers
 
 - hosts: all
   become: yes
