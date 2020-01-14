@@ -19,20 +19,20 @@
   become: yes
   roles:
     - system/setup-common-headless
-    - system/setup-common-desktop
+    - { role: system/setup-common-desktop, tags: desktop }
     - system/setup-aur
-    - system/setup-fonts
+    - { role: system/setup-fonts, tags: desktop }
     - system/setup-thirdparty
-    - system/setup-suckless
+    - { role: system/setup-suckless, tags: desktop }
     - system/setup-zsh
-    - system/setup-xurls
+    - { role: system/setup-xurls, tags: desktop }
     - system/setup-vim
-    - system/setup-qutebrowser
-    - system/setup-i3
-    - system/setup-gnome
+    - { role: system/setup-qutebrowser, tags: desktop }
+    - { role: system/setup-i3, tags: desktop }
+    - { role: system/setup-gnome, tags: desktop }
     - system/setup-avahi
-    - system/setup-avatars
-    - system/setup-printers
+    - { role: system/setup-avatars, tags: desktop }
+    - { role: system/setup-printers, tags: desktop }
 
 - hosts: all
   become: yes
@@ -40,22 +40,22 @@
   roles:
     - user/setup-dotfiles
     - user/setup-dotfiles-url
-    - user/setup-gnome
-    - user/setup-gnome-avatar
+    - { role: user/setup-gnome, tags: desktop }
+    - { role: user/setup-gnome-avatar, tags: desktop }
     - user/setup-zsh
-    - user/setup-greenclip
+    - { role: user/setup-greenclip, tags: desktop }
     - user/setup-notable
     - user/setup-pass
-    - user/setup-syncthing
-    - user/setup-vscode
+    - { role: user/setup-syncthing, tags: desktop }
+    - { role: user/setup-vscode, tags: desktop }
 
 - hosts: all
   become: yes
   become_user: fofi
   roles:
     - user/setup-dotfiles
-    - user/setup-gnome
-    - user/setup-gnome-avatar
+    - { role: user/setup-gnome, tags: desktop }
+    - { role: user/setup-gnome-avatar, tags: desktop }
     - user/setup-zsh
 
 - hosts: all
@@ -63,8 +63,8 @@
   become_user: manolis
   roles:
     - user/setup-dotfiles
-    - user/setup-gnome
-    - user/setup-gnome-avatar
+    - { role: user/setup-gnome, tags: desktop }
+    - { role: user/setup-gnome-avatar, tags: desktop }
     - user/setup-zsh
 
 - hosts: all
@@ -72,8 +72,8 @@
   become_user: petrina
   roles:
     - user/setup-dotfiles
-    - user/setup-gnome
-    - user/setup-gnome-avatar
+    - { role: user/setup-gnome, tags: desktop }
+    - { role: user/setup-gnome-avatar, tags: desktop }
     - user/setup-zsh
 
 - hosts: all
@@ -81,8 +81,8 @@
   become_user: theoni
   roles:
     - user/setup-dotfiles
-    - user/setup-gnome
-    - user/setup-gnome-avatar
+    - { role: user/setup-gnome, tags: desktop }
+    - { role: user/setup-gnome-avatar, tags: desktop }
     - user/setup-zsh
 
 - hosts: all
@@ -90,5 +90,5 @@
   become_user: diabolus
   roles:
     - user/setup-dotfiles
-    - user/setup-gnome
+    - { role: user/setup-gnome, tags: desktop }
     - user/setup-zsh
