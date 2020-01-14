@@ -16,3 +16,5 @@
   template:
     src: notable.json.j2
     dest: "{{ ansible_env.HOME }}/.notable.json"
+  tags:
+    - desktop

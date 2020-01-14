@@ -19,20 +19,12 @@
   become: yes
   roles:
     - system/setup-common-headless
-    - system/setup-common-desktop
     - system/setup-aur
     - system/setup-fonts
     - system/setup-thirdparty
-    - system/setup-suckless
     - system/setup-zsh
-    - system/setup-xurls
     - system/setup-vim
-    - system/setup-qutebrowser
-    - system/setup-i3
-    - system/setup-gnome
     - system/setup-avahi
-    - system/setup-avatars
-    - system/setup-printers
 
 - hosts: all
   become: yes
@@ -40,22 +32,15 @@
   roles:
     - user/setup-dotfiles
     - user/setup-dotfiles-url
-    - user/setup-gnome
-    - user/setup-gnome-avatar
     - user/setup-zsh
-    - user/setup-greenclip
     - user/setup-notable
     - user/setup-pass
-    - user/setup-syncthing
-    - user/setup-vscode
 
 - hosts: all
   become: yes
   become_user: fofi
   roles:
     - user/setup-dotfiles
-    - user/setup-gnome
-    - user/setup-gnome-avatar
     - user/setup-zsh
 
 - hosts: all
@@ -63,8 +48,6 @@
   become_user: manolis
   roles:
     - user/setup-dotfiles
-    - user/setup-gnome
-    - user/setup-gnome-avatar
     - user/setup-zsh
 
 - hosts: all
@@ -72,8 +55,6 @@
   become_user: petrina
   roles:
     - user/setup-dotfiles
-    - user/setup-gnome
-    - user/setup-gnome-avatar
     - user/setup-zsh
 
 - hosts: all
@@ -81,8 +62,6 @@
   become_user: theoni
   roles:
     - user/setup-dotfiles
-    - user/setup-gnome
-    - user/setup-gnome-avatar
     - user/setup-zsh
 
 - hosts: all
@@ -90,5 +69,4 @@
   become_user: diabolus
   roles:
     - user/setup-dotfiles
-    - user/setup-gnome
     - user/setup-zsh

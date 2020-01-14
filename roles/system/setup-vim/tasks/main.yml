@@ -2,6 +2,7 @@
   pacman: name=gvim
   tags:
     - packages
+    - desktop
 
 - name: install vundle
   aur: name=vundle-git skip_installed=true
