@@ -125,3 +125,12 @@
     update_password: on_create
   notify:
     - reset theoni password
+
+- name: Set authorized keys
+  authorized_key:
+    user: "{{ item }}"
+    state: present
+    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+  loop:
+    - dimitris
+    - consul
