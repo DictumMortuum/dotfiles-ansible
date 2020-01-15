@@ -43,7 +43,7 @@
     - { role: user/setup-gnome, tags: desktop }
     - { role: user/setup-gnome-avatar, tags: desktop }
     - user/setup-zsh
-    - { role: user/setup-greenclip, tags: desktop }
+    - { role: user/setup-clipmenu, tags: desktop }
     - user/setup-notable
     - user/setup-pass
     - { role: user/setup-syncthing, tags: desktop }
