@@ -1,6 +1,7 @@
 - include: gnome-shell.yml
 - include: gnome-fonts.yml
 - include: gnome-background.yml
+- include: gnome-terminal.yml
 
 - name: set icon-theme to Papirus
   dconf:
