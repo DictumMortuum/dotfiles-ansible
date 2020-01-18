@@ -1,0 +1,4 @@
+- name: generate clipmenud override for machina
+  template:
+    src: override.conf
+    dest: "{{ ansible_env.HOME }}/.config/systemd/user/clipmenud.service.d/override.conf"

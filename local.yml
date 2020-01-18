@@ -92,3 +92,9 @@
     - user/setup-dotfiles
     - { role: user/setup-gnome, tags: desktop }
     - user/setup-zsh
+
+- hosts: machina
+  become: yes
+  become_user: dimitris
+  roles:
+    - { role: machine/setup-clipmenud, tags: desktop }
