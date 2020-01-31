@@ -1,0 +1,5 @@
+- lineinfile: dest=/etc/ssh/sshd_config regexp='^PermitRootLogin' line='PermitRootLogin No'
+- lineinfile: dest=/etc/ssh/sshd_config regexp='^#?AuthenticationMethods' line='AuthenticationMethods publickey'
+- lineinfile: dest=/etc/ssh/sshd_config regexp='^#?PasswordAuthentication' line='PasswordAuthentication no'
+- lineinfile: dest=/etc/ssh/sshd_config regexp='^#?ChallengeResponseAuthentication' line='ChallengeResponseAuthentication no'
+- lineinfile: dest=/etc/ssh/sshd_config regexp='^#?PubkeyAuthentication' line='PubkeyAuthentication yes'

@@ -18,6 +18,7 @@
 - hosts: all
   become: yes
   roles:
+    - system/setup-ssh
     - system/setup-common-headless
     - { role: system/setup-common-desktop, tags: desktop }
     - system/setup-aur
