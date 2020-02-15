@@ -1,0 +1,11 @@
+- name: set input sources
+  dconf:
+    key: "/org/gnome/desktop/input-sources/sources"
+    value: "[('xkb', 'us'), ('xkb', 'gr')]"
+    state: present
+
+- name: set input sources
+  dconf:
+    key: "/org/gnome/desktop/input-sources/xkb-options"
+    value: "['grp:alt_shift_toggle']"
+    state: present

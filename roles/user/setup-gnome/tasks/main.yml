@@ -2,15 +2,10 @@
 - include: gnome-fonts.yml
 - include: gnome-background.yml
 - include: gnome-terminal.yml
+- include: gnome-language.yml
 
 - name: set icon-theme to Papirus
   dconf:
     key: "/org/gnome/desktop/interface/icon-theme"
     value: "'Papirus'"
-    state: present
-
-- name: set input sources
-  dconf:
-    key: "/org/gnome/desktop/input-sources/sources"
-    value: "[('xkb', 'us'), ('xkb', 'gr')]"
     state: present
