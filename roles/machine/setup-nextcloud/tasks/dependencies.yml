@@ -1,0 +1,57 @@
+- name: install nextcloud
+  pacman: name=nextcloud
+  tags:
+    - packages
+
+- name: install nginx
+  pacman: name=nginx
+  tags:
+    - packages
+
+- name: install php
+  pacman: name=php
+  tags:
+    - packages
+
+- name: install php-intl
+  pacman: name=php-intl
+  tags:
+    - packages
+
+- name: install php-imagick
+  pacman: name=php-imagick
+  tags:
+    - packages
+
+- name: install php-fpm
+  pacman: name=php-fpm
+  tags:
+    - packages
+
+- lineinfile: dest=/etc/php/php.ini regexp='^;*extension=bz2' line='extension=bz2'
+- lineinfile: dest=/etc/php/php.ini regexp='^;*extension=curl' line='extension=curl'
+- lineinfile: dest=/etc/php/php.ini regexp='^;*extension=exif' line='extension=exif'
+- lineinfile: dest=/etc/php/php.ini regexp='^;*extension=gd' line='extension=gd'
+- lineinfile: dest=/etc/php/php.ini regexp='^;*extension=iconv' line='extension=iconv'
+- lineinfile: dest=/etc/php/php.ini regexp='^;*extension=intl' line='extension=intl'
+- lineinfile: dest=/etc/php/php.ini regexp='^;*extension=mysqli' line='extension=mysqli'
+- lineinfile: dest=/etc/php/php.ini regexp='^;*zend_extension=opcache' line='zend_extension=opcache'
+- lineinfile: dest=/etc/php/php.ini regexp='^;*extension=pdo_mysql' line='extension=pdo_mysql'
+- lineinfile: dest=/etc/php/php.ini regexp='^;*extension=zip' line='extension=zip'
+- lineinfile: dest=/etc/php/php.ini regexp='^memory_limit = \\d+M' line='memory_limit = 512M'
+- lineinfile: dest=/etc/php/php-fpm.d/www.conf line='env[PATH] = /usr/local/bin:/usr/bin:/bin'
+
+- name: install mariadb
+  pacman: name=mariadb
+  tags:
+    - packages
+
+#- name: install certbot
+#  pacman: name=certbot
+#  tags:
+#    - packages
+
+#- name: install certbot-nginx
+#  pacman: name=certbot-nginx
+#  tags:
+#    - packages

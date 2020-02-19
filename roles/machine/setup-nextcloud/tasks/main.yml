@@ -1,0 +1,42 @@
+- include: dependencies.yml
+
+- name: create the /etc/pacman.d/hooks directory
+  file: dest="/etc/pacman.d/hooks" state=directory
+
+- name: generate pacman database upgrade hook
+  template:
+    src: nextcloud.hook
+    dest: /etc/pacman.d/hooks/nextcloud.hook
+
+- name: create the /etc/nginx/sites-enabled/ directory
+  file: dest="/etc/nginx/sites-enabled/" state=directory
+
+- name: create the /etc/nginx/sites-available/ directory
+  file: dest="/etc/nginx/sites-available/" state=directory
+
+- name: generate nginx configuration
+  template:
+    src: nextcloud.conf
+    dest: /etc/nginx/sites-enabled/nextcloud.conf
+
+- name: create the /etc/systemd/system/php-fpm.service.d/ directory
+  file: dest="/etc/systemd/system/php-fpm.service.d/" state=directory
+
+- name: generate php-fpm override systemctl configuration
+  template:
+    src: php-fpm-override.conf
+    dest: /etc/systemd/system/php-fpm.service.d/override.conf
+
+- name: enable nginx service
+  systemd:
+    name: nginx
+    enabled: yes
+    masked: no
+    state: started
+
+- name: enable php-fpm service
+  systemd:
+    name: php-fpm
+    enabled: yes
+    masked: no
+    state: started

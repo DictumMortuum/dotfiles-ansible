@@ -100,3 +100,9 @@
   become_user: dimitris
   roles:
     - { role: machine/setup-clipmenud, tags: desktop }
+
+- hosts: satellite
+  become: yes
+  become_user: dimitris
+  roles:
+    - machine/setup-nextcloud
