@@ -1,0 +1,17 @@
+- name: install zerotier-one
+  pacman: name=zerotier-one
+  tags:
+    - packages
+
+- name: enable zerotier-one service
+  systemd:
+    name: zerotier-one
+    state: started
+    enabled: True
+
+- name: join the domus network
+  shell: "zerotier-cli join {{ network_id }}"
+  become: yes
+  register: res
+  changed_when: res.stdout != "200 join OK"
+

@@ -34,6 +34,7 @@
     - system/setup-avahi
     - { role: system/setup-avatars, tags: desktop }
     - { role: system/setup-printers, tags: desktop }
+    - system/setup-zerotier
 
 - hosts: all
   become: yes
