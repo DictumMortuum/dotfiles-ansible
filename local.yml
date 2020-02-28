@@ -103,6 +103,6 @@
 
 - hosts: satellite
   become: yes
-  become_user: dimitris
   roles:
+    - machine/setup-nginx
     - machine/setup-nextcloud

@@ -1,0 +1,31 @@
+- name: install nginx
+  pacman: name=nginx
+  tags:
+    - packages
+
+#- name: install certbot
+#  pacman: name=certbot
+#  tags:
+#    - packages
+
+#- name: install certbot-nginx
+#  pacman: name=certbot-nginx
+#  tags:
+#    - packages
+
+- name: generate the sites configuration
+  template:
+    src: "{{ item }}"
+    dest: "/etc/nginx/{{ item }}"
+  loop:
+    - nginx.conf
+    - satellite.dictummortuum.com.conf
+    - nextcloud.conf
+    - transmission.conf
+
+- name: enable nginx service
+  systemd:
+    name: nginx
+    enabled: yes
+    masked: no
+    state: started
