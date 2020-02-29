@@ -23,3 +23,6 @@
     mode: '0775'
     owner: consul
     group: domus
+
+#- name: install plugins with vim-plug
+#  shell: vim +'PlugInstall --sync' +qall &> /dev/null
