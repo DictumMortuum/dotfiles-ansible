@@ -16,9 +16,6 @@
 - name: install compton
   pacman: name=picom
 
-- name: install thunar
-  pacman: name=thunar
-
 - name: install pavucontrol
   pacman: name=pavucontrol
 
