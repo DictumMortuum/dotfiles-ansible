@@ -21,6 +21,3 @@
   command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" pull domus master
   register: dotfiles
   changed_when: dotfiles.stdout != "Already up to date."
-
-#- name: vim - install vundle plugins
-#  shell: vim -E -s -c "source {{ ansible_env.HOME }}/.vimrc" -c PluginInstall -c qa

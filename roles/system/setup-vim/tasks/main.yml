@@ -4,8 +4,22 @@
     - packages
     - desktop
 
-- name: install vundle
-  aur: name=vundle-git skip_installed=true
-  become_user: consul
-  tags:
-    - packages
+- name: create domus directory
+  file:
+    name: "{{ thirdparty }}/{{ item }}"
+    mode: '0775'
+    owner: consul
+    group: domus
+    state: directory
+  loop:
+    - vim
+    - vim/autoload
+    - vim/plugged
+
+- name: fetch the plug.vim script
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: "{{ thirdparty }}/vim/autoload/plug.vim"
+    mode: '0775'
+    owner: consul
+    group: domus
