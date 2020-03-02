@@ -3,6 +3,16 @@
   tags:
     - packages
 
+- name: install php-ldap
+  pacman: name=php-ldap
+  tags:
+    - packages
+
+- name: install php-redis
+  pacman: name=php-redis
+  tags:
+    - packages
+
 - name: install php-intl
   pacman: name=php-intl
   tags:
@@ -24,12 +34,15 @@
 - lineinfile: dest=/etc/php/php.ini regexp='^;*extension=gd' line='extension=gd'
 - lineinfile: dest=/etc/php/php.ini regexp='^;*extension=iconv' line='extension=iconv'
 - lineinfile: dest=/etc/php/php.ini regexp='^;*extension=intl' line='extension=intl'
+- lineinfile: dest=/etc/php/php.ini regexp='^;*extension=ldap' line='extension=ldap'
 - lineinfile: dest=/etc/php/php.ini regexp='^;*extension=mysqli' line='extension=mysqli'
 - lineinfile: dest=/etc/php/php.ini regexp='^;*zend_extension=opcache' line='zend_extension=opcache'
 - lineinfile: dest=/etc/php/php.ini regexp='^;*extension=pdo_mysql' line='extension=pdo_mysql'
 - lineinfile: dest=/etc/php/php.ini regexp='^;*extension=zip' line='extension=zip'
 - lineinfile: dest=/etc/php/php.ini regexp='^memory_limit = \\d+M' line='memory_limit = 512M'
 - lineinfile: dest=/etc/php/php-fpm.d/www.conf line='env[PATH] = /usr/local/bin:/usr/bin:/bin'
+- lineinfile: dest=/etc/php/conf.d/igbinary.ini regexp='^;*extension=igbinary.so' line='extension=igbinary.so'
+- lineinfile: dest=/etc/php/conf.d/reids.ini regexp='^;*extension=redis' line='extension=redis'
 
 - name: create the /etc/systemd/system/php-fpm.service.d/ directory
   file: dest="/etc/systemd/system/php-fpm.service.d/" state=directory

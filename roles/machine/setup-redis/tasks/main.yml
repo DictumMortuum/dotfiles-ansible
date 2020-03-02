@@ -1,0 +1,11 @@
+- name: install redis
+  pacman: name=redis
+  tags:
+    - packages
+
+- name: enable the redis service
+  systemd:
+    name: redis
+    enabled: yes
+    masked: no
+    state: started

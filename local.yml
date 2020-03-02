@@ -105,4 +105,6 @@
   become: yes
   roles:
     - machine/setup-nginx
+    - machine/setup-redis
+    - machine/setup-php
     - machine/setup-nextcloud
