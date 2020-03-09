@@ -22,6 +22,7 @@
     - satellite.dictummortuum.com.conf
     - nextcloud.conf
     - transmission.conf
+    - phpldapadmin.conf
 
 - name: enable nginx service
   systemd:
