@@ -1,5 +1,6 @@
-[all]
+[desktop]
 machina ansible_host=10.144.0.2
+ars     ansible_host=10.144.0.4
 
 [headless]
 satellite ansible_host=10.144.0.1

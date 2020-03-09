@@ -1,110 +1,28 @@
-- hosts: all
-  become: yes
-  roles:
-    - system/setup-users
-
-- hosts: all
-  become: yes
-  become_user: dimitris
-  roles:
-    - user/setup-folders
-
-- hosts: all
-  become: yes
-  become_user: consul
-  roles:
-    - user/setup-folders
+- import_playbook: bootstrap.yml
 
 - hosts: all
   become: yes
   roles:
     - system/setup-ssh
     - system/setup-common-headless
-    - { role: system/setup-common-desktop, tags: desktop }
     - system/setup-aur
-    - { role: system/setup-fonts, tags: desktop }
     - system/setup-thirdparty
-    - { role: system/setup-suckless, tags: desktop }
     - system/setup-zsh
-    - { role: system/setup-xurls, tags: desktop }
     - system/setup-vim
+    - system/setup-avahi
+    - system/setup-zerotier
+
+- hosts: desktop
+  become: yes
+  roles:
+    - { role: system/setup-common-desktop, tags: desktop }
+    - { role: system/setup-fonts, tags: desktop }
+    - { role: system/setup-suckless, tags: desktop }
+    - { role: system/setup-xurls, tags: desktop }
     - { role: system/setup-qutebrowser, tags: desktop }
     - { role: system/setup-i3, tags: desktop }
     - { role: system/setup-gnome, tags: desktop }
-    - system/setup-avahi
     - { role: system/setup-avatars, tags: desktop }
     - { role: system/setup-printers, tags: desktop }
-    - system/setup-zerotier
 
-- hosts: all
-  become: yes
-  become_user: dimitris
-  roles:
-    - user/setup-dotfiles
-    - user/setup-dotfiles-url
-    - { role: user/setup-gnome, tags: desktop }
-    - { role: user/setup-gnome-avatar, tags: desktop }
-    - user/setup-zsh
-    - { role: user/setup-clipmenu, tags: desktop }
-    - user/setup-notable
-    - user/setup-pass
-    - { role: user/setup-syncthing, tags: desktop }
-    - { role: user/setup-vscode, tags: desktop }
-
-- hosts: all
-  become: yes
-  become_user: fofi
-  roles:
-    - user/setup-dotfiles
-    - { role: user/setup-gnome, tags: desktop }
-    - { role: user/setup-gnome-avatar, tags: desktop }
-    - user/setup-zsh
-
-- hosts: all
-  become: yes
-  become_user: manolis
-  roles:
-    - user/setup-dotfiles
-    - { role: user/setup-gnome, tags: desktop }
-    - { role: user/setup-gnome-avatar, tags: desktop }
-    - user/setup-zsh
-
-- hosts: all
-  become: yes
-  become_user: petrina
-  roles:
-    - user/setup-dotfiles
-    - { role: user/setup-gnome, tags: desktop }
-    - { role: user/setup-gnome-avatar, tags: desktop }
-    - user/setup-zsh
-
-- hosts: all
-  become: yes
-  become_user: theoni
-  roles:
-    - user/setup-dotfiles
-    - { role: user/setup-gnome, tags: desktop }
-    - { role: user/setup-gnome-avatar, tags: desktop }
-    - user/setup-zsh
-
-- hosts: all
-  become: yes
-  become_user: diabolus
-  roles:
-    - user/setup-dotfiles
-    - { role: user/setup-gnome, tags: desktop }
-    - user/setup-zsh
-
-- hosts: machina
-  become: yes
-  become_user: dimitris
-  roles:
-    - { role: machine/setup-clipmenud, tags: desktop }
-
-- hosts: satellite
-  become: yes
-  roles:
-    - machine/setup-nginx
-    - machine/setup-redis
-    - machine/setup-php
-    - machine/setup-nextcloud
+- import_playbook: users.yml

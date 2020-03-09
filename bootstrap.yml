@@ -1,0 +1,11 @@
+- hosts: all
+  become: yes
+  become_user: dimitris
+  roles:
+    - user/setup-folders
+
+- hosts: all
+  become: yes
+  become_user: consul
+  roles:
+    - user/setup-folders
