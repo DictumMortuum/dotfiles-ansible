@@ -1,0 +1,94 @@
+- name: install sssd
+  pacman: name=sssd
+  tags:
+    - packages
+
+- name: install ca-certificates
+  pacman: name=ca-certificates
+  tags:
+    - packages
+
+- name: generate the sssd configuration
+  template:
+    src: sssd.conf
+    dest: "/etc/sssd/sssd.conf"
+    mode: "0600"
+
+- name: generate the ldap client configuration
+  template:
+    src: ldap.conf
+    dest: "/etc/openldap/ldap.conf"
+    mode: "0600"
+
+- name: disable passwd nscd cache
+  lineinfile:
+    dest: /etc/nscd.conf
+    regexp: '^(\s*)enable-cache(\s+)passwd(.*)$'
+    line: 'enable-cache passwd no'
+
+- name: disable group nscd cache
+  lineinfile:
+    dest: /etc/nscd.conf
+    regexp: '^(\s*)enable-cache(\s+)group(.*)$'
+    line: 'enable-cache group no'
+
+- name: disable netgroup nscd cache
+  lineinfile:
+    dest: /etc/nscd.conf
+    regexp: '^(\s*)enable-cache(\s+)netgroup(.*)$'
+    line: 'enable-cache netgroup no'
+
+- name: enable sssd passwd in nsswitch
+  lineinfile:
+    dest: /etc/nsswitch.conf
+    regexp: '^(\s*)passwd:(.*)$'
+    line: 'passwd: files sss'
+
+- name: enable sssd group in nsswitch
+  lineinfile:
+    dest: /etc/nsswitch.conf
+    regexp: '^(\s*)group:(.*)$'
+    line: 'group: files sss'
+
+- name: enable sssd shadow in nsswitch
+  lineinfile:
+    dest: /etc/nsswitch.conf
+    regexp: '^(\s*)shadow:(.*)$'
+    line: 'shadow: files sss'
+
+- name: enable sssd sudoers in nsswitch
+  lineinfile:
+    dest: /etc/nsswitch.conf
+    regexp: '^(\s*)sudoers:(.*)$'
+    line: 'sudoers: files sss'
+
+- name: set hosts in nsswitch
+  lineinfile:
+    dest: /etc/nsswitch.conf
+    regexp: '^(\s*)hosts:(.*)$'
+    line: 'hosts: files mdns4_minimal myhostname resolve [!UNAVAIL=return] dns'
+
+- name: add sssd to system-auth pam
+  template:
+    src: system-auth
+    dest: "/etc/pam.d/system-auth"
+    mode: "0644"
+
+- name: add sssd to su pam
+  template:
+    src: su
+    dest: "/etc/pam.d/su"
+    mode: "0644"
+
+- name: add sssd to su-l pam
+  template:
+    src: su
+    dest: "/etc/pam.d/su-l"
+    mode: "0644"
+
+- name: enable sssd service
+  systemd:
+    name: sssd
+    enabled: yes
+    masked: no
+    state: started

@@ -1,0 +1,29 @@
+- name: generate slapd override for satellite
+  template:
+    src: override.conf
+    dest: /etc/systemd/system/slapd.service.d/override.conf
+
+- name: ldap should be able to read certificates
+  user:
+    name: ldap
+    group: ldap
+    groups: arcanum
+    append: yes
+
+- name: Recursively change group of letencrypt
+  file:
+    path: /etc/letsencrypt
+    state: directory
+    recurse: yes
+    owner: root
+    group: arcanum
+    mode: g+r
+
+- name: Recursively change group of letencrypt
+  file:
+    path: /etc/letsencrypt/{{ item }}
+    state: directory
+    mode: g+x
+  loop:
+    - live
+    - archive
