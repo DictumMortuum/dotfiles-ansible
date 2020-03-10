@@ -23,11 +23,6 @@
   tags:
     - packages
 
-- name: install openvpn
-  pacman: name=openvpn
-  tags:
-    - packages
-
 - name: install fzf
   pacman: name=fzf
   tags:
