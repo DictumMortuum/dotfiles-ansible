@@ -2,7 +2,6 @@
   pacman: name=gvim
   tags:
     - packages
-    - desktop
 
 - name: create domus directory
   file:
