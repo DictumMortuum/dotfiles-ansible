@@ -7,3 +7,9 @@
     dest: "{{ thirdparty }}/dotfiles"
     update: yes
   become_user: consul
+
+- name: copy dotctl to /usr/local/
+  copy:
+    src: "{{ thirdparty }}/dotfiles/.config/bin/dotctl"
+    dest: /usr/local/bin/dotctl
+    remote_src: yes
