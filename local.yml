@@ -3,6 +3,7 @@
 - hosts: all
   become: yes
   roles:
+    - system/setup-hosts
     - system/setup-ssh
     - system/setup-common-headless
     - system/setup-aur
