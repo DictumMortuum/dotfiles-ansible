@@ -13,7 +13,6 @@
   become_user: dimitris
   roles:
     - { role: user/setup-gnome, tags: desktop }
-    - { role: user/setup-gnome-avatar, tags: desktop }
     - { role: user/setup-clipmenu, tags: desktop }
     - { role: user/setup-vscode, tags: desktop }
 
@@ -29,7 +28,6 @@
   become_user: fofi
   roles:
     - { role: user/setup-gnome, tags: desktop }
-    - { role: user/setup-gnome-avatar, tags: desktop }
 
 - hosts: all
   become: yes
@@ -43,7 +41,6 @@
   become_user: manolis
   roles:
     - { role: user/setup-gnome, tags: desktop }
-    - { role: user/setup-gnome-avatar, tags: desktop }
 
 - hosts: all
   become: yes
@@ -57,7 +54,6 @@
   become_user: petrina
   roles:
     - { role: user/setup-gnome, tags: desktop }
-    - { role: user/setup-gnome-avatar, tags: desktop }
 
 - hosts: all
   become: yes
@@ -71,7 +67,6 @@
   become_user: theoni
   roles:
     - { role: user/setup-gnome, tags: desktop }
-    - { role: user/setup-gnome-avatar, tags: desktop }
 
 - hosts: all
   become: yes

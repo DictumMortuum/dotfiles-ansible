@@ -1,9 +1,15 @@
+- name: check that the avatar icon exists for {{ ansible_user_id }}
+  stat:
+    path: "/home/{{ ansible_user_id }}/.face"
+  register: res
+
 - name: copy {{ ansible_user_id }} avatar into gdm
   copy:
     src: "/home/{{ ansible_user_id }}/.face"
     dest: "/var/lib/AccountsService/icons/{{ ansible_user_id }}"
     remote_src: yes
   become_user: root
+  when: res.stat.exists == true
 
 - name: set profile picture for {{ ansible_user_id }} in gdm
   lineinfile:
@@ -11,3 +17,4 @@
     regexp: "^Icon="
     line: 'Icon=/var/lib/AccountsService/icons/{{ ansible_user_id }}'
   become_user: root
+  when: res.stat.exists == true
