@@ -1,22 +1,22 @@
-- name: set document-font to roboto
+- name: set document-font to roboto for {{ ansible_user_id }}
   dconf:
     key: "/org/gnome/desktop/interface/document-font-name"
     value: "'Roboto 11'"
     state: present
 
-- name: set font to roboto
+- name: set font to roboto for {{ ansible_user_id }}
   dconf:
     key: "/org/gnome/desktop/interface/font-name"
     value: "'Roboto 11'"
     state: present
 
-- name: set titlebar-font to roboto
+- name: set titlebar-font to roboto for {{ ansible_user_id }}
   dconf:
     key: "/org/gnome/desktop/wm/preferences/titlebar-font"
     value: "'Roboto 11'"
     state: present
 
-- name: set monospace-font to fira code
+- name: set monospace-font to fira code for {{ ansible_user_id }}
   dconf:
     key: "/org/gnome/desktop/interface/monospace-font-name"
     value: "'Fira Code 10'"

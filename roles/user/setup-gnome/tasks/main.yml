@@ -3,8 +3,9 @@
 - include: gnome-background.yml
 - include: gnome-terminal.yml
 - include: gnome-language.yml
+- include: gnome-power.yml
 
-- name: set icon-theme to Papirus
+- name: set icon-theme to Papirus for {{ ansible_user_id }}
   dconf:
     key: "/org/gnome/desktop/interface/icon-theme"
     value: "'Papirus'"

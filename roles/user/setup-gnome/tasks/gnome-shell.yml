@@ -1,34 +1,34 @@
-- name: enable dash to dock
+- name: enable dash to dock for {{ ansible_user_id }}
   dconf:
     key: "/org/gnome/shell/enabled-extensions"
     value: "['dash-to-dock@micxgx.gmail.com']"
     state: present
 
-- name: enable custom-theme-shrink on dock
+- name: enable custom-theme-shrink on dock for {{ ansible_user_id }}
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/custom-theme-shrink"
     value: "true"
     state: present
 
-- name: enable dock-fixed on dock
+- name: enable dock-fixed on dock for {{ ansible_user_id }}
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/dock-fixed"
     value: "true"
     state: present
 
-- name: set dock-position on dock to BOTTOM
+- name: set dock-position on dock to BOTTOM for {{ ansible_user_id }}
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/dock-position"
     value: "'BOTTOM'"
     state: present
 
-- name: extend dock
+- name: extend dock for {{ ansible_user_id }}
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/extend-height"
     value: "true"
     state: present
 
-- name: set favorite apps
+- name: set favorite apps for {{ ansible_user_id }}
   dconf:
     key: "/org/gnome/shell/favorite-apps"
     value: "['org.gnome.Nautilus.desktop', 'firefox.desktop']"

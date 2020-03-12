@@ -1,10 +1,10 @@
-- name: set input sources
+- name: set input sources for {{ ansible_user_id }}
   dconf:
     key: "/org/gnome/desktop/input-sources/sources"
     value: "[('xkb', 'us'), ('xkb', 'gr')]"
     state: present
 
-- name: set input sources
+- name: set xkb-options for {{ ansible_user_id }}
   dconf:
     key: "/org/gnome/desktop/input-sources/xkb-options"
     value: "['grp:alt_shift_toggle']"
