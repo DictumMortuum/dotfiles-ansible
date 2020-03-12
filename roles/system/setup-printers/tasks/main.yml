@@ -1,4 +1,4 @@
-- name: isntall cups
+- name: install cups
   pacman: name=cups
 
 - name: install brother-hll2340d
