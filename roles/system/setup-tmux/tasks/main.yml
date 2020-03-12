@@ -1,0 +1,18 @@
+- name: install tmux
+  pacman: name=tmux
+  tags:
+    - packages
+
+- name: clone tpm
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: "{{ thirdparty }}/tpm"
+    update: yes
+  become_user: consul
+
+- name: install tpm plugins
+  shell: "/opt/domus/tpm/scripts/install_plugins.sh"
+  become: yes
+  become_user: consul
+  register: res
+  changed_when: res.stdout != "Already installed \"tpm\"\nAlready installed \"tmux-sensible\"\nAlready installed \"nord-tmux\""

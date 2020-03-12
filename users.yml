@@ -81,6 +81,13 @@
   roles:
     - { role: user/setup-gnome, tags: desktop }
 
+- hosts: all
+  become: yes
+  become_user: consul
+  roles:
+    - user/setup-dotfiles
+    - user/setup-zsh
+
 - hosts: machina
   become: yes
   become_user: dimitris

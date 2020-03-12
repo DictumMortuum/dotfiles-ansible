@@ -14,4 +14,3 @@
   become: yes
   register: res
   changed_when: res.stdout != "200 join OK"
-

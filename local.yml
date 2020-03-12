@@ -13,6 +13,13 @@
     - system/setup-avahi
     - system/setup-zerotier
 
+- import_playbook: users.yml
+
+- hosts: all
+  become: yes
+  roles:
+    - system/setup-tmux
+
 - hosts: desktop
   become: yes
   roles:
@@ -25,5 +32,3 @@
     - { role: system/setup-gnome, tags: desktop }
     - { role: system/setup-avatars, tags: desktop }
     - { role: system/setup-printers, tags: desktop }
-
-- import_playbook: users.yml
