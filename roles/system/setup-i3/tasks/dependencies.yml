@@ -33,3 +33,9 @@
 
 - name: install scrot
   pacman: name=scrot
+
+- name: install rofi
+  pacman: name=rofi
+
+- name: install hsetroot
+  pacman: name=hsetroot
