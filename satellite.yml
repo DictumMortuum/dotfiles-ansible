@@ -5,3 +5,4 @@
     - machine/setup-redis
     - machine/setup-php
     - machine/setup-nextcloud
+    - machine/setup-minidlna

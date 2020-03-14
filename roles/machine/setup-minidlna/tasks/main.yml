@@ -1,0 +1,23 @@
+- name: install minidlna
+  pacman: name=minidlna
+  tags:
+    - packages
+
+- name: set minidlna as the user that minidlna runs as
+  lineinfile:
+    dest: /etc/minidlna.conf
+    regexp: '^#*user=minidlna'
+    line: 'user=minidlna'
+
+- name: add wlan0 to the network interfaces
+  lineinfile:
+    dest: /etc/minidlna.conf
+    regexp: '^#*network_interface=.*'
+    line: 'network_interface=eth0,wlan0'
+
+- name: enable the minidlna service
+  systemd:
+    name: minidlna
+    enabled: yes
+    masked: no
+    state: started
