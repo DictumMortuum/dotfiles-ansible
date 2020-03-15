@@ -20,3 +20,16 @@
     line: "auth sufficient pam_succeed_if.so user ingroup nonsignum"
     insertbefore: BOF
     state: present
+
+- name: set the gdm icon-theme to Papirus
+  dconf:
+    key: "/org/gnome/desktop/interface/icon-theme"
+    value: "'Papirus'"
+    state: present
+  become_user: gdm
+
+- name: set the gdm font to roboto
+  dconf:
+    key: "/org/gnome/desktop/interface/font-name"
+    value: "'Roboto 11'"
+    state: present
