@@ -33,3 +33,4 @@
     key: "/org/gnome/desktop/interface/font-name"
     value: "'Roboto 11'"
     state: present
+  become_user: gdm
