@@ -48,6 +48,7 @@
     - { role: user/setup-gnome, tags: desktop }
     - { role: user/setup-clipmenu, tags: desktop }
     - { role: user/setup-vscode, tags: desktop }
+    - { role: user/setup-clipmenud, tags: desktop }
 
 - hosts: desktop
   become: yes
@@ -78,8 +79,3 @@
   become_user: diabolus
   roles:
     - { role: user/setup-gnome, tags: desktop }
-
-- hosts: machina
-  become: yes
-  become_user: dimitris
-  roles:
