@@ -1,0 +1,12 @@
+- hosts: desktop
+  become: yes
+  roles:
+    - { role: system/setup-common-desktop, tags: desktop }
+    - { role: system/setup-fonts, tags: desktop }
+    - { role: system/setup-suckless, tags: desktop }
+    - { role: system/setup-xurls, tags: desktop }
+    - { role: system/setup-qutebrowser, tags: desktop }
+    - { role: system/setup-i3, tags: desktop }
+    - { role: system/setup-gnome, tags: desktop }
+    - { role: system/setup-avatars, tags: desktop }
+    - { role: system/setup-printers, tags: desktop }

@@ -1,11 +1,21 @@
 - hosts: all
   become: yes
+  roles:
+    - system/setup-thirdparty
+    - system/setup-zsh
+
+- hosts: all
+  become: yes
   become_user: dimitris
   roles:
     - user/setup-folders
+    - user/setup-dotfiles
+    - user/setup-zsh
 
 - hosts: all
   become: yes
   become_user: consul
   roles:
     - user/setup-folders
+    - user/setup-dotfiles
+    - user/setup-zsh

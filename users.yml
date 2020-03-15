@@ -2,11 +2,44 @@
   become: yes
   become_user: dimitris
   roles:
-    - user/setup-dotfiles
     - user/setup-dotfiles-url
-    - user/setup-zsh
     - user/setup-notable
     - user/setup-pass
+
+- hosts: all
+  become: yes
+  become_user: fofi
+  roles:
+    - user/setup-dotfiles
+    - user/setup-zsh
+
+- hosts: all
+  become: yes
+  become_user: manolis
+  roles:
+    - user/setup-dotfiles
+    - user/setup-zsh
+
+- hosts: all
+  become: yes
+  become_user: petrina
+  roles:
+    - user/setup-dotfiles
+    - user/setup-zsh
+
+- hosts: all
+  become: yes
+  become_user: theoni
+  roles:
+    - user/setup-dotfiles
+    - user/setup-zsh
+
+- hosts: all
+  become: yes
+  become_user: diabolus
+  roles:
+    - user/setup-dotfiles
+    - user/setup-zsh
 
 - hosts: desktop
   become: yes
@@ -16,25 +49,11 @@
     - { role: user/setup-clipmenu, tags: desktop }
     - { role: user/setup-vscode, tags: desktop }
 
-- hosts: all
-  become: yes
-  become_user: fofi
-  roles:
-    - user/setup-dotfiles
-    - user/setup-zsh
-
 - hosts: desktop
   become: yes
   become_user: fofi
   roles:
     - { role: user/setup-gnome, tags: desktop }
-
-- hosts: all
-  become: yes
-  become_user: manolis
-  roles:
-    - user/setup-dotfiles
-    - user/setup-zsh
 
 - hosts: desktop
   become: yes
@@ -42,25 +61,11 @@
   roles:
     - { role: user/setup-gnome, tags: desktop }
 
-- hosts: all
-  become: yes
-  become_user: petrina
-  roles:
-    - user/setup-dotfiles
-    - user/setup-zsh
-
 - hosts: desktop
   become: yes
   become_user: petrina
   roles:
     - { role: user/setup-gnome, tags: desktop }
-
-- hosts: all
-  become: yes
-  become_user: theoni
-  roles:
-    - user/setup-dotfiles
-    - user/setup-zsh
 
 - hosts: desktop
   become: yes
@@ -68,28 +73,13 @@
   roles:
     - { role: user/setup-gnome, tags: desktop }
 
-- hosts: all
-  become: yes
-  become_user: diabolus
-  roles:
-    - user/setup-dotfiles
-    - user/setup-zsh
-
 - hosts: desktop
   become: yes
   become_user: diabolus
   roles:
     - { role: user/setup-gnome, tags: desktop }
-
-- hosts: all
-  become: yes
-  become_user: consul
-  roles:
-    - user/setup-dotfiles
-    - user/setup-zsh
 
 - hosts: machina
   become: yes
   become_user: dimitris
   roles:
-    - { role: machine/setup-clipmenud, tags: desktop }
