@@ -28,9 +28,9 @@
     state: present
   become_user: gdm
 
-- name: set the gdm font to roboto
+- name: set the gdm font to fira sans
   dconf:
     key: "/org/gnome/desktop/interface/font-name"
-    value: "'Roboto 11'"
+    value: "'Fira Sans Regular 11'"
     state: present
   become_user: gdm

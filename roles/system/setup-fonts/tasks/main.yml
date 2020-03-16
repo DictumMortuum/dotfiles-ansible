@@ -3,8 +3,8 @@
   tags:
     - packages
 
-- name: install roboto fonts
-  pacman: name=ttf-roboto
+- name: install fira sans fonts
+  pacman: name=ttf-fira-sans
   tags:
     - packages
 
