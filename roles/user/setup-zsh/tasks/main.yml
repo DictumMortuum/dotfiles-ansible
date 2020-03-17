@@ -1,9 +1,3 @@
-#- name: chsh to zsh for {{ ansible_user_id }}
-#  user:
-#    user: "{{ ansible_user_id }}"
-#    shell: /bin/zsh
-#  become_user: root
-
 - name: create {{ ansible_env.HOME }}/.cache/zsh
   file: dest="{{ ansible_env.HOME }}/.cache/zsh" state=directory
 
