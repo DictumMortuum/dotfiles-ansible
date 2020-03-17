@@ -6,7 +6,7 @@
 - name: clone tpm
   git:
     repo: https://github.com/tmux-plugins/tpm
-    dest: "{{ thirdparty }}/tpm"
+    dest: "{{ thirdparty }}/tmux/tpm"
     update: yes
   become_user: consul
 
