@@ -23,6 +23,7 @@
     - nextcloud.conf
     - transmission.conf
     - phpldapadmin.conf
+    - phpmyadmin.conf
 
 - name: enable nginx service
   systemd:
