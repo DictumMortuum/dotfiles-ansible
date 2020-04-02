@@ -42,3 +42,8 @@
   pacman: name=make
   tags:
     - packages
+
+- name: install patch
+  pacman: name=patch
+  tags:
+    - packages
