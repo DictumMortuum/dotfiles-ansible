@@ -1,6 +1,7 @@
 - hosts: satellite
   become: yes
   roles:
+    - machine/setup-ldap-server
     - machine/setup-nginx
     - machine/setup-redis
     - machine/setup-php

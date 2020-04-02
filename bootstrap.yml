@@ -4,6 +4,11 @@
     - system/setup-thirdparty
     - system/setup-zsh
 
+- hosts: desktop
+  become: yes
+  roles:
+    - machine/setup-ldap-client
+
 - hosts: all
   become: yes
   become_user: dimitris

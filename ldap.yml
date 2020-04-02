@@ -1,9 +1,0 @@
-- hosts: desktop
-  become: yes
-  roles:
-    - machine/setup-ldap-client
-
-- hosts: satellite
-  become: yes
-  roles:
-    - machine/setup-ldap-server
