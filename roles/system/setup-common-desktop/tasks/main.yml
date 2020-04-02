@@ -1,3 +1,8 @@
+- name: install strip
+  pacman: name=binutils
+  tags:
+    - packages
+
 - name: install notable
   aur: name=notable-bin skip_installed=true
   become_user: consul
