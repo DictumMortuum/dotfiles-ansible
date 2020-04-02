@@ -1,4 +1,4 @@
-- import_playbook: bootstrap.yml
-- import_playbook: headless.yml
-- import_playbook: desktop.yml
-- import_playbook: users.yml
+- import_playbook: provision-base.yml
+- import_playbook: provision-headless.yml
+- import_playbook: provision-desktop.yml
+- import_playbook: provision-users.yml
