@@ -37,3 +37,8 @@
   pacman: name=cronie
   tags:
     - packages
+
+- name: install make
+  pacman: name=make
+  tags:
+    - packages
