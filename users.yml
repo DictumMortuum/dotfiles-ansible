@@ -3,7 +3,7 @@
   become_user: dimitris
   roles:
     - user/setup-dotfiles-url
-    - user/setup-notable
+    - user/setup-notes
     - user/setup-pass
 
 - hosts: all
