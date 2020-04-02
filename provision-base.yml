@@ -16,11 +16,49 @@
     - user/setup-folders
     - user/setup-dotfiles
     - user/setup-zsh
+    - user/setup-dotfiles-url
+    - user/setup-notes
+    - user/setup-pass
 
 - hosts: all
   become: yes
   become_user: consul
   roles:
     - user/setup-folders
+    - user/setup-dotfiles
+    - user/setup-zsh
+
+- hosts: all
+  become: yes
+  become_user: fofi
+  roles:
+    - user/setup-dotfiles
+    - user/setup-zsh
+
+- hosts: all
+  become: yes
+  become_user: manolis
+  roles:
+    - user/setup-dotfiles
+    - user/setup-zsh
+
+- hosts: all
+  become: yes
+  become_user: petrina
+  roles:
+    - user/setup-dotfiles
+    - user/setup-zsh
+
+- hosts: all
+  become: yes
+  become_user: theoni
+  roles:
+    - user/setup-dotfiles
+    - user/setup-zsh
+
+- hosts: all
+  become: yes
+  become_user: diabolus
+  roles:
     - user/setup-dotfiles
     - user/setup-zsh
