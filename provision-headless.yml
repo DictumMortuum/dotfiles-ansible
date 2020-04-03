@@ -2,9 +2,7 @@
   become: yes
   roles:
     - system/setup-ssh
-    - system/setup-common-headless
     - system/setup-aur
     - system/setup-vim
     - system/setup-avahi
-    - system/setup-zerotier
     - system/setup-tmux

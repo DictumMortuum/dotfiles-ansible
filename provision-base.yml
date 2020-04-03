@@ -1,8 +1,9 @@
 - hosts: all
   become: yes
   roles:
-    - system/setup-thirdparty
-    - system/setup-zsh
+    - system/setup-skel
+    - system/setup-common-headless
+    - system/setup-zerotier
 
 - hosts: desktop
   become: yes
@@ -13,20 +14,31 @@
   become: yes
   become_user: dimitris
   roles:
-    - user/setup-folders
+    - user/setup-keys
     - user/setup-dotfiles
     - user/setup-zsh
-    - user/setup-dotfiles-url
-    - user/setup-notes
-    - user/setup-pass
 
 - hosts: all
   become: yes
   become_user: consul
   roles:
-    - user/setup-folders
+    - user/setup-keys
     - user/setup-dotfiles
     - user/setup-zsh
+
+- hosts: all
+  become: yes
+  roles:
+    - system/setup-thirdparty
+    - system/setup-zsh
+
+- hosts: all
+  become: yes
+  become_user: dimitris
+  roles: 
+    - user/setup-dotfiles-url
+    - user/setup-notes
+    - user/setup-pass
 
 - hosts: all
   become: yes
