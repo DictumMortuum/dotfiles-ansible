@@ -15,9 +15,4 @@
     group: "{{ item }}"
     mode: '0744'
     remote_src: yes
-  loop:
-    - dimitris
-    - fofi
-    - manolis
-    - petrina
-    - theoni
+  loop: "{{ users_with_avatars }}"
