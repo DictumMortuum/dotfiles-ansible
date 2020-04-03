@@ -1,0 +1,10 @@
+- name: alter the /etc/skel directory
+  file:
+    path: "/etc/skel/{{ item }}"
+    state: directory
+  loop:
+    - .ssh
+    - .cache
+    - .cache/ssh
+    - .cache/screenlayout
+    - .cache/zsh
