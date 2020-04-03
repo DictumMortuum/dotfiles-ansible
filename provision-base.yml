@@ -8,7 +8,7 @@
 - hosts: desktop
   become: yes
   roles:
-    - machine/setup-ldap-client
+    - system/setup-ldap-client
 
 - hosts: all
   become: yes

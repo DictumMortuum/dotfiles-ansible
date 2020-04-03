@@ -1,9 +1,9 @@
 - hosts: satellite
   become: yes
   roles:
-    - machine/setup-ldap-server
-    - machine/setup-nginx
-    - machine/setup-redis
-    - machine/setup-php
-    - machine/setup-nextcloud
-    - machine/setup-minidlna
+    - system/setup-ldap-server
+    - system/setup-nginx
+    - system/setup-redis
+    - system/setup-php
+    - system/setup-nextcloud
+    - system/setup-minidlna
