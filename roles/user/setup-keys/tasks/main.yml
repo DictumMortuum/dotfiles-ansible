@@ -1,0 +1,8 @@
+- name: copy dimitris ssh keys
+  copy:
+    src: "~/Sync/Secret/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.ssh/{{ item }}"
+    mode: 0600
+  loop:
+    - id_rsa
+    - id_rsa.pub
