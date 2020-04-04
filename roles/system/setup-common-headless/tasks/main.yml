@@ -1,20 +1,5 @@
-- name: install sudo
-  pacman: name=sudo
-  tags:
-    - packages
-
 - name: install ansible
   pacman: name=ansible
-  tags:
-    - packages
-
-- name: install git
-  pacman: name=git
-  tags:
-    - packages
-
-- name: install tcl
-  pacman: name=tcl
   tags:
     - packages
 
@@ -35,15 +20,5 @@
 
 - name: install cronie
   pacman: name=cronie
-  tags:
-    - packages
-
-- name: install make
-  pacman: name=make
-  tags:
-    - packages
-
-- name: install patch
-  pacman: name=patch
   tags:
     - packages

@@ -1,17 +1,5 @@
 - hosts: all
   become: yes
-  roles:
-    - system/setup-skel
-    - system/setup-common-headless
-    - system/setup-zerotier
-
-- hosts: desktop
-  become: yes
-  roles:
-    - system/setup-ldap-client
-
-- hosts: all
-  become: yes
   become_user: dimitris
   roles:
     - user/setup-keys
