@@ -14,6 +14,7 @@
     - fetch dotfiles
     - checkout master
     - set local master to track remote master branch
+    - add the dotfiles origin url
 
 - meta: flush_handlers
 

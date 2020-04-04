@@ -1,5 +1,0 @@
-- name: add dotfiles origin
-  command: git --git-dir="{{ ansible_env.HOME }}/.dotfiles.git" --work-tree="{{ ansible_env.HOME }}" remote add origin {{ dotfiles_url }}
-  register: dotfiles
-  changed_when: dotfiles.rc == 0
-  failed_when: '"origin" not in dotfiles.stderr and dotfiles.stderr != ""'
