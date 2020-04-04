@@ -2,37 +2,37 @@
   become: yes
   become_user: dimitris
   roles:
-    - { role: user/setup-gnome, tags: desktop }
-    - { role: user/setup-clipmenu, tags: desktop }
-    - { role: user/setup-vscode, tags: desktop }
-    - { role: user/setup-clipmenud, tags: desktop }
+    - user/setup-gnome
+    - user/setup-clipmenu
+    - user/setup-vscode
+    - user/setup-clipmenud
 
 - hosts: desktop
   become: yes
   become_user: fofi
   roles:
-    - { role: user/setup-gnome, tags: desktop }
+    - user/setup-gnome
 
 - hosts: desktop
   become: yes
   become_user: manolis
   roles:
-    - { role: user/setup-gnome, tags: desktop }
+    - user/setup-gnome
 
 - hosts: desktop
   become: yes
   become_user: petrina
   roles:
-    - { role: user/setup-gnome, tags: desktop }
+    - user/setup-gnome
 
 - hosts: desktop
   become: yes
   become_user: theoni
   roles:
-    - { role: user/setup-gnome, tags: desktop }
+    - user/setup-gnome
 
 - hosts: desktop
   become: yes
   become_user: diabolus
   roles:
-    - { role: user/setup-gnome, tags: desktop }
+    - user/setup-gnome
