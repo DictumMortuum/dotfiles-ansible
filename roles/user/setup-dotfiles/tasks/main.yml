@@ -21,3 +21,15 @@
   command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" pull domus master
   register: dotfiles
   changed_when: dotfiles.stdout != "Already up to date."
+
+- name: create async.zsh link
+  file:
+    src: "{{ thirdparty }}/zsh-async/async.zsh"
+    dest: "{{ ansible_env.HOME }}/.cache/zsh/async"
+    state: link
+
+- name: create pure.zsh link
+  file:
+    src: "{{ thirdparty }}/pure/pure.zsh"
+    dest: "{{ ansible_env.HOME }}/.cache/zsh/prompt_pure_setup"
+    state: link

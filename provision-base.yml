@@ -4,7 +4,6 @@
   roles:
     - user/setup-keys
     - user/setup-dotfiles
-    - user/setup-zsh
 
 - hosts: all
   become: yes
@@ -12,13 +11,11 @@
   roles:
     - user/setup-keys
     - user/setup-dotfiles
-    - user/setup-zsh
 
 - hosts: all
   become: yes
   roles:
     - system/setup-thirdparty
-    - system/setup-zsh
 
 - hosts: all
   become: yes
@@ -33,32 +30,27 @@
   become_user: fofi
   roles:
     - user/setup-dotfiles
-    - user/setup-zsh
 
 - hosts: all
   become: yes
   become_user: manolis
   roles:
     - user/setup-dotfiles
-    - user/setup-zsh
 
 - hosts: all
   become: yes
   become_user: petrina
   roles:
     - user/setup-dotfiles
-    - user/setup-zsh
 
 - hosts: all
   become: yes
   become_user: theoni
   roles:
     - user/setup-dotfiles
-    - user/setup-zsh
 
 - hosts: all
   become: yes
   become_user: diabolus
   roles:
     - user/setup-dotfiles
-    - user/setup-zsh

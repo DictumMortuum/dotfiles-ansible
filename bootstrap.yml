@@ -16,7 +16,6 @@
   roles:
     - user/setup-keys
     - user/setup-dotfiles
-    - user/setup-zsh
 
 - hosts: all
   become: yes
@@ -24,4 +23,3 @@
   roles:
     - user/setup-keys
     - user/setup-dotfiles
-    - user/setup-zsh
