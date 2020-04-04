@@ -8,7 +8,6 @@
   become_user: dimitris
   roles: 
     - user/setup-dotfiles
-    - user/setup-dotfiles-url
     - user/setup-notes
     - user/setup-pass
 
