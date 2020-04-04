@@ -3,7 +3,6 @@
   become_user: dimitris
   roles:
     - user/setup-gnome
-    - user/setup-clipmenu
     - user/setup-vscode
     - user/setup-clipmenud
 

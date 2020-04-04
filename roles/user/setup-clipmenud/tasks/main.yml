@@ -1,4 +1,24 @@
+- name: install clipmenu
+  pacman: name=clipmenu
+  become_user: root
+  tags:
+    - packages
+
+- name: install clipnotify
+  pacman: name=clipnotify
+  become_user: root
+  tags:
+    - packages
+
 - name: generate clipmenud override for machina
   template:
     src: override.conf
     dest: "{{ ansible_env.HOME }}/.config/systemd/user/clipmenud.service.d/override.conf"
+
+- name: enable clipmenud service
+  systemd:
+    name: clipmenud
+    enabled: yes
+    masked: no
+    scope: user
+    state: started
