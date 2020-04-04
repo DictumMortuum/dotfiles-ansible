@@ -3,6 +3,7 @@
   roles:
     - system/setup-skel
     - system/setup-dependencies
+    - system/setup-thirdparty
     - system/setup-zerotier
 
 - hosts: desktop
