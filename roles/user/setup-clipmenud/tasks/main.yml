@@ -10,6 +10,11 @@
   tags:
     - packages
 
+- name: create the clipmenud override directory for {{ ansible_user_id }}
+  file: 
+    name: "{{ ansible_env.HOME }}/.config/systemd/user/clipmenud.service.d"
+    state: directory
+
 - name: generate clipmenud override for machina
   template:
     src: override.conf
