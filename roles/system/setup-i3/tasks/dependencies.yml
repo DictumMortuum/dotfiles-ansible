@@ -42,3 +42,6 @@
 
 - name: install hsetroot
   pacman: name=hsetroot
+
+- name: install conky
+  pacman: name=conky
