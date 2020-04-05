@@ -3,3 +3,11 @@
     name: vm.swappiness
     value: '10'
     state: present
+
+- name: set locale (LANG) to en_US.UTF-8
+  blockinfile:
+    dest: /etc/locale.conf
+    create: yes
+    content: |
+      LANG=en_US.UTF-8
+    state: present
