@@ -33,3 +33,15 @@
     key: "/org/gnome/shell/favorite-apps"
     value: "['org.gnome.Nautilus.desktop', 'firefox.desktop']"
     state: present
+
+- name: disable desktop animations for {{ ansible_user_id }}
+  dconf:
+    key: "/org/gnome/desktop/interface/enable-animations"
+    value: "false"
+    state: present
+
+- name: disable external search providers for {{ ansible_user_id }}
+  dconf:
+    key: "/org/gnome/desktop/search-providers/disable-external"
+    value: "true"
+    state: present
