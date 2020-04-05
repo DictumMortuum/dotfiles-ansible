@@ -7,8 +7,8 @@
 - name: install libxft
   pacman: name=libxft
 
-#- name: install pkgconfig
-#  pacman: name=pkgconfig
+- name: install pkgconf
+  pacman: name=pkgconf
 
 - name: install libxinerama
   pacman: name=libxinerama
