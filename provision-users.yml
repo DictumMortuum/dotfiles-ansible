@@ -1,6 +1,8 @@
 - hosts: desktop
   become: yes
   become_user: dimitris
+  vars:
+    window_manager: "i3"
   roles:
     - user/setup-gnome
     - user/setup-vscode
