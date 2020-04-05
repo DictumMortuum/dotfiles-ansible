@@ -1,4 +1,4 @@
-- name: copy dimitris ssh keys
+- name: copy ssh keys for {{ ansible_user_id }}
   copy:
     src: "~/Sync/Secret/{{ item }}"
     dest: "{{ ansible_env.HOME }}/.ssh/{{ item }}"
@@ -6,3 +6,9 @@
   loop:
     - id_rsa
     - id_rsa.pub
+
+- name: Set authorized key for {{ ansible_user_id }}
+  authorized_key:
+    user: "{{ ansible_user_id }}"
+    state: present
+    key: "{{ lookup('file', '~/Sync/Secret/id_rsa.pub') }}"
