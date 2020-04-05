@@ -34,3 +34,10 @@
     value: "'Fira Sans Regular 11'"
     state: present
   become_user: gdm
+
+- name: switch to xorg from wayland
+  lineinfile:
+    path: "/etc/gdm/custom.conf"
+    regexp: "^#*WaylandEnable=false"
+    line: "WaylandEnable=false"
+    state: present
