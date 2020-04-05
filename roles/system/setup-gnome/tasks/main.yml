@@ -8,6 +8,11 @@
   tags:
     - packages
 
+- name: install papirus theme
+  pacman: name=papirus-icon-theme
+  tags:
+    - packages
+
 - name: install dash to dock
   aur: name=gnome-shell-extension-dash-to-dock skip_installed=true
   become_user: consul
