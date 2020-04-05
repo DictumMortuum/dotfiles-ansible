@@ -1,4 +1,0 @@
-{% for item in ansible_play_batch %}
-{% set short_name = item.split('.') %}
-{{ hostvars[item]['ansible_facts']['ztqu3oenon'].ipv4.address }} {{ item }}
-{% endfor %}
