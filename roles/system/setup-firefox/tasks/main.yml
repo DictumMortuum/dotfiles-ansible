@@ -1,0 +1,4 @@
+- name: install firefox
+  pacman: name=firefox
+  tags:
+    - packages
