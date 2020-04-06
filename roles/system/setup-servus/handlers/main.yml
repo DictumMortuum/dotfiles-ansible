@@ -1,0 +1,4 @@
+- name: make servus
+  make:
+    chdir: "{{ thirdparty }}/servus"
+    target: install

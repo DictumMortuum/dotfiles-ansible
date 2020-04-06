@@ -7,3 +7,4 @@
     - system/setup-php
     - system/setup-nextcloud
     - system/setup-minidlna
+    - system/setup-servus

@@ -24,6 +24,14 @@
     - transmission.conf
     - phpldapadmin.conf
     - phpmyadmin.conf
+    - static.conf
+
+- name: fetch static content
+  git:
+    repo: git@github.com:DictumMortuum/static.git
+    dest: "{{ thirdparty }}/static"
+    update: yes
+  become_user: consul
 
 - name: enable nginx service
   systemd:

@@ -1,0 +1,19 @@
+- name: fetch servus
+  git:
+    repo: git@github.com:DictumMortuum/servus.git
+    dest: "{{ thirdparty }}/servus"
+    update: yes
+  become_user: consul
+  notify: make servus
+
+- name: copy servus systemd service file
+  template:
+    src: servus.service
+    dest: /etc/systemd/system/servus.service 
+
+- name: enable servus service
+  systemd:
+    name: servus
+    enabled: yes
+    masked: no
+    state: started
