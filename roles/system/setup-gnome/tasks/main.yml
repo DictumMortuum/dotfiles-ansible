@@ -40,6 +40,34 @@
     state: present
   become_user: gdm
 
+- name: set sleep-inactive-ac-timeout for {{ ansible_user_id }}
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-timeout"
+    value: "7200"
+    state: present
+  become_user: gdm
+
+- name: set sleep-inactive-ac-type for {{ ansible_user_id }}
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-type"
+    value: "'nothing'"
+    state: present
+  become_user: gdm
+
+- name: set sleep-inactive-battery-timeout for {{ ansible_user_id }}
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-timeout"
+    value: "7200"
+    state: present
+  become_user: gdm
+
+- name: set sleep-inactive-battery-type for {{ ansible_user_id }}
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-type"
+    value: "'nothing'"
+    state: present
+  become_user: gdm
+
 - name: switch to xorg from wayland
   lineinfile:
     path: "/etc/gdm/custom.conf"
