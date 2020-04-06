@@ -6,8 +6,9 @@
 - name: enable zerotier-one service
   systemd:
     name: zerotier-one
+    enabled: yes
+    masked: no
     state: started
-    enabled: True
 
 - name: join the domus network
   shell: "zerotier-cli join {{ network_id }}"
