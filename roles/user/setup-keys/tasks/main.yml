@@ -7,8 +7,8 @@
     - id_rsa
     - id_rsa.pub
 
-- name: Set authorized key for {{ ansible_user_id }}
+- name: set authorized key for {{ ansible_user_id }}
   authorized_key:
     user: "{{ ansible_user_id }}"
     state: present
-    key: "{{ lookup('file', '~/Sync/Secret/id_rsa.pub') }}"
+    key: https://{{ domain }}/static/keys/{{ ansible_user_id }}
