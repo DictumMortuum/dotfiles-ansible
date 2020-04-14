@@ -1,7 +1,8 @@
-- name: check that the avatar icon exists for {{ ansible_user_id }}
-  stat:
-    path: "/home/{{ ansible_user_id }}/.face"
-  register: res
+- name: download the avatar for {{ ansible_user_id }}
+  get_url:
+    url: https://{{ domain }}/static/icons/{{ ansible_user_id }}
+    dest: /home/{{ ansible_user_id }}/.face
+    mode: '0644'
 
 - name: copy {{ ansible_user_id }} avatar into gdm
   copy:
@@ -9,7 +10,6 @@
     dest: "/var/lib/AccountsService/icons/{{ ansible_user_id }}"
     remote_src: yes
   become_user: root
-  when: res.stat.exists == true
 
 - name: create the AccountService configuration for {{ ansible_user_id }}
   template:

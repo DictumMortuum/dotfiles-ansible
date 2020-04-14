@@ -2,4 +2,4 @@
 Language=
 XSession={{ window_manager | default('') }}
 Icon=/var/lib/AccountsService/icons/{{ ansible_user_id }}
-SystemAccount=false
+SystemAccount={{ system_account | default('false') }}

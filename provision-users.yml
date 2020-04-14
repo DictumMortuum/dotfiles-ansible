@@ -40,6 +40,8 @@
 - hosts: desktop
   become: yes
   become_user: diabolus
+  vars:
+    system_account: "true"
   roles:
     - user/setup-gnome
     - user/setup-brave
