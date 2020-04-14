@@ -4,7 +4,7 @@
     - system/setup-skel
     - system/setup-dependencies
     - system/setup-thirdparty
-    - system/setup-zerotier
+    - { role: system/setup-zerotier, network_id: "83048a06326833ff" }
 
 - hosts: desktop
   become: yes

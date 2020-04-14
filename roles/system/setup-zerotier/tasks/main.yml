@@ -11,7 +11,7 @@
     state: started
 
 - name: join the domus network
-  shell: "zerotier-cli join {{ network_id }}"
+  shell: "zerotier-cli join {{ network_id | default('') }}"
   become: yes
   register: res
   changed_when: res.stdout != "200 join OK"
