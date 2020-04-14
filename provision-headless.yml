@@ -3,7 +3,6 @@
   roles:
     - system/setup-common-headless
     - system/setup-ssh
-    - system/setup-aur
     - system/setup-vim
     - system/setup-avahi
     - system/setup-tmux

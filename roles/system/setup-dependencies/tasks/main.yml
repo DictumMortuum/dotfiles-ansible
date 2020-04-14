@@ -27,3 +27,8 @@
   pacman: name=binutils
   tags:
     - packages
+
+- name: install fakeroot
+  pacman: name=fakeroot
+  tags:
+    - packages
