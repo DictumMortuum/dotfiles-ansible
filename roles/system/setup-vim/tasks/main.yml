@@ -1,5 +1,5 @@
 - name: install vim
-  pacman: name=gvim
+  pacman: name="{{ vim_package }}"
   tags:
     - packages
 
