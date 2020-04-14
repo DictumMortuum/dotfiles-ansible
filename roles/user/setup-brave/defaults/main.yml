@@ -1,0 +1,31 @@
+preferences_path: "/home/{{ ansible_user_id }}/.config/BraveSoftware/Brave-Browser/Default/Preferences"
+
+default_preferences:
+  brave:
+    always_show_bookmark_bar_on_ntp: false
+    ask_widevine_install: false
+    autocomplete_enabled: true
+    hide_brave_rewards_button: true
+    location_bar_is_wide: true
+    branded_wallpaper_notification_dismissed: true
+    twitter_embed_default: false
+  browser:
+    enable_spellchecking: true
+    has_seen_welcome_page: true
+    show_home_button: false
+  download:
+    directory_upgrade: true
+  extensions:
+    settings:
+      theme:
+        id: ""
+        use_system: true
+    theme:
+      id: ""
+      use_system: true
+  ntp:
+    custom_background_local_to_device: false
+  payments:
+    can_make_payment_enabled: false
+  translate:
+    enabled: false

@@ -31,7 +31,7 @@
 - name: set favorite apps for {{ ansible_user_id }}
   dconf:
     key: "/org/gnome/shell/favorite-apps"
-    value: "['org.gnome.Nautilus.desktop', 'firefox.desktop']"
+    value: "['org.gnome.Nautilus.desktop', 'brave-browser.desktop']"
     state: present
 
 - name: disable desktop animations for {{ ansible_user_id }}

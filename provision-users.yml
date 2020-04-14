@@ -5,6 +5,7 @@
     window_manager: "i3"
   roles:
     - user/setup-gnome
+    - user/setup-brave
     - user/setup-vscode
     - user/setup-clipmenud
 
@@ -13,27 +14,32 @@
   become_user: fofi
   roles:
     - user/setup-gnome
+    - user/setup-brave
 
 - hosts: desktop
   become: yes
   become_user: manolis
   roles:
     - user/setup-gnome
+    - user/setup-brave
 
 - hosts: desktop
   become: yes
   become_user: petrina
   roles:
     - user/setup-gnome
+    - user/setup-brave
 
 - hosts: desktop
   become: yes
   become_user: theoni
   roles:
     - user/setup-gnome
+    - user/setup-brave
 
 - hosts: desktop
   become: yes
   become_user: diabolus
   roles:
     - user/setup-gnome
+    - user/setup-brave
