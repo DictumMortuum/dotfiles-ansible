@@ -5,6 +5,12 @@
     insertbefore: BOF
     state: present
 
+- name: switch to substack for auth on system-local-login
+  lineinfile:
+    dest: "/etc/pam.d/gdm-password"
+    regexp: 'auth\s+include\s+system-local-login'
+    line: 'auth substack system-local-login'
+
 - name: switch to xorg from wayland
   lineinfile:
     path: "/etc/gdm/custom.conf"
