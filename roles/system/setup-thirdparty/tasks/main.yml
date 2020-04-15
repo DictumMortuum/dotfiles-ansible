@@ -4,7 +4,11 @@
     - packages
 
 - name: create domus directory
-  file: name="{{ thirdparty }}" group=domus mode='0775' state=directory
+  file:
+    name: "{{ thirdparty }}"
+    group: domus
+    mode: '0775'
+    state: directory
 
 - name: clone dotfiles
   git:
