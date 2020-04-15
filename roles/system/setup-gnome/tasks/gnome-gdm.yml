@@ -1,0 +1,13 @@
+- name: enable passwordless login
+  lineinfile:
+    path: "/etc/pam.d/gdm-password"
+    line: "auth sufficient pam_succeed_if.so user ingroup nonsignum"
+    insertbefore: BOF
+    state: present
+
+- name: switch to xorg from wayland
+  lineinfile:
+    path: "/etc/gdm/custom.conf"
+    regexp: "^#*WaylandEnable=false"
+    line: "WaylandEnable=false"
+    state: present

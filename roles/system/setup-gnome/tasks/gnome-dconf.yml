@@ -1,0 +1,23 @@
+- name: create the dconf profile directory
+  file:
+    name: /etc/dconf/profile
+    state: directory
+
+- name: create the conf system db directory
+  file:
+    name: /etc/dconf/db/domus.d
+    state: directory
+
+- name: create the user profile
+  copy:
+    dest: /etc/dconf/profile/user
+    content: |
+      user-db:user
+      system-db:domus
+
+- name: create the domus database
+  template:
+    src: config.j2
+    dest: /etc/dconf/db/domus.d/config
+  notify:
+    - update dconf database

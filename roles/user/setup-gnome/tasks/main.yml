@@ -1,13 +1,18 @@
-- include: gnome-shell.yml
-- include: gnome-fonts.yml
-- include: gnome-background.yml
-- include: gnome-terminal.yml
-- include: gnome-language.yml
-- include: gnome-power.yml
-- include: gnome-avatar.yml
+- name: download the avatar for {{ ansible_user_id }}
+  get_url:
+    url: https://{{ domain }}/static/icons/{{ ansible_user_id }}
+    dest: "{{ ansible_env.HOME }}/.face"
+    mode: '0644'
 
-- name: set icon-theme to Papirus for {{ ansible_user_id }}
-  dconf:
-    key: "/org/gnome/desktop/interface/icon-theme"
-    value: "'Papirus'"
-    state: present
+- name: copy {{ ansible_user_id }} avatar into gdm
+  copy:
+    src: "{{ ansible_env.HOME }}/.face"
+    dest: "/var/lib/AccountsService/icons/{{ ansible_user_id }}"
+    remote_src: yes
+  become_user: root
+
+- name: create the AccountService configuration for {{ ansible_user_id }}
+  template:
+    src: AccountsService.conf.j2
+    dest: "/var/lib/AccountsService/users/{{ ansible_user_id }}"
+  become_user: root
