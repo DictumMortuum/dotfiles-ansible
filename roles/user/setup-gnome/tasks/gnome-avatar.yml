@@ -1,12 +1,12 @@
 - name: download the avatar for {{ ansible_user_id }}
   get_url:
     url: https://{{ domain }}/static/icons/{{ ansible_user_id }}
-    dest: /home/{{ ansible_user_id }}/.face
+    dest: "{{ ansible_env.HOME }}/.face"
     mode: '0644'
 
 - name: copy {{ ansible_user_id }} avatar into gdm
   copy:
-    src: "/home/{{ ansible_user_id }}/.face"
+    src: "{{ ansible_env.HOME }}/.face"
     dest: "/var/lib/AccountsService/icons/{{ ansible_user_id }}"
     remote_src: yes
   become_user: root
