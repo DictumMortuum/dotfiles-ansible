@@ -17,3 +17,32 @@
     regexp: "^#*WaylandEnable=false"
     line: "WaylandEnable=false"
     state: present
+
+- name: create the user profile
+  copy:
+    dest: /etc/dconf/profile/gdm
+    content: |
+      user-db:user
+      system-db:gdm
+
+- name: create the conf system gdm db directory
+  file:
+    name: /etc/dconf/db/gdm.d
+    state: directory
+
+- name: create the gdm database
+  copy:
+    dest: /etc/dconf/db/gdm.d/config
+    content: |
+      [org/gnome/desktop/interface]
+      document-font-name='Sans 11'
+      font-name='Fira Sans Regular 11'
+      icon-theme='Papirus'
+
+      [org/gnome/settings-daemon/plugins/power]
+      sleep-inactive-ac-timeout=7200
+      sleep-inactive-ac-type='nothing'
+      sleep-inactive-battery-timeout=7200
+      sleep-inactive-battery-type='nothing'
+  notify:
+    - update dconf database
