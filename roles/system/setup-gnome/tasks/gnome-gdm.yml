@@ -44,5 +44,8 @@
       sleep-inactive-ac-type='nothing'
       sleep-inactive-battery-timeout=7200
       sleep-inactive-battery-type='nothing'
+
+      [org/gnome/desktop/peripherals/touchpad]
+      tap-to-click=true
   notify:
     - update dconf database
