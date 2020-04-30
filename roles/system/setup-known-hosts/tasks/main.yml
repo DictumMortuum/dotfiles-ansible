@@ -1,0 +1,12 @@
+- name: execute ssh-keyscan for {{ keyscan_host }}
+  delegate_to: localhost
+  set_fact:
+    keyscan_content: "{{ lookup('pipe', 'ssh-keyscan ' + keyscan_host + ' 2>/dev/null') }}"
+
+- name: inject ssh-keyscan output in known_hosts
+  blockinfile:
+    dest: /etc/ssh/ssh_known_hosts
+    create: yes
+    content: "{{ keyscan_content }}"
+    marker: "# {mark} {{ keyscan_host }}"
+    state: present
