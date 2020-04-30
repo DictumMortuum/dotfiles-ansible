@@ -25,6 +25,7 @@
     - phpldapadmin.conf
     - phpmyadmin.conf
     - static.conf
+    - gitea.conf
 
 - name: fetch static content
   git:
