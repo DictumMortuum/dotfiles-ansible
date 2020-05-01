@@ -12,11 +12,11 @@
     line: 'auth substack system-local-login'
 
 - name: switch to xorg from wayland
-  lineinfile:
+  ini_file:
     path: "/etc/gdm/custom.conf"
-    regexp: "^#*WaylandEnable=false"
-    line: "WaylandEnable=false"
-    state: present
+    section: daemon
+    option: WaylandEnable
+    value: "false"
 
 - name: create the user profile
   copy:
