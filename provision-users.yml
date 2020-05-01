@@ -1,10 +1,17 @@
 - hosts: desktop
   become: yes
-  become_user: dimitris
-  vars:
-    window_manager: "i3"
   roles:
-    - user/setup-gnome
+    - { role: system/setup-gnome-user, gnome_user: "diabolus", gnome_group: "arcanum", system_account: "true" }
+    - { role: system/setup-gnome-user, gnome_user: "dimitris", window_manager: "i3" }
+    - { role: system/setup-gnome-user, gnome_user: "fofi" }
+    - { role: system/setup-gnome-user, gnome_user: "manolis" }
+    - { role: system/setup-gnome-user, gnome_user: "petrina" }
+    - { role: system/setup-gnome-user, gnome_user: "theoni" }
+
+- hosts: desktop
+  become: yes
+  become_user: dimitris
+  roles:
     - user/setup-brave
     - user/setup-vscode
     - user/setup-clipmenud
@@ -13,35 +20,28 @@
   become: yes
   become_user: fofi
   roles:
-    - user/setup-gnome
     - user/setup-brave
 
 - hosts: desktop
   become: yes
   become_user: manolis
   roles:
-    - user/setup-gnome
     - user/setup-brave
 
 - hosts: desktop
   become: yes
   become_user: petrina
   roles:
-    - user/setup-gnome
     - user/setup-brave
 
 - hosts: desktop
   become: yes
   become_user: theoni
   roles:
-    - user/setup-gnome
     - user/setup-brave
 
 - hosts: desktop
   become: yes
   become_user: diabolus
-  vars:
-    system_account: "true"
   roles:
-    - user/setup-gnome
     - user/setup-brave

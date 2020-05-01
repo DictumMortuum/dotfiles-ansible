@@ -1,0 +1,18 @@
+- name: download the avatar for {{ gnome_user }}
+  get_url:
+    url: https://{{ domain }}/static/icons/{{ gnome_user }}
+    dest: "/home/{{ gnome_user }}/.face"
+    mode: '0644'
+    owner: "{{ gnome_user }}"
+    group: "{{ gnome_group | default(gnome_user) }}"
+
+- name: copy {{ gnome_user }} avatar into gdm
+  copy:
+    src: "/home/{{ gnome_user }}/.face"
+    dest: "/var/lib/AccountsService/icons/{{ gnome_user }}"
+    remote_src: yes
+
+- name: create the AccountService configuration for {{ gnome_user }}
+  template:
+    src: AccountsService.conf.j2
+    dest: "/var/lib/AccountsService/users/{{ gnome_user }}"
