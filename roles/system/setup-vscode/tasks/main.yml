@@ -8,13 +8,16 @@
 
 - name: check that the config folder exists
   stat:
-    path: "{{ ansible_env.HOME }}/.config/Code\ -\ OSS"
+    path: "/home/{{ user }}/.config/Code\ -\ OSS"
   register: res
 
 - name: create Code - OSS to Code settings.json symlink
   file:
-    src: "{{ ansible_env.HOME }}/.config/Code/User/settings.json"
-    dest: "{{ ansible_env.HOME }}/.config/Code - OSS/User/settings.json"
+    src: "/home/{{ user }}/.config/Code/User/settings.json"
+    dest: "/home/{{ user }}/.config/Code - OSS/User/settings.json"
     force: yes
     state: link
+    follow: no
+    owner: "{{ user }}"
+    group: "{{ group | default(user) }}"
   when: res.stat.exists == true

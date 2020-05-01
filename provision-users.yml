@@ -14,9 +14,4 @@
     - { role: system/setup-brave, user: "petrina" }
     - { role: system/setup-brave, user: "theoni" }
     - { role: system/setup-clipmenud, user: "dimitris" }
-
-- hosts: desktop
-  become: yes
-  become_user: dimitris
-  roles:
-    - user/setup-vscode
+    - { role: system/setup-vscode, user: "dimitris" }
