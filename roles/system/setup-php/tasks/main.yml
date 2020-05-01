@@ -101,27 +101,32 @@
     line: 'extension=zip'
 
 - name: increase the php memory limit to 512M
-  lineinfile:
-    dest: /etc/php/php.ini
-    regexp: '^memory_limit = \\d+M'
-    line: 'memory_limit = 512M'
+  ini_file:
+    path: /etc/php/php.ini
+    section: PHP
+    option: memory_limit
+    value: 512M
 
 - name: set the PATH environment variable for php
-  lineinfile:
-    dest: /etc/php/php-fpm.d/www.conf
-    line: 'env[PATH] = /usr/local/bin:/usr/bin:/bin'
+  ini_file:
+    path: /etc/php/php-fpm.d/www.conf
+    section: www
+    option: env[PATH]
+    value: /usr/local/bin:/usr/bin:/bin
 
 - name: enable the igbinary php extension
-  lineinfile:
-    dest: /etc/php/conf.d/igbinary.ini
-    regexp: '^;*extension=igbinary.so'
-    line: 'extension=igbinary.so'
+  ini_file:
+    path: /etc/php/conf.d/igbinary.ini
+    section: igbinary
+    option: extension
+    value: igbinary.so
 
 - name: enable the redis php extension
-  lineinfile:
-    dest: /etc/php/conf.d/redis.ini
-    regexp: '^;*extension=redis'
-    line: 'extension=redis'
+  ini_file:
+    path: /etc/php/conf.d/redis.ini
+    section: null
+    option: extension
+    value: redis
 
 - name: create the /etc/systemd/system/php-fpm.service.d/ directory
   file:
