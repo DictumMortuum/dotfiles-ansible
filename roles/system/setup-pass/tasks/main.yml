@@ -1,19 +1,18 @@
 - name: install pass
   pacman: name=pass
-  become_user: root
   tags:
     - packages
 
 - name: clone password store
+  become_user: "{{ pass_user }}"
   git:
     repo: git@gitlab.com:DictumMortuum/pass.git
-    dest: "{{ ansible_env.HOME }}/.password-store"
+    dest: "/home/{{ pass_user }}/.password-store"
     update: yes
-    accept_hostkey: yes
-    ssh_opts: "-F /dev/null"
 
 - name: install password cronjob sync
+  become_user: "{{ pass_user }}"
   cron:
     name: "sync password store repo"
     minute: "0,20,40"
-    job: "{{ ansible_env.HOME }}/.local/bin/dotctl.sh sync-repo {{ ansible_env.HOME }}/.password-store"
+    job: "dotctl sync-repo /home/{{ pass_user }}/.password-store"

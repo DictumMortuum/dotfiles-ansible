@@ -11,9 +11,4 @@
     - { role: system/setup-dotfiles, dot_user: "theoni" }
     - system/setup-thirdparty
     - { role: system/setup-notes, notes_user: "dimitris" }
-
-- hosts: all
-  become: yes
-  become_user: dimitris
-  roles: 
-    - user/setup-pass
+    - { role: system/setup-pass, pass_user: "dimitris" }
