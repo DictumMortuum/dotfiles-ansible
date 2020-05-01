@@ -1,9 +1,9 @@
-- name: check that the brave default profile exists for {{ ansible_user_id }}
+- name: check that the brave default profile exists for {{ user }}
   stat:
     path: "{{ preferences_path }}"
   register: res
 
-- name: get the current preferences of {{ ansible_user_id }}
+- name: get the current preferences of {{ user }}
   command: "cat '{{ preferences_path }}'"
   register: current_preferences
   when: res.stat.exists
@@ -14,8 +14,10 @@
     preferences: "{{ current_preferences.stdout | from_json | combine( default_preferences, recursive=True ) }}"
   when: res.stat.exists
 
-- name: set the merged preferences for {{ ansible_user_id }}
+- name: set the merged preferences for {{ user }}
   copy:
     content: "{{ preferences | to_json }}"
     dest: "{{ preferences_path }}"
+    owner: "{{ user }}"
+    group: "{{ group | default(user) }}"
   when: res.stat.exists

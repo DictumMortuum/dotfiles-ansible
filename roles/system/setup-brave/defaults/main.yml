@@ -1,4 +1,4 @@
-preferences_path: "{{ ansible_env.HOME }}/.config/BraveSoftware/Brave-Browser/Default/Preferences"
+preferences_path: "/home/{{ user }}/.config/BraveSoftware/Brave-Browser/Default/Preferences"
 
 default_preferences:
   brave:
