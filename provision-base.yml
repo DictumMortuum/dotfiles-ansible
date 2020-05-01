@@ -2,48 +2,18 @@
   become: yes
   roles:
     - system/setup-config
+    - { role: system/setup-dotfiles, dot_user: "consul", dot_group: "domus" }
+    - { role: system/setup-dotfiles, dot_user: "diabolus", dot_group: "arcanum" }
+    - { role: system/setup-dotfiles, dot_user: "dimitris" }
+    - { role: system/setup-dotfiles, dot_user: "fofi" }
+    - { role: system/setup-dotfiles, dot_user: "manolis" }
+    - { role: system/setup-dotfiles, dot_user: "petrina" }
+    - { role: system/setup-dotfiles, dot_user: "theoni" }
     - system/setup-thirdparty
 
 - hosts: all
   become: yes
   become_user: dimitris
   roles: 
-    - user/setup-dotfiles
     - user/setup-notes
     - user/setup-pass
-
-- hosts: all
-  become: yes
-  become_user: fofi
-  roles:
-    - user/setup-dotfiles
-
-- hosts: all
-  become: yes
-  become_user: manolis
-  roles:
-    - user/setup-dotfiles
-
-- hosts: all
-  become: yes
-  become_user: petrina
-  roles:
-    - user/setup-dotfiles
-
-- hosts: all
-  become: yes
-  become_user: theoni
-  roles:
-    - user/setup-dotfiles
-
-- hosts: all
-  become: yes
-  become_user: diabolus
-  roles:
-    - user/setup-dotfiles
-
-- hosts: all
-  become: yes
-  become_user: consul
-  roles:
-    - user/setup-dotfiles

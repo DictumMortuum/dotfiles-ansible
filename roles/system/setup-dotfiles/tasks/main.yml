@@ -1,0 +1,74 @@
+- name: initialize dotfiles for {{ home }}
+  command: git --git-dir="{{ git_dir }}" init
+  become_user: "{{ dot_user }}"
+  args:
+    creates: "{{ git_dir }}"
+    chdir: "{{ home }}"
+
+- name: check if remote exists
+  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" remote get-url domus
+  become_user: "{{ dot_user }}"
+  register: dotfiles
+  changed_when: dotfiles.stdout != thirdparty ~ "/dotfiles"
+  failed_when: '"domus" not in dotfiles.stderr and dotfiles.stderr != ""'
+  notify:
+    - add the dotfiles remote url
+    - fetch dotfiles
+    - checkout master
+    - set local master to track remote master branch
+    - add the dotfiles origin url
+
+- meta: flush_handlers
+
+- name: pull latest dotfiles
+  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" pull domus master
+  become_user: "{{ dot_user }}"
+  register: dotfiles
+  changed_when: dotfiles.stdout != "Already up to date."
+
+- name: create async.zsh link
+  file:
+    src: "{{ thirdparty }}/zsh-async/async.zsh"
+    dest: "{{ home }}/.cache/zsh/async"
+    state: link
+    follow: no
+    owner: "{{ dot_user }}"
+    group: "{{ dot_group | default(dot_user) }}"
+
+- name: create pure.zsh link
+  file:
+    src: "{{ thirdparty }}/pure/pure.zsh"
+    dest: "{{ home }}/.cache/zsh/prompt_pure_setup"
+    state: link
+    follow: no
+    owner: "{{ dot_user }}"
+    group: "{{ dot_group | default(dot_user) }}"
+
+- name: create the .ssh directory
+  file:
+    path: /home/{{ dot_user }}/.ssh
+    state: directory
+    owner: "{{ dot_user }}"
+    group: "{{ dot_group | default(dot_user) }}"
+
+- name: copy public ssh key for {{ dot_user }}
+  get_url:
+    url: "https://{{ domain }}/static/keys/{{ dot_user }}.pub"
+    dest: "/home/{{ dot_user }}/.ssh/id_rsa.pub"
+    mode: 0600
+    owner: "{{ dot_user }}"
+    group: "{{ dot_group | default(dot_user) }}"
+
+- name: copy private ssh key for {{ dot_user }}
+  get_url:
+    url: "https://{{ domain }}/static/keys/{{ dot_user }}"
+    dest: "/home/{{ dot_user }}/.ssh/id_rsa"
+    mode: 0600
+    owner: "{{ dot_user }}"
+    group: "{{ dot_group | default(dot_user) }}"
+
+- name: set authorized key for {{ dot_user }}
+  authorized_key:
+    user: "{{ dot_user }}"
+    state: present
+    key: "https://{{ domain }}/static/keys/{{ dot_user }}.pub"
