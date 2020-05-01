@@ -1,0 +1,27 @@
+- file:
+    path: /home/{{ key_user }}/.ssh
+    state: directory
+    owner: "{{ key_user }}"
+    group: "{{ key_group | default(key_user) }}"
+
+- name: copy public ssh key for {{ key_user }}
+  get_url:
+    url: "https://{{ domain }}/static/keys/{{ key_user }}.pub"
+    dest: "/home/{{ key_user }}/.ssh/id_rsa.pub"
+    mode: 0600
+    owner: "{{ key_user }}"
+    group: "{{ key_group | default(key_user) }}"
+
+- name: copy private ssh key for {{ key_user }}
+  get_url:
+    url: "https://{{ domain }}/static/keys/{{ key_user }}"
+    dest: "/home/{{ key_user }}/.ssh/id_rsa"
+    mode: 0600
+    owner: "{{ key_user }}"
+    group: "{{ key_group | default(key_user) }}"
+
+- name: set authorized key for {{ key_user }}
+  authorized_key:
+    user: "{{ key_user }}"
+    state: present
+    key: "https://{{ domain }}/static/keys/{{ key_user }}.pub"

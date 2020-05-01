@@ -7,6 +7,13 @@
     - { role: system/setup-known-hosts, keyscan_host: "{{ domain }}" }
     - { role: system/setup-known-hosts, keyscan_host: "github.com" }
     - { role: system/setup-known-hosts, keyscan_host: "gitlab.com" }
+    - { role: system/setup-keys, key_user: "consul", key_group: "domus" }
+    - { role: system/setup-keys, key_user: "diabolus", key_group: "arcanum" }
+    - { role: system/setup-keys, key_user: "dimitris" }
+    - { role: system/setup-keys, key_user: "fofi" }
+    - { role: system/setup-keys, key_user: "manolis" }
+    - { role: system/setup-keys, key_user: "petrina" }
+    - { role: system/setup-keys, key_user: "theoni" }
 
 - hosts: desktop
   become: yes
@@ -22,12 +29,10 @@
   become: yes
   become_user: dimitris
   roles:
-    - user/setup-keys
     - user/setup-dotfiles
 
 - hosts: all
   become: yes
   become_user: consul
   roles:
-    - user/setup-keys
     - user/setup-dotfiles
