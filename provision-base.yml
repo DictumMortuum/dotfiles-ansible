@@ -2,13 +2,13 @@
   become: yes
   roles:
     - system/setup-config
-    - { role: system/setup-dotfiles, dot_user: "consul", dot_group: "domus" }
-    - { role: system/setup-dotfiles, dot_user: "diabolus", dot_group: "arcanum" }
-    - { role: system/setup-dotfiles, dot_user: "dimitris" }
-    - { role: system/setup-dotfiles, dot_user: "fofi" }
-    - { role: system/setup-dotfiles, dot_user: "manolis" }
-    - { role: system/setup-dotfiles, dot_user: "petrina" }
-    - { role: system/setup-dotfiles, dot_user: "theoni" }
+    - { role: system/setup-dotfiles, user: "consul", group: "domus" }
+    - { role: system/setup-dotfiles, user: "diabolus", group: "arcanum" }
+    - { role: system/setup-dotfiles, user: "dimitris" }
+    - { role: system/setup-dotfiles, user: "fofi" }
+    - { role: system/setup-dotfiles, user: "manolis" }
+    - { role: system/setup-dotfiles, user: "petrina" }
+    - { role: system/setup-dotfiles, user: "theoni" }
     - system/setup-thirdparty
-    - { role: system/setup-notes, notes_user: "dimitris" }
-    - { role: system/setup-pass, pass_user: "dimitris" }
+    - { role: system/setup-notes, user: "dimitris" }
+    - { role: system/setup-pass, user: "dimitris" }

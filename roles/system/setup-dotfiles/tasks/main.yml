@@ -1,13 +1,13 @@
 - name: initialize dotfiles for {{ home }}
   command: git --git-dir="{{ git_dir }}" init
-  become_user: "{{ dot_user }}"
+  become_user: "{{ user }}"
   args:
     creates: "{{ git_dir }}"
     chdir: "{{ home }}"
 
 - name: check if remote exists
   command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" remote get-url domus
-  become_user: "{{ dot_user }}"
+  become_user: "{{ user }}"
   register: dotfiles
   changed_when: dotfiles.stdout != thirdparty ~ "/dotfiles"
   failed_when: '"domus" not in dotfiles.stderr and dotfiles.stderr != ""'
@@ -22,7 +22,7 @@
 
 - name: pull latest dotfiles
   command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" pull domus master
-  become_user: "{{ dot_user }}"
+  become_user: "{{ user }}"
   register: dotfiles
   changed_when: dotfiles.stdout != "Already up to date."
 
@@ -32,8 +32,8 @@
     dest: "{{ home }}/.cache/zsh/async"
     state: link
     follow: no
-    owner: "{{ dot_user }}"
-    group: "{{ dot_group | default(dot_user) }}"
+    owner: "{{ user }}"
+    group: "{{ group | default(user) }}"
 
 - name: create pure.zsh link
   file:
@@ -41,34 +41,34 @@
     dest: "{{ home }}/.cache/zsh/prompt_pure_setup"
     state: link
     follow: no
-    owner: "{{ dot_user }}"
-    group: "{{ dot_group | default(dot_user) }}"
+    owner: "{{ user }}"
+    group: "{{ group | default(user) }}"
 
 - name: create the .ssh directory
   file:
-    path: /home/{{ dot_user }}/.ssh
+    path: /home/{{ user }}/.ssh
     state: directory
-    owner: "{{ dot_user }}"
-    group: "{{ dot_group | default(dot_user) }}"
+    owner: "{{ user }}"
+    group: "{{ group | default(user) }}"
 
-- name: copy public ssh key for {{ dot_user }}
+- name: copy public ssh key for {{ user }}
   get_url:
-    url: "https://{{ domain }}/static/keys/{{ dot_user }}.pub"
-    dest: "/home/{{ dot_user }}/.ssh/id_rsa.pub"
+    url: "https://{{ domain }}/static/keys/{{ user }}.pub"
+    dest: "/home/{{ user }}/.ssh/id_rsa.pub"
     mode: 0600
-    owner: "{{ dot_user }}"
-    group: "{{ dot_group | default(dot_user) }}"
+    owner: "{{ user }}"
+    group: "{{ group | default(user) }}"
 
-- name: copy private ssh key for {{ dot_user }}
+- name: copy private ssh key for {{ user }}
   get_url:
-    url: "https://{{ domain }}/static/keys/{{ dot_user }}"
-    dest: "/home/{{ dot_user }}/.ssh/id_rsa"
+    url: "https://{{ domain }}/static/keys/{{ user }}"
+    dest: "/home/{{ user }}/.ssh/id_rsa"
     mode: 0600
-    owner: "{{ dot_user }}"
-    group: "{{ dot_group | default(dot_user) }}"
+    owner: "{{ user }}"
+    group: "{{ group | default(user) }}"
 
-- name: set authorized key for {{ dot_user }}
+- name: set authorized key for {{ user }}
   authorized_key:
-    user: "{{ dot_user }}"
+    user: "{{ user }}"
     state: present
-    key: "https://{{ domain }}/static/keys/{{ dot_user }}.pub"
+    key: "https://{{ domain }}/static/keys/{{ user }}.pub"

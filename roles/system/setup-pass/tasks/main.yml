@@ -4,15 +4,15 @@
     - packages
 
 - name: clone password store
-  become_user: "{{ pass_user }}"
+  become_user: "{{ user }}"
   git:
     repo: git@gitlab.com:DictumMortuum/pass.git
-    dest: "/home/{{ pass_user }}/.password-store"
+    dest: "/home/{{ user }}/.password-store"
     update: yes
 
 - name: install password cronjob sync
-  become_user: "{{ pass_user }}"
+  become_user: "{{ user }}"
   cron:
     name: "sync password store repo"
     minute: "0,20,40"
-    job: "dotctl sync-repo /home/{{ pass_user }}/.password-store"
+    job: "dotctl sync-repo /home/{{ user }}/.password-store"

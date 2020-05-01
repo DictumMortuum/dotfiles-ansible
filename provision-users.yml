@@ -1,12 +1,12 @@
 - hosts: desktop
   become: yes
   roles:
-    - { role: system/setup-gnome-user, gnome_user: "diabolus", gnome_group: "arcanum", system_account: "true" }
-    - { role: system/setup-gnome-user, gnome_user: "dimitris", window_manager: "i3" }
-    - { role: system/setup-gnome-user, gnome_user: "fofi" }
-    - { role: system/setup-gnome-user, gnome_user: "manolis" }
-    - { role: system/setup-gnome-user, gnome_user: "petrina" }
-    - { role: system/setup-gnome-user, gnome_user: "theoni" }
+    - { role: system/setup-gnome-user, user: "diabolus", group: "arcanum", system_account: "true" }
+    - { role: system/setup-gnome-user, user: "dimitris", window_manager: "i3" }
+    - { role: system/setup-gnome-user, user: "fofi" }
+    - { role: system/setup-gnome-user, user: "manolis" }
+    - { role: system/setup-gnome-user, user: "petrina" }
+    - { role: system/setup-gnome-user, user: "theoni" }
 
 - hosts: desktop
   become: yes

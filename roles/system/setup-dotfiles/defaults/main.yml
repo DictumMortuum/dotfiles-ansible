@@ -1,2 +1,2 @@
-home: "/home/{{ dot_user }}"
+home: "/home/{{ user }}"
 git_dir: "{{ home }}/.dotfiles.git"
