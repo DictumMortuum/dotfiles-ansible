@@ -5,6 +5,7 @@
     - system/setup-nginx
     - system/setup-redis
     - system/setup-php
+    - system/setup-gitea
     - system/setup-nextcloud
     - system/setup-minidlna
     - system/setup-servus

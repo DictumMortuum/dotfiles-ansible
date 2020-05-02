@@ -1,0 +1,123 @@
+- name: install gitea
+  pacman: name=gitea
+  tags:
+    - packages
+
+- name: set APP_NAME
+  ini_file:
+    path: /etc/gitea/app.ini
+    section: null
+    option: APP_NAME
+    value: dictummortuum
+
+- name: set RUN_USER
+  ini_file:
+    path: /etc/gitea/app.ini
+    section: null
+    option: RUN_USER
+    value: gitea
+
+- name: set RUN_MODE
+  ini_file:
+    path: /etc/gitea/app.ini
+    section: null
+    option: RUN_MODE
+    value: prod
+
+- name: set ROOT
+  ini_file:
+    path: /etc/gitea/app.ini
+    section: repository
+    option: ROOT
+    value: /mnt/nfsserver/git
+
+- name: set DOMAIN
+  ini_file:
+    path: /etc/gitea/app.ini
+    section: server
+    option: DOMAIN
+    value: "{{ domain }}"
+
+- name: set ROOT_URL
+  ini_file:
+    path: /etc/gitea/app.ini
+    section: server
+    option: ROOT_URL
+    value: "https://{{ domain }}/git/"
+
+- name: set SSH_DOMAIN
+  ini_file:
+    path: /etc/gitea/app.ini
+    section: server
+    option: SSH_DOMAIN
+    value: "{{ domain }}"
+
+- name: set LFS_START_SERVER
+  ini_file:
+    path: /etc/gitea/app.ini
+    section: server
+    option: LFS_START_SERVER
+    value: "true"
+
+- name: set LFS_CONTENT_PATH
+  ini_file:
+    path: /etc/gitea/app.ini
+    section: server
+    option: LFS_CONTENT_PATH
+    value: /mnt/nfsserver/lfs
+
+- name: set DB_TYPE
+  ini_file:
+    path: /etc/gitea/app.ini
+    section: database
+    option: DB_TYPE
+    value: mysql
+
+- name: set HOST
+  ini_file:
+    path: /etc/gitea/app.ini
+    section: database
+    option: HOST
+    value: 127.0.0.1:3306
+
+- name: set NAME
+  ini_file:
+    path: /etc/gitea/app.ini
+    section: database
+    option: NAME
+    value: gitea
+
+- name: set ADAPTER
+  ini_file:
+    path: /etc/gitea/app.ini
+    section: cache
+    option: ADAPTER
+    value: redis
+
+- name: set HOST
+  ini_file:
+    path: /etc/gitea/app.ini
+    section: cache
+    option: HOST
+    value: network=tcp,addr=:6379,db=0,pool_size=100,idle_timeout=180
+
+- name: set ROOT_PATH
+  ini_file:
+    path: /etc/gitea/app.ini
+    section: log
+    option: ROOT_PATH
+    value: /var/log/gitea/
+
+- name: set QUEUE_TYPE
+  ini_file:
+    path: /etc/gitea/app.ini
+    section: task
+    option: QUEUE_TYPE
+    value: redis
+
+- name: enable the gitea service
+  systemd:
+    name: gitea
+    enabled: yes
+    masked: no
+    state: started
