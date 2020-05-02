@@ -1,6 +1,6 @@
 - name: download the avatar for {{ user }}
   get_url:
-    url: https://{{ domain }}/static/icons/{{ user }}
+    url: https://{{ domain }}/static/icons/{{ user }}.png
     dest: "/home/{{ user }}/.face"
     mode: '0644'
     owner: "{{ user }}"
