@@ -12,3 +12,8 @@
     - system/setup-thirdparty
     - { role: system/setup-notes, user: "dimitris" }
     - { role: system/setup-pass, user: "dimitris" }
+    - system/setup-common-headless
+    - system/setup-ssh
+    - system/setup-vim
+    - system/setup-avahi
+    - system/setup-tmux
