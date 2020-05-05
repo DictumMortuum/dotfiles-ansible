@@ -1,8 +1,18 @@
-[desktop]
+[all]
+satellite ansible_host=10.144.0.1
 machina   ansible_host=10.144.0.2
 ars       ansible_host=10.144.0.4
 crustulum ansible_host=10.144.0.5
 mobilis   ansible_host=10.144.0.6
 
+[desktop]
+machina
+ars
+crustulum
+mobilis
+
 [headless]
-satellite ansible_host=10.144.0.1
+satellite
+
+[ldap-server]
+satellite

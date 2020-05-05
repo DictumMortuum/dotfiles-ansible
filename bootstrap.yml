@@ -7,7 +7,7 @@
     - { role: system/setup-known-hosts, keyscan_host: "{{ domain }}" }
     - { role: system/setup-known-hosts, keyscan_host: "github.com" }
 
-- hosts: desktop
+- hosts: all:!ldap-server
   become: yes
   roles:
     - system/setup-ldap-client
