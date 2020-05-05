@@ -1,7 +1,7 @@
 - name: clone notes for {{ user }}
   become_user: "{{ user }}"
   git:
-    repo: git@gitlab.com:DictumMortuum/notes.git
+    repo: git@github.com:DictumMortuum/notes.git
     dest: "/home/{{ user }}/Notes"
 
 - name: install notes cronjob sync for {{ user }}

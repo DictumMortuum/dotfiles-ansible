@@ -6,7 +6,6 @@
     - { role: system/setup-zerotier, network_id: "83048a06326833ff" }
     - { role: system/setup-known-hosts, keyscan_host: "{{ domain }}" }
     - { role: system/setup-known-hosts, keyscan_host: "github.com" }
-    - { role: system/setup-known-hosts, keyscan_host: "gitlab.com" }
 
 - hosts: desktop
   become: yes

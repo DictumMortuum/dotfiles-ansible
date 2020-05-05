@@ -6,7 +6,7 @@
 - name: clone password store
   become_user: "{{ user }}"
   git:
-    repo: git@gitlab.com:DictumMortuum/pass.git
+    repo: git@github.com:DictumMortuum/pass.git
     dest: "/home/{{ user }}/.password-store"
     update: yes
 
