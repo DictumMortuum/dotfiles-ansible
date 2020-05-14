@@ -1,3 +1,9 @@
+- name: download the background
+  get_url:
+    url: https://{{ domain }}/static/backgrounds/seamless.png
+    dest: "/usr/share/backgrounds/seamless.png"
+    mode: '0644'
+
 - name: create the dconf profile directory
   file:
     name: /etc/dconf/profile
