@@ -40,8 +40,5 @@
 - name: install rofi
   pacman: name=rofi
 
-- name: install hsetroot
-  pacman: name=hsetroot
-
-- name: install conky
-  pacman: name=conky
+- name: install feh
+  pacman: name=feh
