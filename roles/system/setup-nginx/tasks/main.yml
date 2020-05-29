@@ -26,6 +26,7 @@
     - phpmyadmin.conf
     - static.conf
     - gitea.conf
+    - syncthing.conf
 
 - name: fetch static content
   git:
