@@ -78,7 +78,7 @@
     path: /etc/gitea/app.ini
     section: database
     option: HOST
-    value: 127.0.0.1:3306
+    value: /var/run/mysqld/mysqld.sock
 
 - name: set NAME
   ini_file:
