@@ -2,6 +2,7 @@
   become: yes
   roles:
     - system/setup-config
+    - system/setup-thirdparty
     - { role: system/setup-dotfiles, user: "consul", group: "domus" }
     - { role: system/setup-dotfiles, user: "diabolus", group: "arcanum" }
     - { role: system/setup-dotfiles, user: "dimitris" }
@@ -9,7 +10,6 @@
     - { role: system/setup-dotfiles, user: "manolis" }
     - { role: system/setup-dotfiles, user: "petrina" }
     - { role: system/setup-dotfiles, user: "theoni" }
-    - system/setup-thirdparty
     - { role: system/setup-notes, user: "dimitris" }
     - { role: system/setup-pass, user: "dimitris" }
     - system/setup-common-headless
