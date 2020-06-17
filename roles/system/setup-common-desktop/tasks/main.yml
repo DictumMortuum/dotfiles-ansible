@@ -19,3 +19,8 @@
   pacman: name=code
   tags:
     - packages
+
+- name: install evince pdf viewer
+  pacman: name=evince
+  tags:
+    - packages
