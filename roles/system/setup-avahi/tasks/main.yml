@@ -7,3 +7,10 @@
   pacman: name=nss-mdns
   tags:
     - packages
+
+- name: enable the avahi service
+  systemd:
+    name: avahi-daemon
+    enabled: yes
+    masked: no
+    state: started
