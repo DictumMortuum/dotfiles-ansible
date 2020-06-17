@@ -23,6 +23,11 @@
   when: res.stat.exists
   changed_when: False
 
+- name: make sure that jq is installed
+  pacman: name=jq
+  tags:
+    - packages
+
 - name: sort the keys of the resulting json
   shell: "cat /tmp/{{ user }}.brave | jq --sort-keys > /tmp/{{ user }}.brave.sorted"
   when: res.stat.exists
