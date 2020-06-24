@@ -1,8 +1,10 @@
 - name: install cups
   pacman: name=cups
+  tags:
+    - packages
 
 - name: install brother-hll2340d
-  aur: name=brother-hll2340d skip_installed=true
+  aur: name=brother-hll2340d state=latest
   become_user: consul
   tags:
     - packages

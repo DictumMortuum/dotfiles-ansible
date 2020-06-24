@@ -3,7 +3,7 @@
     - packages
 
 - name: install xkb-switch
-  aur: name=xkb-switch skip_installed=true
+  aur: name=xkb-switch state=latest
   become_user: consul
   tags:
     - packages
