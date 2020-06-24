@@ -3,6 +3,12 @@
   tags:
     - packages
 
+- name: install ansible-aur
+  aur: name=ansible-aur-git state=present
+  become_user: consul
+  tags:
+    - packages
+
 - name: install ag
   pacman: name=the_silver_searcher
   tags:
