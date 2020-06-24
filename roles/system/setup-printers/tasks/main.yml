@@ -4,7 +4,7 @@
     - packages
 
 - name: install brother-hll2340d
-  aur: name=brother-hll2340d state=latest
+  aur: name=brother-hll2340d state=present
   become_user: consul
   tags:
     - packages

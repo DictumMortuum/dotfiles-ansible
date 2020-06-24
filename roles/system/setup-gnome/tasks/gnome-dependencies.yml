@@ -14,7 +14,7 @@
     - packages
 
 - name: install dash to dock
-  aur: name=gnome-shell-extension-dash-to-dock state=latest
+  aur: name=gnome-shell-extension-dash-to-dock state=present
   become_user: consul
   tags:
     - packages

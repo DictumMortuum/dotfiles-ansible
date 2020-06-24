@@ -19,7 +19,7 @@
     - packages
 
 - name: install xurls
-  aur: name=xurls state=latest
+  aur: name=xurls state=present
   become_user: consul
   tags:
     - packages

@@ -3,7 +3,7 @@
     - packages
 
 - name: install xkb-switch
-  aur: name=xkb-switch state=latest
+  aur: name=xkb-switch state=present
   become_user: consul
   tags:
     - packages
