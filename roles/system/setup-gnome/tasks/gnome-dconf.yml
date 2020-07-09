@@ -1,7 +1,7 @@
 - name: download the background
   get_url:
-    url: https://{{ domain }}/static/backgrounds/seamless.png
-    dest: "/usr/share/backgrounds/seamless.png"
+    url: https://{{ domain }}/static/backgrounds/nord.png
+    dest: "/usr/share/backgrounds/nord.png"
     mode: '0644'
 
 - name: create the dconf profile directory
