@@ -13,6 +13,11 @@
   tags:
     - packages
 
+- name: install tex gyre fonts
+  pacman: name=tex-gyre-fonts
+  tags:
+    - packages
+
 - name: set local.conf font config
   template:
     src: local.conf.j2
