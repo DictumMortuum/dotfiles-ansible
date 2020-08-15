@@ -42,3 +42,7 @@
 
 - name: install feh
   pacman: name=feh
+
+- name: install xkb-switch
+  aur: name=xkb-switch state=present
+  become_user: consul
