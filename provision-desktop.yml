@@ -10,7 +10,7 @@
     - system/setup-gnome
     - system/setup-printers
     - { role: system/setup-gnome-user, user: "diabolus", group: "arcanum", system_account: "true" }
-    - { role: system/setup-gnome-user, user: "dimitris", window_manager: "i3" }
+    - { role: system/setup-gnome-user, user: "dimitris", window_manager: "i3-gnome" }
     - { role: system/setup-gnome-user, user: "fofi" }
     - { role: system/setup-gnome-user, user: "manolis" }
     - { role: system/setup-gnome-user, user: "petrina" }
