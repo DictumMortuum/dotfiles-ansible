@@ -15,4 +15,4 @@
   cron:
     name: "sync password store repo"
     minute: "0,20,40"
-    job: "dotctl sync-repo /home/{{ user }}/.password-store"
+    job: "/usr/local/bin/dotctl sync-repo /home/{{ user }}/.password-store"

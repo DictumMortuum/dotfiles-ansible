@@ -9,4 +9,4 @@
   cron:
     name: "sync notes repo"
     minute: "10,30,50"
-    job: "dotctl sync-repo /home/{{ user }}/Notes"
+    job: "/usr/local/bin/dotctl sync-repo /home/{{ user }}/Notes"
