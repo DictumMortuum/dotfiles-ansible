@@ -1,0 +1,23 @@
+
+- name: install firefox
+  pacman: name=firefox
+  tags:
+    - packages
+
+- name: install ublock-origin
+  pacman: name=firefox-ublock-origin
+  tags:
+    - packages
+
+- name: create local-settings.js to load the user permissions
+  copy:
+    dest: /usr/lib/firefox/defaults/pref/local-settings.js
+    content: |
+      // only needed if you do not want to obscure the content with ROT-13
+      pref("general.config.obscure_value", 0);
+      pref("general.config.filename", "mozilla.cfg");
+
+- name: install the firefox hardening script
+  template:
+    src: systemwide_user.js
+    dest: /usr/lib/firefox/mozilla.cfg

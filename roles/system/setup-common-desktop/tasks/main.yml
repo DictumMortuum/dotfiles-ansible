@@ -4,12 +4,6 @@
   tags:
     - packages
 
-- name: install brave
-  aur: name=brave-bin state=present
-  become_user: consul
-  tags:
-    - packages
-
 - name: install syncthing
   pacman: name=syncthing
   tags:
