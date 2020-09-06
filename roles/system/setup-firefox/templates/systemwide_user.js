@@ -29,6 +29,9 @@ pref("app.update.enabled", false);
 // Don't show WhatsNew on first run after every update
 pref("browser.startup.homepage_override.mstone","ignore");
 
+// Restore previous session on startup
+pref("browser.startup.page", 3);
+
 /******************************************************************************
  * SECTION: HTML5 / APIs / DOM                                                *
  ******************************************************************************/
