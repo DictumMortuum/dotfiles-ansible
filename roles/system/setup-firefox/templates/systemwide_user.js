@@ -642,12 +642,12 @@ pref("network.dns.blockDotOnion",				true);
 
 // PREF: Disable search suggestions in the search bar
 // http://kb.mozillazine.org/Browser.search.suggest.enabled
-pref("browser.search.suggest.enabled",			false);
+//pref("browser.search.suggest.enabled",			false);
 
 // PREF: Disable "Show search suggestions in location bar results"
-pref("browser.urlbar.suggest.searches",			false);
+//pref("browser.urlbar.suggest.searches",			false);
 // PREF: When using the location bar, don't suggest URLs from browsing history
-pref("browser.urlbar.suggest.history",			false);
+//pref("browser.urlbar.suggest.history",			false);
 
 // PREF: Disable SSDP
 // https://bugzilla.mozilla.org/show_bug.cgi?id=1111967
