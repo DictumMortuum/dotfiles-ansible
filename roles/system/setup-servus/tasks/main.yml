@@ -6,10 +6,12 @@
   become_user: consul
   notify: make servus
 
+- meta: flush_handlers
+
 - name: copy servus systemd service file
   template:
     src: servus.service
-    dest: /etc/systemd/system/servus.service 
+    dest: /etc/systemd/system/servus.service
 
 - name: enable servus service
   systemd:

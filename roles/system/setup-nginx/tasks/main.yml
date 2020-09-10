@@ -27,6 +27,7 @@
     - static.conf
     - gitea.conf
     - syncthing.conf
+    - servus.conf
 
 - name: fetch static content
   git:
