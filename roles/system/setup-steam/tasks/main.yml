@@ -2,5 +2,5 @@
   file:
     name: "{{ steamfolder }}"
     group: steam
-    mode: '0775'
+    mode: 'u=rwx,g=rwx,o=rx,g+s'
     state: directory
