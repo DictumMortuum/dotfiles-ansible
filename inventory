@@ -4,12 +4,14 @@ machina   ansible_host=10.144.0.2
 ars       ansible_host=10.144.0.4
 crustulum ansible_host=10.144.0.5
 mobilis   ansible_host=10.144.0.6
+nero      ansible_host=10.144.0.7
 
 [desktop]
 machina
 ars
 crustulum
 mobilis
+nero
 
 [headless]
 satellite
