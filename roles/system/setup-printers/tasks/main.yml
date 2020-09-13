@@ -3,12 +3,6 @@
   tags:
     - packages
 
-- name: install brother-hll2340d
-  aur: name=brother-hll2340d state=present
-  become_user: consul
-  tags:
-    - packages
-
 - name: add domus as a printer administrator group
   lineinfile:
     path: /etc/cups/cups-files.conf
@@ -16,6 +10,8 @@
     line: 'SystemGroup sys root domus'
 
 - name: enable cups service
-  service:
+  systemd:
     name: org.cups.cupsd
     enabled: yes
+    masked: no
+    state: started
