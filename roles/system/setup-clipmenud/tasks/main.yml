@@ -15,10 +15,10 @@
 #    owner: "{{ user }}"
 #    group: "{{ group | default(user) }}"
 
-- name: make sure that the clipmenud override directory for {{ user }} is deleted
-  file:
-    name: "/home/{{ user }}/.config/systemd/user/clipmenud.service.d"
-    state: absent
+#- name: make sure that the clipmenud override directory for {{ user }} is deleted
+#  file:
+#    name: "/home/{{ user }}/.config/systemd/user/clipmenud.service.d"
+#    state: absent
 
 #- name: generate clipmenud override for machina
 #  copy:
@@ -29,11 +29,11 @@
 #    owner: "{{ user }}"
 #    group: "{{ group | default(user) }}"
 
-- name: disable clipmenud service
-  become_user: "{{ user }}"
-  systemd:
-    name: clipmenud
-    enabled: no
-    masked: no
-    scope: user
-    state: stopped
+#- name: disable clipmenud service
+#  become_user: "{{ user }}"
+#  systemd:
+#    name: clipmenud
+#    enabled: no
+#    masked: no
+#    scope: user
+#    state: stopped
