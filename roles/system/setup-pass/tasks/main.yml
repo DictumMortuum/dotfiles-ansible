@@ -3,6 +3,11 @@
   tags:
     - packages
 
+- name: install cronie
+  pacman: name=cronie
+  tags:
+    - packages
+
 - name: clone password store
   become_user: "{{ user }}"
   git:
