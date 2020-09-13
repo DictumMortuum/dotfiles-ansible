@@ -28,6 +28,7 @@
     - gitea.conf
     - syncthing.conf
     - servus.conf
+    - cups.conf
 
 - name: fetch static content
   git:
@@ -41,4 +42,4 @@
     name: nginx
     enabled: yes
     masked: no
-    state: started
+    state: restarted
