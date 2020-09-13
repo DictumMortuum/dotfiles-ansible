@@ -11,14 +11,34 @@
   register: dotfiles
   changed_when: dotfiles.stdout != thirdparty ~ "/dotfiles"
   failed_when: '"domus" not in dotfiles.stderr and dotfiles.stderr != ""'
-  notify:
-    - add the dotfiles remote url
-    - fetch dotfiles
-    - checkout master
-    - set local master to track remote master branch
-    - add the dotfiles origin url
 
-- meta: flush_handlers
+- name: add the dotfiles remote url
+  become_user: "{{ user }}"
+  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" remote add domus "{{ thirdparty }}/dotfiles"
+  when: dotfiles.stdout != thirdparty ~ "/dotfiles"
+
+- name: fetch dotfiles
+  become_user: "{{ user }}"
+  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" fetch domus master
+  when: dotfiles.stdout != thirdparty ~ "/dotfiles"
+
+- name: checkout master
+  become_user: "{{ user }}"
+  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" checkout --force master
+  when: dotfiles.stdout != thirdparty ~ "/dotfiles"
+
+- name: set local master to track remote master branch
+  become_user: "{{ user }}"
+  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" branch --set-upstream-to=domus/master master
+  when: dotfiles.stdout != thirdparty ~ "/dotfiles"
+
+- name: add the dotfiles origin url
+  become_user: "{{ user }}"
+  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" remote add origin git@github.com:DictumMortuum/dotfiles.git
+  register: dotfiles
+  changed_when: dotfiles.rc == 0
+  failed_when: '"origin" not in dotfiles.stderr and dotfiles.stderr != ""'
+  when: dotfiles.stdout != thirdparty ~ "/dotfiles"
 
 - name: pull latest dotfiles
   command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" pull --ff-only domus master
@@ -41,13 +61,6 @@
     dest: "{{ home }}/.cache/zsh/prompt_pure_setup"
     state: link
     follow: no
-    owner: "{{ user }}"
-    group: "{{ group | default(user) }}"
-
-- name: create the .ssh directory
-  file:
-    path: /home/{{ user }}/.ssh
-    state: directory
     owner: "{{ user }}"
     group: "{{ group | default(user) }}"
 
