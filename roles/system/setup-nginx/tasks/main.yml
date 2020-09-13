@@ -42,4 +42,4 @@
     name: nginx
     enabled: yes
     masked: no
-    state: restarted
+    state: started
