@@ -32,3 +32,8 @@
   pacman: name=fakeroot
   tags:
     - packages
+
+- name: install zsh
+  pacman: name=zsh
+  tags:
+    - packages
