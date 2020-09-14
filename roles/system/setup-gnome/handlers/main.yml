@@ -1,2 +1,0 @@
-- name: update dconf database
-  shell: dconf update

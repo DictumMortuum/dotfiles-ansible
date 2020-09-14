@@ -1,3 +1,6 @@
 - include: gnome-dependencies.yml
 - include: gnome-dconf.yml
 - include: gnome-gdm.yml
+
+- name: update dconf database
+  shell: dconf update
