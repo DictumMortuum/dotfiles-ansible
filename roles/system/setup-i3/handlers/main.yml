@@ -1,9 +1,0 @@
-- name: make i3-utils
-  make:
-    chdir: "{{ thirdparty }}/i3-utils"
-    target: install
-
-- name: make permutations
-  make:
-    chdir: "{{ thirdparty }}/permutations"
-    target: install

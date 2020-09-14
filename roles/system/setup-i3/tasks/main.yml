@@ -8,7 +8,11 @@
     dest: "{{ thirdparty }}/i3-utils"
     update: yes
   become_user: consul
-  notify: make i3-utils
+
+- name: make i3-utils
+  make:
+    chdir: "{{ thirdparty }}/i3-utils"
+    target: install
 
 - name: fetch permutations
   git:
@@ -16,4 +20,8 @@
     dest: "{{ thirdparty }}/permutations"
     update: yes
   become_user: consul
-  notify: make permutations
+
+- name: make permutations
+  make:
+    chdir: "{{ thirdparty }}/permutations"
+    target: install
