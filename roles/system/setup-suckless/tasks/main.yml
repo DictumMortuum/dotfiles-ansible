@@ -8,9 +8,17 @@
     dest: "{{ thirdparty }}/dmenu"
     update: yes
   become_user: consul
-  notify:
-    - copy dmenu config
-    - make dmenu
+
+- name: copy dmenu config
+  template:
+    src: config.h.j2
+    dest: "{{ thirdparty }}/dmenu/config.h"
+  become_user: consul
+
+- name: make dmenu
+  make:
+    chdir: "{{ thirdparty }}/dmenu"
+    target: install
 
 - name: fetch st
   git:
@@ -18,4 +26,8 @@
     dest: "{{ thirdparty }}/st"
     update: yes
   become_user: consul
-  notify: make st
+
+- name: make st
+  make:
+    chdir: "{{ thirdparty }}/st"
+    target: install
