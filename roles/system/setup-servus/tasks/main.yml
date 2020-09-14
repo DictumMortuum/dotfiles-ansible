@@ -4,9 +4,11 @@
     dest: "{{ thirdparty }}/servus"
     update: yes
   become_user: consul
-  notify: make servus
 
-- meta: flush_handlers
+- name: make servus
+  make:
+    chdir: "{{ thirdparty }}/servus"
+    target: install
 
 - name: copy servus systemd service file
   template:
