@@ -37,3 +37,17 @@
   pacman: name=zsh
   tags:
     - packages
+
+- name: enable NetworkManager service
+  systemd:
+    name: NetworkManager
+    enabled: yes
+    masked: no
+    state: started
+
+- name: enable sshd service
+  systemd:
+    name: sshd
+    enabled: yes
+    masked: no
+    state: started
