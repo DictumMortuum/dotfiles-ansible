@@ -1,0 +1,9 @@
+nginx_modules:
+  - nextcloud
+  - transmission
+  - phpldapadmin
+  - phpmyadmin
+  - static
+  - gitea
+  - syncthing
+  - servus

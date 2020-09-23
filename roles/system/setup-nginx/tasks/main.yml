@@ -15,19 +15,9 @@
 
 - name: generate the sites configuration
   template:
-    src: "{{ item }}"
-    dest: "/etc/nginx/{{ item }}"
-  loop:
-    - nginx.conf
-    - satellite.dictummortuum.com.conf
-    - nextcloud.conf
-    - transmission.conf
-    - phpldapadmin.conf
-    - phpmyadmin.conf
-    - static.conf
-    - gitea.conf
-    - syncthing.conf
-    - servus.conf
+    src: "{{ item }}.conf"
+    dest: "/etc/nginx/{{ item }}.conf"
+  loop: "{{ ['nginx'] + nginx_modules + [domain]}}"
 
 - name: fetch static content
   git:
