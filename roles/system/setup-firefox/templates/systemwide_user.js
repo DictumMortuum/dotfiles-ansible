@@ -32,6 +32,9 @@ defaultPref("browser.startup.homepage_override.mstone","ignore");
 // Restore previous session on startup
 defaultPref("browser.startup.page", 3);
 
+// Pin certain tabs on the new page
+defaultPref("browser.newtabpage.pinned", '[{"url":"https://www.facebook.com/"},{"url":"https://www.youtube.com/"}]')
+
 /******************************************************************************
  * SECTION: HTML5 / APIs / DOM                                                *
  ******************************************************************************/
@@ -57,16 +60,16 @@ defaultPref("browser.startup.page", 3);
 // PREF: Disable DOM timing API
 // https://wiki.mozilla.org/Security/Reviews/Firefox/NavigationTimingAPI
 // https://www.w3.org/TR/navigation-timing/#privacy
-defaultPref("dom.enable_performance",				false);
+//defaultPref("dom.enable_performance",				false);
 
 // PREF: Make sure the User Timing API does not provide a new high resolution timestamp
 // https://trac.torproject.org/projects/tor/ticket/16336
 // https://www.w3.org/TR/2013/REC-user-timing-20131212/#privacy-security
-defaultPref("dom.enable_user_timing",				false);
+//defaultPref("dom.enable_user_timing",				false);
 
 // PREF: Disable Web Audio API
 // https://bugzilla.mozilla.org/show_bug.cgi?id=1288359
-defaultPref("dom.webaudio.enabled",				false);
+//defaultPref("dom.webaudio.enabled",				false);
 
 // PREF: Disable Location-Aware Browsing (geolocation)
 // https://www.mozilla.org/en-US/firefox/geolocation/
@@ -96,12 +99,12 @@ defaultPref("dom.mozTCPSocket.enabled",				false);
 // https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API
 // https://wicg.github.io/netinfo/#privacy-considerations
 // https://bugzilla.mozilla.org/show_bug.cgi?id=960426
-defaultPref("dom.netinfo.enabled",				false);
+//defaultPref("dom.netinfo.enabled",				false);
 
 // PREF: Disable network API (Firefox < 32)
 // https://developer.mozilla.org/en-US/docs/Web/API/Connection/onchange
 // https://www.torproject.org/projects/torbrowser/design/#fingerprinting-defenses
-defaultPref("dom.network.enabled",				false);
+//defaultPref("dom.network.enabled",				false);
 
 // PREF: Disable WebRTC entirely to prevent leaking internal IP addresses (Firefox < 42)
 // NOTICE: Disabling WebRTC breaks peer-to-peer file sharing tools (reep.io ...)
@@ -110,8 +113,8 @@ defaultPref("dom.network.enabled",				false);
 // PREF: Don't reveal your internal IP when WebRTC is enabled (Firefox >= 42)
 // https://wiki.mozilla.org/Media/WebRTC/Privacy
 // https://github.com/beefproject/beef/wiki/Module%3A-Get-Internal-IP-WebRTC
-defaultPref("media.peerconnection.ice.default_address_only",	true); // Firefox 42-51
-defaultPref("media.peerconnection.ice.no_host",			true); // Firefox >= 52
+//defaultPref("media.peerconnection.ice.default_address_only",	true); // Firefox 42-51
+//defaultPref("media.peerconnection.ice.no_host",			true); // Firefox >= 52
 
 // PREF: Disable WebRTC getUserMedia, screen sharing, audio capture, video capture
 // https://wiki.mozilla.org/Media/getUserMedia
@@ -125,11 +128,11 @@ defaultPref("media.peerconnection.ice.no_host",			true); // Firefox >= 52
 // PREF: Disable battery API (Firefox < 52)
 // https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager
 // https://bugzilla.mozilla.org/show_bug.cgi?id=1313580
-defaultPref("dom.battery.enabled",				false);
+//defaultPref("dom.battery.enabled",				false);
 
 // PREF: Disable telephony API
 // https://wiki.mozilla.org/WebAPI/Security/WebTelephony
-defaultPref("dom.telephony.enabled",				false);
+//defaultPref("dom.telephony.enabled",				false);
 
 // PREF: Disable "beacon" asynchronous HTTP transfers (used for analytics)
 // https://developer.mozilla.org/en-US/docs/Web/API/navigator.sendBeacon
@@ -149,11 +152,11 @@ defaultPref("beacon.enabled",					false);
 // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html
 // https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition
 // https://wiki.mozilla.org/HTML5_Speech_API
-defaultPref("media.webspeech.recognition.enable",			false);
+//defaultPref("media.webspeech.recognition.enable",			false);
 
 // PREF: Disable speech synthesis
 // https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis
-defaultPref("media.webspeech.synth.enabled",			false);
+//defaultPref("media.webspeech.synth.enabled",			false);
 
 // PREF: Disable sensor API
 // https://wiki.mozilla.org/Sensor_API
@@ -181,7 +184,7 @@ defaultPref("browser.send_pings.require_same_host",		true);
 // PREF: Disable gamepad API to prevent USB device enumeration
 // https://www.w3.org/TR/gamepad/
 // https://trac.torproject.org/projects/tor/ticket/13023
-defaultPref("dom.gamepad.enabled",				false);
+//defaultPref("dom.gamepad.enabled",				false);
 
 // PREF: Disable virtual reality devices APIs
 // https://developer.mozilla.org/en-US/Firefox/Releases/36#Interfaces.2FAPIs.2FDOM
@@ -193,29 +196,29 @@ defaultPref("dom.vibrator.enabled",           false);
 
 // PREF: Disable resource timing API
 // https://www.w3.org/TR/resource-timing/#privacy-security
-defaultPref("dom.enable_resource_timing",				false);
+//defaultPref("dom.enable_resource_timing",				false);
 
 // PREF: Disable Archive API (Firefox < 54)
 // https://wiki.mozilla.org/WebAPI/ArchiveAPI
 // https://bugzilla.mozilla.org/show_bug.cgi?id=1342361
-defaultPref("dom.archivereader.enabled",				false);
+//defaultPref("dom.archivereader.enabled",				false);
 
 // PREF: Disable webGL
 // https://en.wikipedia.org/wiki/WebGL
 // https://www.contextis.com/resources/blog/webgl-new-dimension-browser-exploitation/
-defaultPref("webgl.disabled",					true);
+//defaultPref("webgl.disabled",					true);
 // PREF: When webGL is enabled, use the minimum capability mode
-defaultPref("webgl.min_capability_mode",				true);
+//defaultPref("webgl.min_capability_mode",				true);
 // PREF: When webGL is enabled, disable webGL extensions
 // https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API#WebGL_debugging_and_testing
-defaultPref("webgl.disable-extensions",				true);
+//defaultPref("webgl.disable-extensions",				true);
 // PREF: When webGL is enabled, force enabling it even when layer acceleration is not supported
 // https://trac.torproject.org/projects/tor/ticket/18603
-defaultPref("webgl.disable-fail-if-major-performance-caveat",	true);
+//defaultPref("webgl.disable-fail-if-major-performance-caveat",	true);
 // PREF: When webGL is enabled, do not expose information about the graphics driver
 // https://bugzilla.mozilla.org/show_bug.cgi?id=1171228
 // https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_debug_renderer_info
-defaultPref("webgl.enable-debug-renderer-info",			false);
+//defaultPref("webgl.enable-debug-renderer-info",			false);
 // somewhat related...
 //user_defaultPref("pdfjs.enableWebGL",					false);
 
@@ -232,7 +235,7 @@ defaultPref("javascript.options.wasm",				false);
  ******************************************************************************/
 
 // PREF: Disable face detection
-defaultPref("camera.control.face_detection.enabled",		false);
+//defaultPref("camera.control.face_detection.enabled",		false);
 
 // PREF: Disable GeoIP lookup on your address to set default search engine region
 // https://trac.torproject.org/projects/tor/ticket/16254
@@ -651,7 +654,7 @@ defaultPref("network.dns.blockDotOnion",				true);
 
 // PREF: Disable SSDP
 // https://bugzilla.mozilla.org/show_bug.cgi?id=1111967
-defaultPref("browser.casting.enabled",				false);
+//defaultPref("browser.casting.enabled",				false);
 
 // PREF: Disable automatic downloading of OpenH264 codec
 // https://support.mozilla.org/en-US/kb/how-stop-firefox-making-automatic-connections#w_media-capabilities
