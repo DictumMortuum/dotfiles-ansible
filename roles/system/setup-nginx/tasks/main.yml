@@ -17,7 +17,7 @@
   template:
     src: "{{ item }}.conf"
     dest: "/etc/nginx/{{ item }}.conf"
-  loop: "{{ ['nginx'] + nginx_modules + [domain]}}"
+  loop: "{{ ['nginx'] + nginx_modules}}"
 
 - name: fetch static content
   git:
