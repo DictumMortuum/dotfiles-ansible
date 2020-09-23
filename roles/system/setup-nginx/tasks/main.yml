@@ -28,7 +28,6 @@
     - gitea.conf
     - syncthing.conf
     - servus.conf
-    - cups.conf
 
 - name: fetch static content
   git:
