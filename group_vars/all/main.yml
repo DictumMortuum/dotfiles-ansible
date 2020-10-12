@@ -1,2 +1,5 @@
-thirdparty: "/opt/domus"
-domain: satellite.dictummortuum.com
+thirdparty: /opt/domus
+storage: /mnt/nfsserver
+
+tld: dictummortuum.com
+domain: "satellite.{{ tld }}"

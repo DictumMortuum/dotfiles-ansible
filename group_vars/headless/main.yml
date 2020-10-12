@@ -1,1 +1,2 @@
 vim_package: vim
+pacman_proxy: "http://armv7h.archlinux.{{ tld }}/$arch/$repo"

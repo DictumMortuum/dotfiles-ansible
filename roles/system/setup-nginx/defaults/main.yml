@@ -7,3 +7,23 @@ nginx_modules:
   - gitea
   - syncthing
   - servus
+
+armv7h_mirror:
+  type: armv7h
+  port: 8000
+  servers:
+    - http://gr.mirror.archlinuxarm.org
+    - http://de.mirror.archlinuxarm.org
+    - http://dk.mirror.archlinuxarm.org
+    - http://mirror.archlinuxarm.org
+
+x86_64_mirror:
+  type: x86_64
+  port: 9000
+  servers:
+    - http://ftp.cc.uoc.gr/mirrors/linux/archlinux
+    - http://ftp.ntua.gr/pub/linux/archlinux
+    - http://ftp.otenet.gr/linux/archlinux
+    - http://archlinux.vi-di.fr
+    - http://arch.serverspace.co.uk/arch
+    - http://archlinux.honkgong.info

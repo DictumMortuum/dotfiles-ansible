@@ -1,0 +1,23 @@
+- name: install cache cleanup script
+  become_user: http
+  cron:
+    name: "clean {{ mirror.type }} repo"
+    special_time: "daily"
+    job: "paccache -v -r -k 2 -c {{ storage }}/apps/pacman/{{ mirror.type }}"
+
+- name: create the top level cache directory
+  become_user: http
+  file:
+    name: "{{ storage }}/apps/pacman"
+    state: directory
+
+- name: create the {{ mirror.type }} cache directory
+  become_user: http
+  file:
+    name: "{{ storage }}/apps/pacman/{{ mirror.type }}"
+    state: directory
+
+- name: generate the {{ mirror.type }} pacman proxy
+  template:
+    src: "pacman.conf"
+    dest: "/etc/nginx/pacman_{{ mirror.type }}.conf"
