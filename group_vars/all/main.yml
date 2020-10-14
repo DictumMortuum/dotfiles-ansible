@@ -3,3 +3,5 @@ storage: /mnt/nfsserver
 
 tld: dictummortuum.com
 domain: "satellite.{{ tld }}"
+
+zeroconf_servus: satellite.local:1234

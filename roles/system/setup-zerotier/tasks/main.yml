@@ -12,6 +12,14 @@
 
 - name: join the domus network
   shell: "zerotier-cli join {{ network_id | default('') }}"
-  become: yes
   register: res
   changed_when: res.stdout != "200 join OK"
+
+- name: get the zerotier node id
+  shell: "zerotier-cli info | awk '{print $3}'"
+  register: info
+  changed_when: info.rc != 0
+
+- name: authorize the zerotier node
+  uri:
+    url: "http://{{ zeroconf_servus }}/zerotier/member/{{ info.stdout }}"
