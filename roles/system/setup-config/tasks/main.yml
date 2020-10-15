@@ -28,3 +28,9 @@
     content: |
       # pacman cache proxy
       Server = {{ pacman_proxy }}
+
+- name: install the system xprofile
+  template:
+    src: xprofile.conf
+    dest: /etc/xprofile
+    mode: '0755'
