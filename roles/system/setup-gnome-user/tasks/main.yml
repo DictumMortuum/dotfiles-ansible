@@ -16,3 +16,12 @@
   template:
     src: AccountsService.conf.j2
     dest: "/var/lib/AccountsService/users/{{ user }}"
+
+- name: mask evolution services started via systemd for {{ user }}
+  systemd:
+    name: "{{ item }}"
+    masked: true
+  loop:
+    - evolution-addressbook-factory
+    - evolution-calendar-factory
+    - evolution-source-registry
