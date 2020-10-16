@@ -18,3 +18,8 @@
   pacman: name=evince
   tags:
     - packages
+
+- name: install sxhkd
+  pacman: name=sxhkd
+  tags:
+    - packages
