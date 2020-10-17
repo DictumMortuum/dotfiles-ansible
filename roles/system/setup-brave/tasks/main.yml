@@ -24,7 +24,7 @@
   changed_when: False
 
 - name: make sure that jq is installed
-  pacman: name=jq
+  package: name=jq
   tags:
     - packages
 

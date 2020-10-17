@@ -1,30 +1,12 @@
-- name: install php
-  pacman: name=php
-  tags:
-    - packages
-
-- name: install php-ldap
-  pacman: name=php-ldap
-  tags:
-    - packages
-
-- name: install php-redis
-  pacman: name=php-redis
-  tags:
-    - packages
-
-- name: install php-intl
-  pacman: name=php-intl
-  tags:
-    - packages
-
-- name: install php-imagick
-  pacman: name=php-imagick
-  tags:
-    - packages
-
-- name: install php-fpm
-  pacman: name=php-fpm
+- name: install php packages
+  package:
+    name:
+      - php
+      - php-ldap
+      - php-redis
+      - php-intl
+      - php-imagick
+      - php-fpm
   tags:
     - packages
 
@@ -35,7 +17,7 @@
     line: 'extension=bz2'
 
 - name: enable the curl php extension
-  lineinfile: 
+  lineinfile:
     dest: /etc/php/php.ini
     regexp: '^;*extension=curl'
     line: 'extension=curl'

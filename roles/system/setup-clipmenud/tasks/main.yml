@@ -1,10 +1,8 @@
-- name: install clipmenu
-  pacman: name=clipmenu
-  tags:
-    - packages
-
-- name: install clipnotify
-  pacman: name=clipnotify
+- name: install clipmenud packages
+  package:
+    name:
+      - clipmenu
+      - clipnotify
   tags:
     - packages
 

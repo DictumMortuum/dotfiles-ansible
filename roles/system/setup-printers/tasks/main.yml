@@ -1,5 +1,5 @@
 - name: install cups
-  pacman: name=cups
+  package: name=cups
   tags:
     - packages
 

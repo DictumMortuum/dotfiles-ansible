@@ -1,10 +1,8 @@
 - name: install nginx
-  pacman: name=nginx
-  tags:
-    - packages
-
-- name: install pacman-contrib
-  pacman: name=pacman-contrib
+  package:
+    name:
+      - nginx
+      - pacman-contrib
   tags:
     - packages
 

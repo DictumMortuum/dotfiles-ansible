@@ -1,10 +1,8 @@
-- name: install pass
-  pacman: name=pass
-  tags:
-    - packages
-
-- name: install cronie
-  pacman: name=cronie
+- name: install pass packages
+  package:
+    name:
+      - pass
+      - cronie
   tags:
     - packages
 

@@ -1,20 +1,10 @@
-- name: install fontconfig
-  pacman: name=fontconfig
-  tags:
-    - packages
-
-- name: install fira sans fonts
-  pacman: name=ttf-fira-sans
-  tags:
-    - packages
-
-- name: install fira code fonts
-  pacman: name=ttf-fira-code
-  tags:
-    - packages
-
-- name: install tex gyre fonts
-  pacman: name=tex-gyre-fonts
+- name: install font packages
+  package:
+    name:
+      - fontconfig
+      - ttf-fira-sans
+      - ttf-fira-code
+      - tex-gyre-fonts
   tags:
     - packages
 

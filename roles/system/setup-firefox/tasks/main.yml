@@ -1,10 +1,8 @@
-- name: install firefox
-  pacman: name=firefox
-  tags:
-    - packages
-
-- name: install ublock-origin
-  pacman: name=firefox-ublock-origin
+- name: install firefox packages
+  package:
+    name:
+      - firefox
+      - firefox-ublock-origin
   tags:
     - packages
 

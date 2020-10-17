@@ -1,25 +1,16 @@
+- name: install dependencies
+  package:
+    name:
+      - syncthing
+      - code
+      - evince
+      - sxhkd
+  tags:
+    - packages
+
 - name: install notable
   aur: name=notable-bin state=present
+  when: ansible_distribution == "Archlinux"
   become_user: consul
-  tags:
-    - packages
-
-- name: install syncthing
-  pacman: name=syncthing
-  tags:
-    - packages
-
-- name: install vscode
-  pacman: name=code
-  tags:
-    - packages
-
-- name: install evince pdf viewer
-  pacman: name=evince
-  tags:
-    - packages
-
-- name: install sxhkd
-  pacman: name=sxhkd
   tags:
     - packages

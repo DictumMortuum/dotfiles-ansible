@@ -1,48 +1,23 @@
-- name: install inetutils
-  pacman: name=inetutils
-
-- name: install i3-gaps
-  pacman: name=i3-gaps
-
-- name: install gcc
-  pacman: name=gcc
-
-- name: install arandr
-  pacman: name=arandr
-
-- name: install i3lock
-  pacman: name=i3lock
-
-- name: install i3blocks
-  pacman: name=i3blocks
-
-- name: install compton
-  pacman: name=picom
-
-- name: install pavucontrol
-  pacman: name=pavucontrol
-
-- name: install xclip
-  pacman: name=xclip
-
-- name: install xdotool
-  pacman: name=xdotool
-
-- name: install dunst
-  pacman: name=dunst
-
-- name: install bind-tools
-  pacman: name=bind-tools
-
-- name: install scrot
-  pacman: name=scrot
-
-- name: install rofi
-  pacman: name=rofi
-
-- name: install feh
-  pacman: name=feh
+- name: install i3 packages
+  package:
+    name:
+      - inetutils
+      - i3-gaps
+      - gcc
+      - arandr
+      - i3lock
+      - i3blocks
+      - picom
+      - pavucontrol
+      - xclip
+      - xdotool
+      - dunst
+      - bind-tools
+      - scrot
+      - rofi
+      - feh
 
 - name: install xkb-switch
   aur: name=xkb-switch state=present
+  when: ansible_distribution == "Archlinux"
   become_user: consul

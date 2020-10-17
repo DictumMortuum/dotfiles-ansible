@@ -1,30 +1,17 @@
-- name: install ansible
-  pacman: name=ansible
+- name: install dependencies
+  package:
+    name:
+      - ansible
+      - the_silver_searcher
+      - youtube-dl
+      - fzf
+      - cronie
   tags:
     - packages
 
 - name: install ansible-aur
   aur: name=ansible-aur-git state=present
+  when: ansible_distribution == "Archlinux"
   become_user: consul
-  tags:
-    - packages
-
-- name: install ag
-  pacman: name=the_silver_searcher
-  tags:
-    - packages
-
-- name: install youtube-dl
-  pacman: name=youtube-dl
-  tags:
-    - packages
-
-- name: install fzf
-  pacman: name=fzf
-  tags:
-    - packages
-
-- name: install cronie
-  pacman: name=cronie
   tags:
     - packages

@@ -1,15 +1,9 @@
-- name: install gnome
-  pacman: name=gnome
-  tags:
-    - packages
-
-- name: install psutils
-  pacman: name=python-psutil
-  tags:
-    - packages
-
-- name: install papirus theme
-  pacman: name=papirus-icon-theme
+- name: install gnome packages
+  package:
+    name:
+      - gnome
+      - python-psutil
+      - papirus-icon-theme
   tags:
     - packages
 

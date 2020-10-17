@@ -1,5 +1,5 @@
 - name: install gitea
-  pacman: name=gitea
+  package: name=gitea
   tags:
     - packages
 

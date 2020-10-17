@@ -1,40 +1,14 @@
-- name: install sudo
-  pacman: name=sudo
-  tags:
-    - packages
-
-- name: install git
-  pacman: name=git
-  tags:
-    - packages
-
-- name: install tcl
-  pacman: name=tcl
-  tags:
-    - packages
-
-- name: install make
-  pacman: name=make
-  tags:
-    - packages
-
-- name: install patch
-  pacman: name=patch
-  tags:
-    - packages
-
-- name: install strip
-  pacman: name=binutils
-  tags:
-    - packages
-
-- name: install fakeroot
-  pacman: name=fakeroot
-  tags:
-    - packages
-
-- name: install zsh
-  pacman: name=zsh
+- name: install dependencies
+  package:
+    name:
+      - sudo
+      - git
+      - tcl
+      - make
+      - patch
+      - strip
+      - fakeroot
+      - zsh
   tags:
     - packages
 

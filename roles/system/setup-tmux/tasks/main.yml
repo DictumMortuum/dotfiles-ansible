@@ -1,5 +1,5 @@
 - name: install tmux
-  pacman: name=tmux
+  package: name=tmux
   tags:
     - packages
 

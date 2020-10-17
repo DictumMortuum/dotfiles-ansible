@@ -23,12 +23,12 @@
   group: name=theoni gid=1989 state=present
 
 - name: install sudo
-  pacman: name=sudo state=present
+  package: name=sudo state=present
   tags:
     - packages
 
 - name: install vi
-  pacman: name=vi state=present
+  package: name=vi state=present
   tags:
     - packages
 

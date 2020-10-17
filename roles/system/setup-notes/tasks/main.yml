@@ -1,5 +1,5 @@
 - name: install cronie
-  pacman: name=cronie
+  package: name=cronie
   tags:
     - packages
 

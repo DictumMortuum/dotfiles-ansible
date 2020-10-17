@@ -1,5 +1,5 @@
 - name: install zerotier-one
-  pacman: name=zerotier-one
+  package: name=zerotier-one
   tags:
     - packages
 

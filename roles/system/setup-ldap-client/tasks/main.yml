@@ -1,10 +1,8 @@
-- name: install sssd
-  pacman: name=sssd
-  tags:
-    - packages
-
-- name: install ca-certificates
-  pacman: name=ca-certificates
+- name: install sssd packages
+  package:
+    name:
+      - sssd
+      - ca-certificates
   tags:
     - packages
 

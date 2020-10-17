@@ -1,5 +1,5 @@
 - name: install minidlna
-  pacman: name=minidlna
+  package: name=minidlna
   tags:
     - packages
 

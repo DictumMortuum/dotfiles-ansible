@@ -1,25 +1,16 @@
-- name: install go
-  pacman: name=go
-  tags:
-    - packages
-
-- name: install fakeroot
-  pacman: name=fakeroot
-  tags:
-    - packages
-
-- name: install binutils
-  pacman: name=binutils
-  tags:
-    - packages
-
-- name: install file
-  pacman: name=file
+- name: install xurls dependencies
+  package:
+    name:
+      - go
+      - fakeroot
+      - binutils
+      - file
   tags:
     - packages
 
 - name: install xurls
   aur: name=xurls state=present
+  when: ansible_distribution == "Archlinux"
   become_user: consul
   tags:
     - packages

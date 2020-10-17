@@ -1,5 +1,5 @@
 - name: install redis
-  pacman: name=redis
+  package: name=redis
   tags:
     - packages
 
