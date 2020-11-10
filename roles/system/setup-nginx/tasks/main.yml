@@ -30,6 +30,10 @@
   vars:
     mirror: "{{ x86_64_mirror }}"
 
+- template:
+    src: "servus.conf"
+    dest: "/etc/nginx/servus.conf"
+
 - name: fetch static content
   git:
     repo: git@github.com:DictumMortuum/static.git

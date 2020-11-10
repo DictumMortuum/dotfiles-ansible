@@ -6,7 +6,6 @@ nginx_modules:
   - static
   - gitea
   - syncthing
-  - servus
 
 armv7h_mirror:
   type: armv7h
