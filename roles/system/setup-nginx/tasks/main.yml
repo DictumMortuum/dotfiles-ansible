@@ -16,23 +16,55 @@
 #  tags:
 #    - packages
 
-- name: generate the sites configuration
-  template:
-    src: "{{ item }}.conf"
-    dest: "/etc/nginx/{{ item }}.conf"
-  loop: "{{ ['nginx'] + nginx_modules}}"
+- name: create the nginx module directory
+  file:
+    name: "/etc/nginx/{{ item }}"
+    state: directory
+  loop:
+    - modules
+    - servers
 
-- include: mirror.yml
+- name: copy the nginx modules
+  copy:
+    src: "{{ item }}.conf"
+    dest: "/etc/nginx/modules/{{ item }}.conf"
+    mode: "0644"
+  loop: "{{ nginx_modules }}"
+
+- name: copy the nginx configuration
+  copy:
+    src: "nginx.conf"
+    dest: "/etc/nginx/nginx.conf"
+    mode: "0644"
+
+- name: generate the armv7h server
+  include: mirror.yml
   vars:
     mirror: "{{ armv7h_mirror }}"
 
-- include: mirror.yml
+- name: generate the x86_64 server
+  include: mirror.yml
   vars:
     mirror: "{{ x86_64_mirror }}"
 
-- template:
+- name: generate the satellite server
+  template:
+    src: "satellite.conf"
+    dest: "/etc/nginx/servers/satellite.conf"
+  vars:
+    modules:
+      - gitea
+      - nextcloud
+      - phpldapadmin
+      - phpmyadmin
+      - static
+      - syncthing
+      - transmission
+
+- name: generate the servus server
+  template:
     src: "servus.conf"
-    dest: "/etc/nginx/servus.conf"
+    dest: "/etc/nginx/servers/servus.conf"
 
 - name: fetch static content
   git:

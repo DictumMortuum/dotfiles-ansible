@@ -1,11 +1,12 @@
 nginx_modules:
+  - cups
+  - gitea
   - nextcloud
-  - transmission
   - phpldapadmin
   - phpmyadmin
   - static
-  - gitea
   - syncthing
+  - transmission
 
 armv7h_mirror:
   type: armv7h
