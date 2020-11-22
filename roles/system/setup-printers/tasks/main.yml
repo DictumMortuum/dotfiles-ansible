@@ -11,7 +11,7 @@
 
 - name: enable cups service
   systemd:
-    name: org.cups.cupsd
+    name: cups
     enabled: yes
     masked: no
     state: started
