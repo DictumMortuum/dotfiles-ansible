@@ -5,6 +5,7 @@
       - code
       - evince
       - sxhkd
+      - wmctrl
   tags:
     - packages
 
