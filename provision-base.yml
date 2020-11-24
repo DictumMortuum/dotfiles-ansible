@@ -3,6 +3,10 @@
   roles:
     - system/setup-config
     - system/setup-thirdparty
+
+- hosts: ldap-client
+  become: yes
+  roles:
     - { role: system/setup-dotfiles, user: "consul", group: "domus" }
     - { role: system/setup-dotfiles, user: "diabolus", group: "arcanum" }
     - { role: system/setup-dotfiles, user: "dimitris" }
@@ -12,6 +16,10 @@
     - { role: system/setup-dotfiles, user: "theoni" }
     - { role: system/setup-notes, user: "dimitris" }
     - { role: system/setup-pass, user: "dimitris" }
+
+- hosts: all
+  become: yes
+  roles:
     - system/setup-common-headless
     - system/setup-ssh
     - system/setup-vim

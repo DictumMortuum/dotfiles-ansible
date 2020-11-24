@@ -18,3 +18,10 @@ satellite
 
 [ldap-server]
 satellite
+
+[ldap-client]
+machina
+ars
+crustulum
+mobilis
+nero
