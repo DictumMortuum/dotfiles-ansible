@@ -1,6 +1,6 @@
 - name: switch to xorg from wayland
   ini_file:
-    path: "{{ gdm_path | default('/etc/gdm') }}/custom.conf"
+    path: "{{ path_gdm | default('/etc/gdm') }}/custom.conf"
     section: daemon
     option: WaylandEnable
     value: "false"

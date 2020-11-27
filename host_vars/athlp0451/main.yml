@@ -14,5 +14,5 @@ package_xrandr: x11-xserver-utils
 package_avahi: avahi-daemon
 package_mdns: libnss-mdns
 
-gdm_path: /etc/gdm3
+path_gdm: /etc/gdm3
 path_sftp_server: /usr/lib/openssh
