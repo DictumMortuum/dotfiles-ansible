@@ -1,6 +1,6 @@
 - name: fetch i3-utils
   git:
-    repo: https://github.com/DictumMortuum/i3-utils.git
+    repo: "{{ repo_i3_utils }}"
     dest: "{{ thirdparty }}/i3-utils"
     update: yes
   become_user: "{{ thirdparty_user }}"
@@ -12,7 +12,7 @@
 
 - name: fetch permutations
   git:
-    repo: https://github.com/DictumMortuum/permutations.git
+    repo: "{{ repo_permutations }}"
     dest: "{{ thirdparty }}/permutations"
     update: yes
   become_user: "{{ thirdparty_user }}"

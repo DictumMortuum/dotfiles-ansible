@@ -68,7 +68,7 @@
 
 - name: fetch static content
   git:
-    repo: git@github.com:DictumMortuum/static.git
+    repo: "{{ repo_static }}"
     dest: "{{ thirdparty }}/static"
     update: yes
   become_user: consul

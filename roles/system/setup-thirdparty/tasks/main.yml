@@ -7,7 +7,7 @@
 
 - name: clone dotfiles
   git:
-    repo: https://github.com/DictumMortuum/dotfiles.git
+    repo: "{{ repo_dotfiles_thirdparty }}"
     dest: "{{ thirdparty }}/dotfiles"
     update: yes
   become_user: "{{ thirdparty_user }}"
@@ -21,21 +21,21 @@
 
 - name: clone pure
   git:
-    repo: https://github.com/sindresorhus/pure.git
+    repo: "{{ repo_pure }}"
     dest: "{{ thirdparty }}/pure"
     update: yes
   become_user: "{{ thirdparty_user }}"
 
 - name: clone zsh-async
   git:
-    repo: https://github.com/mafredri/zsh-async.git
+    repo: "{{ repo_zsh_async }}"
     dest: "{{ thirdparty }}/zsh-async"
     update: yes
   become_user: "{{ thirdparty_user }}"
 
 - name: clone zsh-syntax-highlighting
   git:
-    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    repo: "{{ repo_zsh_syntax_highlighting }}"
     dest: "{{ thirdparty }}/zsh-syntax-highlighting"
     update: yes
   become_user: "{{ thirdparty_user }}"
