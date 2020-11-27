@@ -9,22 +9,18 @@
   become: yes
   roles:
     - system/setup-pacman
-    - { role: system/setup-dotfiles, user: "consul", group: "domus" }
-    - { role: system/setup-dotfiles, user: "diabolus", group: "arcanum" }
-    - { role: system/setup-dotfiles, user: "dimitris" }
-    - { role: system/setup-dotfiles, user: "fofi" }
-    - { role: system/setup-dotfiles, user: "manolis" }
-    - { role: system/setup-dotfiles, user: "petrina" }
-    - { role: system/setup-dotfiles, user: "theoni" }
-    - { role: system/setup-notes, user: "dimitris" }
-    - { role: system/setup-pass, user: "dimitris" }
+    - { role: system/setup-user, user: "consul", group: "domus" }
+    - { role: system/setup-user, user: "diabolus", group: "arcanum" }
+    - { role: system/setup-user, user: "dimitris", enable_pass: true, enable_notes: true }
+    - { role: system/setup-user, user: "fofi" }
+    - { role: system/setup-user, user: "manolis" }
+    - { role: system/setup-user, user: "petrina" }
+    - { role: system/setup-user, user: "theoni" }
 
 - hosts: ubuntu
   become: yes
   roles:
-    - { role: system/setup-dotfiles, user: "draviolo", group: "orbis" }
-    - { role: system/setup-notes, user: "draviolo" }
-    - { role: system/setup-pass, user: "draviolo" }
+    - { role: system/setup-user, user: "draviolo", group: "orbis", enable_pass: true, enable_notes: true }
 
 - hosts: all
   become: yes

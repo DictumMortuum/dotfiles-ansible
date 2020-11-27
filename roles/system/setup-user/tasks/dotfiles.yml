@@ -34,7 +34,7 @@
 
 - name: add the dotfiles origin url
   become_user: "{{ user }}"
-  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" remote add origin git@github.com:DictumMortuum/dotfiles.git
+  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" remote add origin "{{ repo_dotfiles }}"
   register: dotfiles
   changed_when: dotfiles.rc == 0
   failed_when: '"origin" not in dotfiles.stderr and dotfiles.stderr != ""'

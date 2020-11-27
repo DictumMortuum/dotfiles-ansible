@@ -1,0 +1,7 @@
+- include: dotfiles.yml
+
+- include: notes.yml
+  when: enable_notes is defined and enable_notes | bool
+
+- include: pass.yml
+  when: enable_pass is defined and enable_pass | bool

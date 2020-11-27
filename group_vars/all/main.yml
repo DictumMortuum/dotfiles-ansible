@@ -8,3 +8,7 @@ dock: false
 thirdparty: /opt/domus
 thirdparty_user: consul
 thirdparty_group: domus
+
+repo_pass: git@github.com:DictumMortuum/pass.git
+repo_notes: git@github.com:DictumMortuum/notes.git
+repo_dotfiles: git@github.com:DictumMortuum/dotfiles.git
