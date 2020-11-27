@@ -1,32 +1,8 @@
-- name: install dependencies
-  package:
-    name:
-      - sudo
-      - git
-      - tcl
-      - make
-      - patch
-      - fakeroot
-      - zsh
-      - "{{ package_avahi | default('avahi') }}"
-      - "{{ package_mdns | default('nss-mdns') }}"
+- include: bootstrap.yml
+  when: enable_bootstrap is defined and enable_bootstrap | bool
 
-- name: install archlinux dependencies
-  package:
-    name:
-      - strip
-  when: ansible_distribution == "Archlinux"
+- include: headless.yml
+  when: enable_headless is defined and enable_headless | bool
 
-- name: enable NetworkManager service
-  systemd:
-    name: NetworkManager
-    enabled: yes
-    masked: no
-    state: started
-
-- name: enable sshd service
-  systemd:
-    name: sshd
-    enabled: yes
-    masked: no
-    state: started
+- include: desktop.yml
+  when: enable_desktop is defined and enable_desktop | bool

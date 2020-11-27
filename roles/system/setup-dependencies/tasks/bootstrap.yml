@@ -1,0 +1,26 @@
+- name: install dependencies
+  package:
+    name:
+      - sudo
+      - git
+      - tcl
+      - make
+      - patch
+      - fakeroot
+      - zsh
+      - "{{ package_avahi | default('avahi') }}"
+      - "{{ package_mdns | default('nss-mdns') }}"
+
+- name: enable NetworkManager service
+  systemd:
+    name: NetworkManager
+    enabled: yes
+    masked: no
+    state: started
+
+- name: enable sshd service
+  systemd:
+    name: sshd
+    enabled: yes
+    masked: no
+    state: started

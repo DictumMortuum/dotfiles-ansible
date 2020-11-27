@@ -1,7 +1,7 @@
 - hosts: all
   become: yes
   roles:
-    - system/setup-common-headless
+    - { role: system/setup-dependencies, enable_headless: true }
     - system/setup-config
     - system/setup-thirdparty
 

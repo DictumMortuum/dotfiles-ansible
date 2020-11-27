@@ -1,7 +1,7 @@
 - hosts: desktop
   become: yes
   roles:
-    - system/setup-common-desktop
+    - { role: system/setup-dependencies, enable_desktop: true }
     - system/setup-fonts
     - system/setup-suckless
     - system/setup-firefox

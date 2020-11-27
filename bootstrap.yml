@@ -9,7 +9,7 @@
   become: yes
   roles:
     - system/setup-skel
-    - system/setup-dependencies
+    - { role: system/setup-dependencies, enable_bootstrap: true }
     - { role: system/setup-known-hosts, keyscan_host: "{{ domain }}" }
     - { role: system/setup-known-hosts, keyscan_host: "github.com" }
 
