@@ -1,6 +1,0 @@
-- name: enable gdm service
-  systemd:
-    name: gdm
-    enabled: yes
-    masked: no
-    state: started

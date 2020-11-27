@@ -1,4 +1,10 @@
-- include: gnome-dependencies.yml
+- name: enable gdm service
+  systemd:
+    name: gdm
+    enabled: yes
+    masked: no
+    state: started
+
 - include: gnome-dconf.yml
 - include: gnome-gdm.yml
 
