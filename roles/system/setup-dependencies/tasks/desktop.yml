@@ -1,4 +1,4 @@
-- name: install packages
+- name: install desktop packages
   package:
     name:
       - syncthing
@@ -28,7 +28,7 @@
       - fontconfig
       - "{{ package_texfonts | default('tex-gyre-fonts') }}"
 
-- name: install archlinux packages
+- name: install desktop archlinux packages
   package:
     name:
       - inetutils
@@ -40,7 +40,7 @@
       - clipnotify
   when: ansible_distribution == "Archlinux"
 
-- name: install aur packages
+- name: install desktop aur packages
   aur: name={{ item }} state=present
   when: ansible_distribution == "Archlinux"
   become_user: "{{ thirdparty_user }}"

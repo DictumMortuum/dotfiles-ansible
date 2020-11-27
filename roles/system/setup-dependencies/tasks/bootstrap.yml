@@ -1,4 +1,4 @@
-- name: install dependencies
+- name: install bootstrap dependencies
   package:
     name:
       - sudo
@@ -11,16 +11,13 @@
       - "{{ package_avahi | default('avahi') }}"
       - "{{ package_mdns | default('nss-mdns') }}"
 
-- name: enable NetworkManager service
+- name: enable bootstrap services
   systemd:
-    name: NetworkManager
+    name: "{{ item }}"
     enabled: yes
     masked: no
     state: started
-
-- name: enable sshd service
-  systemd:
-    name: sshd
-    enabled: yes
-    masked: no
-    state: started
+  loop:
+    - NetworkManager
+    - sshd
+    - avahi-daemon

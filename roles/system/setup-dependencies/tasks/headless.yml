@@ -1,4 +1,4 @@
-- name: install dependencies
+- name: install headless dependencies
   package:
     name:
       - ansible
@@ -13,7 +13,7 @@
       - "{{ package_libxinerama | default('libxinerama') }}"
       - tmux
 
-- name: install archlinux dependencies
+- name: install headless archlinux dependencies
   package:
     name:
       - fzf # available for ubuntu 19.10+

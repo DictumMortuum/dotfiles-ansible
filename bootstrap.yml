@@ -17,7 +17,6 @@
   become: yes
   roles:
     - system/setup-ldap-client
-    - system/setup-avahi
     - { role: system/setup-zerotier, network_id: "83048a06326833ff" }
 
 - hosts: archlinux:archlinux_arm
