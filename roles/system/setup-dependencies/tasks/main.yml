@@ -6,11 +6,16 @@
       - tcl
       - make
       - patch
-      - strip
       - fakeroot
       - zsh
-  tags:
-    - packages
+      - "{{ package_avahi | default('avahi') }}"
+      - "{{ package_mdns | default('nss-mdns') }}"
+
+- name: install archlinux dependencies
+  package:
+    name:
+      - strip
+  when: ansible_distribution == "Archlinux"
 
 - name: enable NetworkManager service
   systemd:

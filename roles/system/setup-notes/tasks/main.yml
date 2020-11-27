@@ -1,8 +1,3 @@
-- name: install cronie
-  package: name=cronie
-  tags:
-    - packages
-
 - name: clone notes for {{ user }}
   become_user: "{{ user }}"
   git:

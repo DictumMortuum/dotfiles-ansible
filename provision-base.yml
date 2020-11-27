@@ -1,12 +1,14 @@
 - hosts: all
   become: yes
   roles:
+    - system/setup-common-headless
     - system/setup-config
     - system/setup-thirdparty
 
-- hosts: ldap-client
+- hosts: archlinux:archlinux_arm
   become: yes
   roles:
+    - system/setup-pacman
     - { role: system/setup-dotfiles, user: "consul", group: "domus" }
     - { role: system/setup-dotfiles, user: "diabolus", group: "arcanum" }
     - { role: system/setup-dotfiles, user: "dimitris" }
@@ -17,10 +19,16 @@
     - { role: system/setup-notes, user: "dimitris" }
     - { role: system/setup-pass, user: "dimitris" }
 
+- hosts: ubuntu
+  become: yes
+  roles:
+    - { role: system/setup-dotfiles, user: "draviolo", group: "orbis" }
+    - { role: system/setup-notes, user: "draviolo" }
+    - { role: system/setup-pass, user: "draviolo" }
+
 - hosts: all
   become: yes
   roles:
-    - system/setup-common-headless
     - system/setup-ssh
     - system/setup-vim
     - system/setup-tmux

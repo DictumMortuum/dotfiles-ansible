@@ -1,8 +1,0 @@
-- name: install suckless packages
-  package:
-    name:
-      - gcc
-      - fontconfig
-      - libxft
-      - pkgconf
-      - libxinerama

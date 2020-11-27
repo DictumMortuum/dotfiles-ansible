@@ -4,22 +4,25 @@
     - system/setup-common-desktop
     - system/setup-fonts
     - system/setup-suckless
-    - system/setup-xurls
-    - system/setup-qutebrowser
     - system/setup-firefox
     - system/setup-i3
     - system/setup-gnome
-    - system/setup-printers
-    - system/setup-steam
 
-- hosts: ldap-client
+- hosts: archlinux:archlinux_arm
   become: yes
   roles:
+    - system/setup-printers
+    - system/setup-gnome-pam
+    - system/setup-steam
     - { role: system/setup-gnome-user, user: "diabolus", group: "arcanum", system_account: "true" }
     - { role: system/setup-gnome-user, user: "dimitris", window_manager: "i3-gnome" }
     - { role: system/setup-gnome-user, user: "fofi" }
     - { role: system/setup-gnome-user, user: "manolis" }
     - { role: system/setup-gnome-user, user: "petrina" }
     - { role: system/setup-gnome-user, user: "theoni" }
-    - { role: system/setup-clipmenud, user: "dimitris" }
     - { role: system/setup-vscode, user: "dimitris" }
+
+- hosts: ubuntu
+  become: yes
+  roles:
+    - { role: system/setup-gnome-user, user: "draviolo", group: "orbis", window_manager: "i3-gnome" }

@@ -1,7 +1,10 @@
-thirdparty: /opt/domus
 storage: /mnt/nfsserver
 tld: dictummortuum.com
 domain: "satellite.{{ tld }}"
 zeroconf_servus: satellite.local:1234
 nvidia: false
 dock: false
+
+thirdparty: /opt/domus
+thirdparty_user: consul
+thirdparty_group: domus

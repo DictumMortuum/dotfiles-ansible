@@ -1,7 +1,0 @@
-- name: install qutebrowser
-  package:
-    name:
-      - qutebrowser
-      - pdfjs
-  tags:
-    - packages

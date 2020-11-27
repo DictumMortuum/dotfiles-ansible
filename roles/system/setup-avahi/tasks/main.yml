@@ -1,11 +1,3 @@
-- name: install avahi packages
-  package:
-    name:
-      - avahi
-      - nss-mdns
-  tags:
-    - packages
-
 - name: enable the avahi service
   systemd:
     name: avahi-daemon

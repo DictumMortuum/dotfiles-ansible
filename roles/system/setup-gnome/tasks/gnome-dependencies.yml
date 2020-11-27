@@ -1,24 +1,3 @@
-- name: install gnome packages
-  package:
-    name:
-      - gnome
-      - python-psutil
-      - papirus-icon-theme
-  tags:
-    - packages
-
-- name: install dash to dock
-  aur: name=gnome-shell-extension-dash-to-dock state=present
-  become_user: consul
-  tags:
-    - packages
-
-- name: install i3-gnome
-  aur: name=i3-gnome state=present
-  become_user: consul
-  tags:
-    - packages
-
 - name: enable gdm service
   systemd:
     name: gdm

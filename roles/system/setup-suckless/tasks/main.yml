@@ -1,19 +1,15 @@
-- include: dependencies.yml
-  tags:
-    - packages
-
 - name: fetch dmenu
   git:
     repo: git://git.suckless.org/dmenu
     dest: "{{ thirdparty }}/dmenu"
     update: yes
-  become_user: consul
+  become_user: "{{ thirdparty_user }}"
 
 - name: copy dmenu config
   template:
     src: config.h.j2
     dest: "{{ thirdparty }}/dmenu/config.h"
-  become_user: consul
+  become_user: "{{ thirdparty_user }}"
 
 - name: make dmenu
   make:
@@ -25,7 +21,7 @@
     repo: https://github.com/DictumMortuum/st.git
     dest: "{{ thirdparty }}/st"
     update: yes
-  become_user: consul
+  become_user: "{{ thirdparty_user }}"
 
 - name: make st
   make:

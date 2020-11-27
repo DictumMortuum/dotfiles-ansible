@@ -1,11 +1,3 @@
-- name: install clipmenud packages
-  package:
-    name:
-      - clipmenu
-      - clipnotify
-  tags:
-    - packages
-
 #- name: create the clipmenud override directory for {{ user }}
 #  file:
 #    name: "/home/{{ user }}/.config/systemd/user/clipmenud.service.d"

@@ -1,0 +1,7 @@
+- name: make {{ user }} a sudoer
+  lineinfile:
+    path: "/etc/sudoers.d/{{ user }}"
+    state: present
+    line: "{{ user }} ALL=(ALL) NOPASSWD: ALL"
+    create: True
+    validate: /usr/sbin/visudo -cf %s

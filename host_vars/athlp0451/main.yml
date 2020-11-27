@@ -1,0 +1,18 @@
+thirdparty_user: draviolo
+thirdparty_group: orbis
+
+package_ag: silversearcher-ag
+package_vim: vim
+package_texfonts: fonts-texgyre
+package_libxft: libxft-dev
+package_libxinerama: libxinerama-dev
+package_go: golang
+package_pdfjs: pdf.js
+package_ublockorigin: xul-ext-ublock-origin
+package_picom: dunst
+package_xrandr: x11-xserver-utils
+package_avahi: avahi-daemon
+package_mdns: libnss-mdns
+
+gdm_path: /etc/gdm3
+path_sftp_server: /usr/lib/openssh

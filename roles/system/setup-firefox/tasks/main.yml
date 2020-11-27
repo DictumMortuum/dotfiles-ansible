@@ -1,11 +1,3 @@
-- name: install firefox packages
-  package:
-    name:
-      - firefox
-      - firefox-ublock-origin
-  tags:
-    - packages
-
 - name: create local-settings.js to load the user permissions
   copy:
     dest: /usr/lib/firefox/defaults/pref/local-settings.js

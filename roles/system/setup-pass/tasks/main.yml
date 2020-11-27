@@ -1,11 +1,3 @@
-- name: install pass packages
-  package:
-    name:
-      - pass
-      - cronie
-  tags:
-    - packages
-
 - name: clone password store
   become_user: "{{ user }}"
   git:

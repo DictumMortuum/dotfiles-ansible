@@ -17,9 +17,22 @@
   become: yes
   roles:
     - system/setup-ldap-client
-
-- hosts: all
-  become: yes
-  roles:
     - system/setup-avahi
     - { role: system/setup-zerotier, network_id: "83048a06326833ff" }
+
+- hosts: archlinux:archlinux_arm
+  become: yes
+  roles:
+    - { role: system/setup-keys, user: "consul", group: "domus" }
+    - { role: system/setup-keys, user: "diabolus", group: "arcanum" }
+    - { role: system/setup-keys, user: "dimitris" }
+    - { role: system/setup-keys, user: "fofi" }
+    - { role: system/setup-keys, user: "manolis" }
+    - { role: system/setup-keys, user: "petrina" }
+    - { role: system/setup-keys, user: "theoni" }
+
+- hosts: ubuntu
+  become: yes
+  roles:
+    - { role: system/setup-keys, user: "draviolo", group: "orbis" }
+    - { role: system/setup-local-sudoer, user: "draviolo" }

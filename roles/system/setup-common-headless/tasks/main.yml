@@ -2,16 +2,25 @@
   package:
     name:
       - ansible
-      - the_silver_searcher
+      - "{{ package_ag | default('the_silver_searcher') }}"
       - youtube-dl
-      - fzf
-      - cronie
-  tags:
-    - packages
+      - pass
+      - "{{ package_vim }}"
+      - gcc
+      - fontconfig
+      - "{{ package_libxft | default('libxft') }}"
+      - pkgconf
+      - "{{ package_libxinerama | default('libxinerama') }}"
+      - tmux
+
+- name: install archlinux dependencies
+  package:
+    name:
+      - fzf # available for ubuntu 19.10+
+      - cronie # ubuntu already has a cronjob package on the base install
+  when: ansible_distribution == "Archlinux"
 
 - name: install ansible-aur
   aur: name=ansible-aur-git state=present
   when: ansible_distribution == "Archlinux"
-  become_user: consul
-  tags:
-    - packages
+  become_user: "{{ thirdparty_user }}"

@@ -5,19 +5,27 @@ ars       ansible_host=10.144.0.4
 crustulum ansible_host=10.144.0.5
 mobilis   ansible_host=10.144.0.6
 nero      ansible_host=10.144.0.7
+athlp0451 ansible_host=10.144.2.1
 
-[desktop]
+[desktop:children]
+archlinux
+ubuntu
+
+[headless:children]
+archlinux_arm
+
+[archlinux]
 machina
 ars
 crustulum
 mobilis
 nero
 
-[headless]
+[archlinux_arm]
 satellite
 
-[ldap-server]
-satellite
+[ubuntu]
+athlp0451
 
 [ldap-client]
 machina
@@ -25,3 +33,6 @@ ars
 crustulum
 mobilis
 nero
+
+[ldap-server]
+satellite

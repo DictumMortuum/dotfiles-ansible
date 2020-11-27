@@ -1,0 +1,12 @@
+- name: enable passwordless login
+  lineinfile:
+    path: "/etc/pam.d/gdm-password"
+    line: "auth sufficient pam_succeed_if.so user ingroup nonsignum"
+    insertbefore: BOF
+    state: present
+
+- name: switch to substack for auth on system-local-login
+  lineinfile:
+    dest: "/etc/pam.d/gdm-password"
+    regexp: 'auth\s+include\s+system-local-login'
+    line: 'auth substack system-local-login'

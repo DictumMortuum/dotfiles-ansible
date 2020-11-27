@@ -1,12 +1,7 @@
-- name: install zsh
-  package: name=zsh
-  tags:
-    - packages
-
 - name: create domus directory
   file:
     name: "{{ thirdparty }}"
-    group: domus
+    group: "{{ thirdparty_group }}"
     mode: '0775'
     state: directory
 
@@ -15,7 +10,7 @@
     repo: https://github.com/DictumMortuum/dotfiles.git
     dest: "{{ thirdparty }}/dotfiles"
     update: yes
-  become_user: consul
+  become_user: "{{ thirdparty_user }}"
 
 - name: copy dotctl to /usr/local/
   copy:
@@ -29,18 +24,18 @@
     repo: https://github.com/sindresorhus/pure.git
     dest: "{{ thirdparty }}/pure"
     update: yes
-  become_user: consul
+  become_user: "{{ thirdparty_user }}"
 
 - name: clone zsh-async
   git:
     repo: https://github.com/mafredri/zsh-async.git
     dest: "{{ thirdparty }}/zsh-async"
     update: yes
-  become_user: consul
+  become_user: "{{ thirdparty_user }}"
 
 - name: clone zsh-syntax-highlighting
   git:
     repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
     dest: "{{ thirdparty }}/zsh-syntax-highlighting"
     update: yes
-  become_user: consul
+  become_user: "{{ thirdparty_user }}"

@@ -1,16 +1,52 @@
-- name: install dependencies
+- name: install packages
   package:
     name:
       - syncthing
       - code
       - evince
       - sxhkd
-  tags:
-    - packages
+      - qutebrowser                               # qutebrowser
+      - "{{ package_pdfjs | default('pdfjs') }}"  # qutebrowser
+      - "{{ package_go | default('go') }}"
+      - fakeroot                                  # xurls
+      - binutils                                  # xurls
+      - file                                      # xurls
+      - gnome                                     # gnome
+      - papirus-icon-theme                        # gnome
+      - firefox
+      - "{{ package_ublockorigin | default('firefox-ublock-origin') }}"
+      - feh                                       # i3
+      - "{{ package_picom | default('picom') }}"  # i3
+      - i3blocks                                  # i3
+      - i3lock                                    # i3
+      - pavucontrol                               # i3
+      - scrot                                     # i3
+      - xdotool
+      - xsel
+      - rofi
+      - "{{ package_xrandr | default('xorg-xrandr') }}"
+      - fontconfig
+      - "{{ package_texfonts | default('tex-gyre-fonts') }}"
 
-- name: install notable
-  aur: name=notable-bin state=present
+- name: install archlinux packages
+  package:
+    name:
+      - inetutils
+      - i3-gaps
+      - bind-tools
+      - ttf-fira-sans
+      - ttf-fira-code
+      - clipmenu
+      - clipnotify
   when: ansible_distribution == "Archlinux"
-  become_user: consul
-  tags:
-    - packages
+
+- name: install aur packages
+  aur: name={{ item }} state=present
+  when: ansible_distribution == "Archlinux"
+  become_user: "{{ thirdparty_user }}"
+  loop:
+    - notable-bin
+    - xurls
+    - gnome-shell-extension-dash-to-dock
+    - i3-gnome
+    - xkb-switch

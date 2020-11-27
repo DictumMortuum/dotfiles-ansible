@@ -1,13 +1,3 @@
-- name: install font packages
-  package:
-    name:
-      - fontconfig
-      - ttf-fira-sans
-      - ttf-fira-code
-      - tex-gyre-fonts
-  tags:
-    - packages
-
 - name: set local.conf font config
   template:
     src: local.conf.j2

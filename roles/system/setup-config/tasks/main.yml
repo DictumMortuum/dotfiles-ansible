@@ -21,14 +21,6 @@
       {% endfor %}
     state: present
 
-- name: add the pacman proxy at the top of the mirrorlist
-  blockinfile:
-    path: /etc/pacman.d/mirrorlist
-    insertbefore: BOF
-    content: |
-      # pacman cache proxy
-      Server = {{ pacman_proxy }}
-
 - name: install the system xprofile
   template:
     src: xprofile.conf

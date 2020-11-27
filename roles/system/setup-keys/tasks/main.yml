@@ -1,27 +1,27 @@
 - file:
-    path: /home/{{ key_user }}/.ssh
+    path: /home/{{ user }}/.ssh
     state: directory
-    owner: "{{ key_user }}"
-    group: "{{ key_group | default(key_user) }}"
+    owner: "{{ user }}"
+    group: "{{ group | default(user) }}"
 
-- name: copy public ssh key for {{ key_user }}
+- name: copy public ssh key for {{ user }}
   get_url:
-    url: "https://{{ domain }}/static/keys/{{ key_user }}.pub"
-    dest: "/home/{{ key_user }}/.ssh/id_rsa.pub"
+    url: "https://{{ domain }}/static/keys/{{ user }}.pub"
+    dest: "/home/{{ user }}/.ssh/id_rsa.pub"
     mode: 0600
-    owner: "{{ key_user }}"
-    group: "{{ key_group | default(key_user) }}"
+    owner: "{{ user }}"
+    group: "{{ group | default(user) }}"
 
-- name: copy private ssh key for {{ key_user }}
+- name: copy private ssh key for {{ user }}
   get_url:
-    url: "https://{{ domain }}/static/keys/{{ key_user }}"
-    dest: "/home/{{ key_user }}/.ssh/id_rsa"
+    url: "https://{{ domain }}/static/keys/{{ user }}"
+    dest: "/home/{{ user }}/.ssh/id_rsa"
     mode: 0600
-    owner: "{{ key_user }}"
-    group: "{{ key_group | default(key_user) }}"
+    owner: "{{ user }}"
+    group: "{{ group | default(user) }}"
 
-- name: set authorized key for {{ key_user }}
+- name: set authorized key for {{ user }}
   authorized_key:
-    user: "{{ key_user }}"
+    user: "{{ user }}"
     state: present
-    key: "https://{{ domain }}/static/keys/{{ key_user }}.pub"
+    key: "https://{{ domain }}/static/keys/{{ user }}.pub"

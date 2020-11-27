@@ -1,29 +1,4 @@
-- name: disable ssh login with the root user 
-  lineinfile:
-    dest: /etc/ssh/sshd_config
-    regexp: '^PermitRootLogin'
-    line: 'PermitRootLogin No'
-
-- name: enable publickey as the only authentication method
-  lineinfile:
-    dest: /etc/ssh/sshd_config
-    regexp: '^#?AuthenticationMethods'
-    line: 'AuthenticationMethods publickey'
-
-- name: disable password authentication
-  lineinfile:
-    dest: /etc/ssh/sshd_config
-    regexp: '^#?PasswordAuthentication'
-    line: 'PasswordAuthentication no'
-
-- name: fully disable password authentication
-  lineinfile:
-    dest: /etc/ssh/sshd_config
-    regexp: '^#?ChallengeResponseAuthentication'
-    line: 'ChallengeResponseAuthentication no'
-
-- name: enable authentication via public key 
-  lineinfile:
-    dest: /etc/ssh/sshd_config
-    regexp: '^#?PubkeyAuthentication'
-    line: 'PubkeyAuthentication yes'
+- name: generate sshd configuration
+  template:
+    src: "sshd.conf"
+    dest: "/etc/ssh/sshd_conf"

@@ -1,18 +1,13 @@
-- name: install tmux
-  package: name=tmux
-  tags:
-    - packages
-
 - name: clone tpm
   git:
     repo: https://github.com/tmux-plugins/tpm
     dest: "{{ thirdparty }}/tmux/tpm"
     update: yes
-  become_user: consul
+  become_user: "{{ thirdparty_user }}"
 
 - name: install tpm plugins
   shell: "TMUX_PLUGIN_MANAGER_PATH=/opt/domus/tmux /opt/domus/tmux/tpm/scripts/install_plugins.sh"
   become: yes
-  become_user: consul
+  become_user: "{{ thirdparty_user }}"
   register: res
   changed_when: res.stdout != "Already installed \"tpm\"\nAlready installed \"nord-tmux\""
