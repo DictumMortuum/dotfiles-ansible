@@ -9,28 +9,28 @@
   command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" remote get-url domus
   become_user: "{{ user }}"
   register: dotfiles
-  changed_when: dotfiles.stdout != thirdparty ~ "/dotfiles"
+  changed_when: dotfiles.stdout != path_thirdparty ~ "/dotfiles"
   failed_when: '"domus" not in dotfiles.stderr and dotfiles.stderr != ""'
 
 - name: add the dotfiles remote url
   become_user: "{{ user }}"
-  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" remote add domus "{{ thirdparty }}/dotfiles"
-  when: dotfiles.stdout != thirdparty ~ "/dotfiles"
+  command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" remote add domus "{{ path_thirdparty }}/dotfiles"
+  when: dotfiles.stdout != path_thirdparty ~ "/dotfiles"
 
 - name: fetch dotfiles
   become_user: "{{ user }}"
   command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" fetch domus master
-  when: dotfiles.stdout != thirdparty ~ "/dotfiles"
+  when: dotfiles.stdout != path_thirdparty ~ "/dotfiles"
 
 - name: checkout master
   become_user: "{{ user }}"
   command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" checkout --force master
-  when: dotfiles.stdout != thirdparty ~ "/dotfiles"
+  when: dotfiles.stdout != path_thirdparty ~ "/dotfiles"
 
 - name: set local master to track remote master branch
   become_user: "{{ user }}"
   command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" branch --set-upstream-to=domus/master master
-  when: dotfiles.stdout != thirdparty ~ "/dotfiles"
+  when: dotfiles.stdout != path_thirdparty ~ "/dotfiles"
 
 - name: add the dotfiles origin url
   become_user: "{{ user }}"
@@ -38,7 +38,7 @@
   register: dotfiles
   changed_when: dotfiles.rc == 0
   failed_when: '"origin" not in dotfiles.stderr and dotfiles.stderr != ""'
-  when: dotfiles.stdout != thirdparty ~ "/dotfiles"
+  when: dotfiles.stdout != path_thirdparty ~ "/dotfiles"
 
 - name: pull latest dotfiles
   command: git --git-dir="{{ git_dir }}" --work-tree="{{ home }}" pull --ff-only domus master
@@ -48,7 +48,7 @@
 
 - name: create async.zsh link
   file:
-    src: "{{ thirdparty }}/zsh-async/async.zsh"
+    src: "{{ path_thirdparty }}/zsh-async/async.zsh"
     dest: "{{ home }}/.cache/zsh/async"
     state: link
     follow: no
@@ -57,7 +57,7 @@
 
 - name: create pure.zsh link
   file:
-    src: "{{ thirdparty }}/pure/pure.zsh"
+    src: "{{ path_thirdparty }}/pure/pure.zsh"
     dest: "{{ home }}/.cache/zsh/prompt_pure_setup"
     state: link
     follow: no

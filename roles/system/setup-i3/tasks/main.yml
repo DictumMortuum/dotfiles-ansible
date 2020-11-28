@@ -1,23 +1,23 @@
 - name: fetch i3-utils
   git:
     repo: "{{ repo_i3_utils }}"
-    dest: "{{ thirdparty }}/i3-utils"
+    dest: "{{ path_thirdparty }}/i3-utils"
     update: yes
   become_user: "{{ user_thirdparty }}"
 
 - name: make i3-utils
   make:
-    chdir: "{{ thirdparty }}/i3-utils"
+    chdir: "{{ path_thirdparty }}/i3-utils"
     target: install
 
 - name: fetch permutations
   git:
     repo: "{{ repo_permutations }}"
-    dest: "{{ thirdparty }}/permutations"
+    dest: "{{ path_thirdparty }}/permutations"
     update: yes
   become_user: "{{ user_thirdparty }}"
 
 - name: make permutations
   make:
-    chdir: "{{ thirdparty }}/permutations"
+    chdir: "{{ path_thirdparty }}/permutations"
     target: install

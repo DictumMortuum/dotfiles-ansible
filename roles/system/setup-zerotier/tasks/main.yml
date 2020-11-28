@@ -22,12 +22,12 @@
 
 - name: check authorization status on zerotier
   uri:
-    url: "http://{{ zeroconf_servus }}/zerotier/member/{{ info.stdout }}"
+    url: "http://{{ path_servus }}/zerotier/member/{{ info.stdout }}"
   register: auth
 
 - name: authorize the zerotier node
   uri:
-    url: "http://{{ zeroconf_servus }}/zerotier/member"
+    url: "http://{{ path_servus }}/zerotier/member"
     method: POST
     body:
       member: "{{ info.stdout }}"

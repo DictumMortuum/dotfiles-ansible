@@ -69,7 +69,7 @@
 - name: fetch static content
   git:
     repo: "{{ repo_static }}"
-    dest: "{{ thirdparty }}/static"
+    dest: "{{ path_thirdparty }}/static"
     update: yes
   become_user: consul
 

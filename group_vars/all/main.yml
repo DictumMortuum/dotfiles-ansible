@@ -1,11 +1,8 @@
 storage: /mnt/nfsserver
 tld: dictummortuum.com
 domain: "satellite.{{ tld }}"
-zeroconf_servus: satellite.local:1234
 nvidia: false
 dock: false
-
-thirdparty: /opt/domus
 
 user_thirdparty: consul
 
@@ -26,4 +23,6 @@ repo_pure: https://github.com/sindresorhus/pure.git
 repo_zsh_async: https://github.com/mafredri/zsh-async.git
 repo_zsh_syntax_highlighting: https://github.com/zsh-users/zsh-syntax-highlighting.git
 
+path_thirdparty: /opt/domus
 path_background: /usr/share/backgrounds/nord.png
+path_servus: satellite.local:1234

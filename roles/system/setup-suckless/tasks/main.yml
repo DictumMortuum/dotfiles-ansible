@@ -1,29 +1,29 @@
 - name: fetch dmenu
   git:
     repo: git://git.suckless.org/dmenu
-    dest: "{{ thirdparty }}/dmenu"
+    dest: "{{ path_thirdparty }}/dmenu"
     update: yes
   become_user: "{{ user_thirdparty }}"
 
 - name: copy dmenu config
   template:
     src: config.h.j2
-    dest: "{{ thirdparty }}/dmenu/config.h"
+    dest: "{{ path_thirdparty }}/dmenu/config.h"
   become_user: "{{ user_thirdparty }}"
 
 - name: make dmenu
   make:
-    chdir: "{{ thirdparty }}/dmenu"
+    chdir: "{{ path_thirdparty }}/dmenu"
     target: install
 
 - name: fetch st
   git:
     repo: https://github.com/DictumMortuum/st.git
-    dest: "{{ thirdparty }}/st"
+    dest: "{{ path_thirdparty }}/st"
     update: yes
   become_user: "{{ user_thirdparty }}"
 
 - name: make st
   make:
-    chdir: "{{ thirdparty }}/st"
+    chdir: "{{ path_thirdparty }}/st"
     target: install
