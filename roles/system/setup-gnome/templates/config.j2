@@ -1,12 +1,12 @@
 [org/gnome/desktop/background]
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/nord.png'
+picture-uri='file://{{ path_background }}'
 primary-color='#ffffff'
 secondary-color='#000000'
 
 [org/gnome/desktop/screensaver]
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/nord.png'
+picture-uri='file://{{ path_background }}'
 primary-color='#ffffff'
 secondary-color='#000000'
 
@@ -18,10 +18,10 @@ xkb-options=['grp:alt_shift_toggle']
 document-font-name='Sans 11'
 enable-animations=false
 enable-hot-corners=false
-font-name='Fira Sans Regular 11'
+font-name='{{ font_sans }} Regular 11'
 gtk-im-module='gtk-im-context-simple'
 icon-theme='Papirus'
-monospace-font-name='Fira Code 10'
+monospace-font-name='{{ font_mono }} 10'
 
 [org/gnome/desktop/search-providers]
 disable-external=true
@@ -65,4 +65,3 @@ overlay-key=''
 [org/gnome/shell/keybindings]
 toggle-application-view=['']
 toggle-message-tray=['<Super>v']
-

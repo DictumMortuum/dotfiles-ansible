@@ -9,6 +9,9 @@ thirdparty: /opt/domus
 thirdparty_user: consul
 thirdparty_group: domus
 
+font_sans: "Fira Sans"
+font_mono: "Fira Code"
+
 repo_pass: git@github.com:DictumMortuum/pass.git
 repo_notes: git@github.com:DictumMortuum/notes.git
 repo_dotfiles: git@github.com:DictumMortuum/dotfiles.git
@@ -19,3 +22,5 @@ repo_static: git@github.com:DictumMortuum/static.git
 repo_pure: https://github.com/sindresorhus/pure.git
 repo_zsh_async: https://github.com/mafredri/zsh-async.git
 repo_zsh_syntax_highlighting: https://github.com/zsh-users/zsh-syntax-highlighting.git
+
+path_background: /usr/share/backgrounds/nord.png
