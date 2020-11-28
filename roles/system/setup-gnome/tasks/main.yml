@@ -1,12 +1,55 @@
+- name: download the background
+  get_url:
+    url: https://{{ domain }}/static/backgrounds/nord.png
+    dest: "{{ path_background }}"
+    mode: '0644'
+
+- name: create the gdm directories
+  file:
+    name: "{{ item }}"
+    state: directory
+  loop:
+    - /etc/dconf/profile
+    - /etc/dconf/db/domus.d
+    - /etc/dconf/db/gdm.d
+
+- name: create the user profile
+  copy:
+    dest: /etc/dconf/profile/user
+    content: |
+      user-db:user
+      system-db:domus
+
+- name: create the gdm profile
+  copy:
+    dest: /etc/dconf/profile/gdm
+    content: |
+      user-db:user
+      system-db:gdm
+
+- name: create the domus database
+  template:
+    src: config.j2
+    dest: /etc/dconf/db/domus.d/config
+
+- name: create the gdm database
+  template:
+    src: gdm.j2
+    dest: /etc/dconf/db/gdm.d/config
+
+- name: update dconf database
+  shell: dconf update
+
+- name: switch to xorg from wayland
+  ini_file:
+    path: "{{ path_gdm | default('/etc/gdm') }}/custom.conf"
+    section: daemon
+    option: WaylandEnable
+    value: "false"
+
 - name: enable gdm service
   systemd:
     name: gdm
     enabled: yes
     masked: no
     state: started
-
-- include: gnome-dconf.yml
-- include: gnome-gdm.yml
-
-- name: update dconf database
-  shell: dconf update
