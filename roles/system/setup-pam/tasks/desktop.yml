@@ -1,0 +1,4 @@
+- name: create the gdm pam
+  template:
+    src: "gdm-password"
+    dest: "/etc/pam.d/gdm-password"

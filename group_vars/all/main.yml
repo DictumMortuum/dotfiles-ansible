@@ -9,6 +9,8 @@ thirdparty: /opt/domus
 thirdparty_user: consul
 thirdparty_group: domus
 
+group_nopasswd: nonsignum
+
 font_sans: "Fira Sans"
 font_mono: "Fira Code"
 

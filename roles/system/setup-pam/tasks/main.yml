@@ -1,0 +1,2 @@
+- include: desktop.yml
+  when: enable_desktop is defined and enable_desktop | bool
