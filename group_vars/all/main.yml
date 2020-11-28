@@ -6,9 +6,10 @@ nvidia: false
 dock: false
 
 thirdparty: /opt/domus
-thirdparty_user: consul
-thirdparty_group: domus
 
+user_thirdparty: consul
+
+group_thirdparty: domus
 group_nopasswd: nonsignum
 
 font_sans: "Fira Sans"

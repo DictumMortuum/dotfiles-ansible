@@ -3,11 +3,11 @@
     repo: https://github.com/tmux-plugins/tpm
     dest: "{{ thirdparty }}/tmux/tpm"
     update: yes
-  become_user: "{{ thirdparty_user }}"
+  become_user: "{{ user_thirdparty }}"
 
 - name: install tpm plugins
   shell: "TMUX_PLUGIN_MANAGER_PATH=/opt/domus/tmux /opt/domus/tmux/tpm/scripts/install_plugins.sh"
   become: yes
-  become_user: "{{ thirdparty_user }}"
+  become_user: "{{ user_thirdparty }}"
   register: res
   changed_when: res.stdout != "Already installed \"tpm\"\nAlready installed \"nord-tmux\""

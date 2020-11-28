@@ -1,5 +1,6 @@
-thirdparty_user: draviolo
-thirdparty_group: orbis
+user_thirdparty: draviolo
+
+group_thirdparty: orbis
 
 package_ag: silversearcher-ag
 package_vim: vim

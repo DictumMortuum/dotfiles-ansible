@@ -2,8 +2,8 @@
   file:
     name: "{{ thirdparty }}/{{ item }}"
     mode: "0775"
-    owner: "{{ thirdparty_user }}"
-    group: "{{ thirdparty_group }}"
+    owner: "{{ user_thirdparty }}"
+    group: "{{ group_thirdparty }}"
     state: directory
   loop:
     - vim
@@ -15,8 +15,8 @@
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: "{{ thirdparty }}/vim/autoload/plug.vim"
     mode: "0775"
-    owner: "{{ thirdparty_user }}"
-    group: "{{ thirdparty_group }}"
+    owner: "{{ user_thirdparty }}"
+    group: "{{ group_thirdparty }}"
 
 #- name: install plugins with vim-plug
 #  shell: vim +'PlugInstall --sync' +qall &> /dev/null

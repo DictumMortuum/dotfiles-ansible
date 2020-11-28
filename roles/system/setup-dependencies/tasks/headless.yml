@@ -23,4 +23,4 @@
 - name: install ansible-aur
   aur: name=ansible-aur-git state=present
   when: ansible_distribution == "Archlinux"
-  become_user: "{{ thirdparty_user }}"
+  become_user: "{{ user_thirdparty }}"

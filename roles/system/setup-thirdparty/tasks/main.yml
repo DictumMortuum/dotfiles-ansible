@@ -1,7 +1,7 @@
 - name: create domus directory
   file:
     name: "{{ thirdparty }}"
-    group: "{{ thirdparty_group }}"
+    group: "{{ group_thirdparty }}"
     mode: '0775'
     state: directory
 
@@ -10,7 +10,7 @@
     repo: "{{ repo_dotfiles_thirdparty }}"
     dest: "{{ thirdparty }}/dotfiles"
     update: yes
-  become_user: "{{ thirdparty_user }}"
+  become_user: "{{ user_thirdparty }}"
 
 - name: copy dotctl to /usr/local/
   copy:
@@ -24,18 +24,18 @@
     repo: "{{ repo_pure }}"
     dest: "{{ thirdparty }}/pure"
     update: yes
-  become_user: "{{ thirdparty_user }}"
+  become_user: "{{ user_thirdparty }}"
 
 - name: clone zsh-async
   git:
     repo: "{{ repo_zsh_async }}"
     dest: "{{ thirdparty }}/zsh-async"
     update: yes
-  become_user: "{{ thirdparty_user }}"
+  become_user: "{{ user_thirdparty }}"
 
 - name: clone zsh-syntax-highlighting
   git:
     repo: "{{ repo_zsh_syntax_highlighting }}"
     dest: "{{ thirdparty }}/zsh-syntax-highlighting"
     update: yes
-  become_user: "{{ thirdparty_user }}"
+  become_user: "{{ user_thirdparty }}"

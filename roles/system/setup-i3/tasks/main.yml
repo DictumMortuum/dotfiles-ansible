@@ -3,7 +3,7 @@
     repo: "{{ repo_i3_utils }}"
     dest: "{{ thirdparty }}/i3-utils"
     update: yes
-  become_user: "{{ thirdparty_user }}"
+  become_user: "{{ user_thirdparty }}"
 
 - name: make i3-utils
   make:
@@ -15,7 +15,7 @@
     repo: "{{ repo_permutations }}"
     dest: "{{ thirdparty }}/permutations"
     update: yes
-  become_user: "{{ thirdparty_user }}"
+  become_user: "{{ user_thirdparty }}"
 
 - name: make permutations
   make:

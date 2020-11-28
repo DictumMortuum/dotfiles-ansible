@@ -43,7 +43,7 @@
 - name: install desktop aur packages
   aur: name={{ item }} state=present
   when: ansible_distribution == "Archlinux"
-  become_user: "{{ thirdparty_user }}"
+  become_user: "{{ user_thirdparty }}"
   loop:
     - notable-bin
     - xurls
