@@ -1,2 +1,1 @@
 package_vim: gvim
-pacman_proxy: "http://x86_64.archlinux.{{ tld }}/$repo/os/$arch"
