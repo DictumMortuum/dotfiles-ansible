@@ -36,21 +36,21 @@
     path: /etc/gitea/app.ini
     section: server
     option: DOMAIN
-    value: "{{ domain }}"
+    value: "{{ path_satellite }}"
 
 - name: set ROOT_URL
   ini_file:
     path: /etc/gitea/app.ini
     section: server
     option: ROOT_URL
-    value: "https://{{ domain }}/git/"
+    value: "https://{{ path_satellite }}/git/"
 
 - name: set SSH_DOMAIN
   ini_file:
     path: /etc/gitea/app.ini
     section: server
     option: SSH_DOMAIN
-    value: "{{ domain }}"
+    value: "{{ path_satellite }}"
 
 - name: set LFS_START_SERVER
   ini_file:

@@ -1,6 +1,6 @@
 - name: download the background
   get_url:
-    url: https://{{ domain }}/static/backgrounds/nord.png
+    url: https://{{ path_satellite }}/static/backgrounds/nord.png
     dest: "{{ path_background }}"
     mode: '0644'
 

@@ -10,7 +10,7 @@
   roles:
     - system/setup-skel
     - { role: system/setup-dependencies, enable_bootstrap: true }
-    - { role: system/setup-known-hosts, keyscan_host: "{{ domain }}" }
+    - { role: system/setup-known-hosts, keyscan_host: "{{ path_satellite }}" }
     - { role: system/setup-known-hosts, keyscan_host: "github.com" }
 
 - hosts: ldap-client

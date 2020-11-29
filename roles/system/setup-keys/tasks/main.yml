@@ -6,7 +6,7 @@
 
 - name: copy public ssh key for {{ user }}
   get_url:
-    url: "https://{{ domain }}/static/keys/{{ user }}.pub"
+    url: "https://{{ path_satellite }}/static/keys/{{ user }}.pub"
     dest: "/home/{{ user }}/.ssh/id_rsa.pub"
     mode: 0600
     owner: "{{ user }}"
@@ -14,7 +14,7 @@
 
 - name: copy private ssh key for {{ user }}
   get_url:
-    url: "https://{{ domain }}/static/keys/{{ user }}"
+    url: "https://{{ path_satellite }}/static/keys/{{ user }}"
     dest: "/home/{{ user }}/.ssh/id_rsa"
     mode: 0600
     owner: "{{ user }}"
@@ -24,4 +24,4 @@
   authorized_key:
     user: "{{ user }}"
     state: present
-    key: "https://{{ domain }}/static/keys/{{ user }}.pub"
+    key: "https://{{ path_satellite }}/static/keys/{{ user }}.pub"
