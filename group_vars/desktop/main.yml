@@ -1,3 +1,2 @@
 package_vim: gvim
-steamfolder: /opt/steam
 pacman_proxy: "http://x86_64.archlinux.{{ tld }}/$repo/os/$arch"

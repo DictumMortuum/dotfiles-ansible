@@ -27,3 +27,4 @@ path_thirdparty: /opt/domus
 path_background: /usr/share/backgrounds/nord.png
 path_servus: satellite.local:1234
 path_storage: /mnt/nfsserver
+path_steam: /opt/steam

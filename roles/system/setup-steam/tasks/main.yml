@@ -1,6 +1,6 @@
 - name: create the steam directory
   file:
-    name: "{{ steamfolder }}"
+    name: "{{ path_steam }}"
     group: steam
     mode: 'u=rwx,g=rwx,o=rx,g+s'
     state: directory
