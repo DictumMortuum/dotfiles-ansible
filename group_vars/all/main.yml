@@ -1,4 +1,3 @@
-storage: /mnt/nfsserver
 tld: dictummortuum.com
 domain: "satellite.{{ tld }}"
 nvidia: false
@@ -26,3 +25,4 @@ repo_zsh_syntax_highlighting: https://github.com/zsh-users/zsh-syntax-highlighti
 path_thirdparty: /opt/domus
 path_background: /usr/share/backgrounds/nord.png
 path_servus: satellite.local:1234
+path_storage: /mnt/nfsserver

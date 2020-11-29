@@ -3,18 +3,18 @@
   cron:
     name: "clean {{ mirror.type }} repo"
     special_time: "daily"
-    job: "paccache -v -r -k 2 -c {{ storage }}/apps/pacman/{{ mirror.type }}"
+    job: "paccache -v -r -k 2 -c {{ path_storage }}/apps/pacman/{{ mirror.type }}"
 
 - name: create the top level cache directory
   become_user: http
   file:
-    name: "{{ storage }}/apps/pacman"
+    name: "{{ path_storage }}/apps/pacman"
     state: directory
 
 - name: create the {{ mirror.type }} cache directory
   become_user: http
   file:
-    name: "{{ storage }}/apps/pacman/{{ mirror.type }}"
+    name: "{{ path_storage }}/apps/pacman/{{ mirror.type }}"
     state: directory
 
 - name: generate the {{ mirror.type }} pacman proxy
