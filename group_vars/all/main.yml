@@ -1,7 +1,8 @@
 tld: dictummortuum.com
 domain: "satellite.{{ tld }}"
-nvidia: false
-dock: false
+
+enable_nvidia: false
+enable_dock: false
 
 user_thirdparty: consul
 

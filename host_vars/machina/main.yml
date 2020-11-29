@@ -1,2 +1,2 @@
-nvidia: true
-dock: true
+enable_nvidia: true
+enable_dock: true
