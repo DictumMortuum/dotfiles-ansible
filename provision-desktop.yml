@@ -1,7 +1,62 @@
 - hosts: desktop
   become: yes
+  tasks:
+    - name: install desktop packages
+      package:
+        name:
+          - syncthing
+          - code
+          - evince
+          - sxhkd
+          - qutebrowser                               # qutebrowser
+          - "{{ package_pdfjs | default('pdfjs') }}"  # qutebrowser
+          - "{{ package_go | default('go') }}"
+          - fakeroot                                  # xurls
+          - binutils                                  # xurls
+          - file                                      # xurls
+          - gnome                                     # gnome
+          - papirus-icon-theme                        # gnome
+          - firefox
+          - "{{ package_ublockorigin | default('firefox-ublock-origin') }}"
+          - feh                                       # i3
+          - "{{ package_picom | default('picom') }}"  # i3
+          - i3blocks                                  # i3
+          - i3lock                                    # i3
+          - pavucontrol                               # i3
+          - scrot                                     # i3
+          - xdotool
+          - xsel
+          - rofi
+          - "{{ package_xrandr | default('xorg-xrandr') }}"
+          - fontconfig
+          - "{{ package_texfonts | default('tex-gyre-fonts') }}"
+
+    - name: install desktop archlinux packages
+      package:
+        name:
+          - inetutils
+          - i3-gaps
+          - bind-tools
+          - ttf-fira-sans
+          - ttf-fira-code
+          - clipmenu
+          - clipnotify
+      when: ansible_distribution == "Archlinux"
+
+    - name: install desktop aur packages
+      aur: name={{ item }} state=present
+      when: ansible_distribution == "Archlinux"
+      become_user: "{{ user_thirdparty }}"
+      loop:
+        - notable-bin
+        - xurls
+        - gnome-shell-extension-dash-to-dock
+        - i3-gnome
+        - xkb-switch
+
+- hosts: desktop
+  become: yes
   roles:
-    - { role: system/setup-dependencies, enable_desktop: true }
     - system/setup-fonts
     - system/setup-suckless
     - system/setup-firefox
@@ -12,7 +67,6 @@
   become: yes
   roles:
     - system/setup-printers
-    - system/setup-gnome-pam
     - system/setup-steam
     - { role: system/setup-gnome-user, user: "diabolus", group: "arcanum", system_account: "true" }
     - { role: system/setup-gnome-user, user: "dimitris", window_manager: "i3-gnome" }

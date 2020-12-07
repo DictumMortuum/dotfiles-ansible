@@ -1,2 +1,2 @@
-- import_playbook: provision-base.yml
+- import_playbook: provision-headless.yml
 - import_playbook: provision-desktop.yml

@@ -1,8 +1,0 @@
-- include: bootstrap.yml
-  when: enable_bootstrap is defined and enable_bootstrap | bool
-
-- include: headless.yml
-  when: enable_headless is defined and enable_headless | bool
-
-- include: desktop.yml
-  when: enable_desktop is defined and enable_desktop | bool

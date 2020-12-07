@@ -1,0 +1,59 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: install headless dependencies
+      package:
+        name:
+          - ansible
+          - "{{ package_ag | default('the_silver_searcher') }}"
+          - youtube-dl
+          - pass
+          - "{{ package_vim }}"
+          - gcc
+          - fontconfig
+          - "{{ package_libxft | default('libxft') }}"
+          - pkgconf
+          - "{{ package_libxinerama | default('libxinerama') }}"
+          - tmux
+
+    - name: install headless archlinux dependencies
+      package:
+        name:
+          - fzf # available for ubuntu 19.10+
+          - cronie # ubuntu already has a cronjob package on the base install
+      when: ansible_distribution == "Archlinux"
+
+    - name: install ansible-aur
+      aur: name=ansible-aur-git state=present
+      when: ansible_distribution == "Archlinux"
+      become_user: "{{ user_thirdparty }}"
+
+- hosts: all
+  become: yes
+  roles:
+    - system/setup-config
+    - system/setup-thirdparty
+
+- hosts: archlinux:archlinux_arm
+  become: yes
+  roles:
+    - system/setup-pacman
+    - { role: system/setup-user, user: "consul", group: "domus" }
+    - { role: system/setup-user, user: "diabolus", group: "arcanum" }
+    - { role: system/setup-user, user: "dimitris", enable_pass: true, enable_notes: true }
+    - { role: system/setup-user, user: "fofi" }
+    - { role: system/setup-user, user: "manolis" }
+    - { role: system/setup-user, user: "petrina" }
+    - { role: system/setup-user, user: "theoni" }
+
+- hosts: ubuntu
+  become: yes
+  roles:
+    - { role: system/setup-user, user: "draviolo", group: "orbis", enable_pass: true, enable_notes: true }
+
+- hosts: all
+  become: yes
+  roles:
+    - system/setup-ssh
+    - system/setup-vim
+    - system/setup-tmux
