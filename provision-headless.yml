@@ -49,7 +49,7 @@
 - hosts: ubuntu
   become: yes
   roles:
-    - { role: system/setup-user, user: "draviolo", group: "orbis", enable_pass: true, enable_notes: true }
+    - { role: system/setup-user, user: "dimitris.raviolos", group: "domain users", enable_pass: true, enable_notes: true }
 
 - hosts: all
   become: yes

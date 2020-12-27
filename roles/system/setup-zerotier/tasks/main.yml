@@ -21,12 +21,14 @@
   changed_when: info.rc != 0
 
 - name: check authorization status on zerotier
-  uri:
+  local_action:
+    module: uri
     url: "http://{{ path_servus }}/zerotier/member/{{ info.stdout }}"
   register: auth
 
 - name: authorize the zerotier node
-  uri:
+  local_action:
+    module: uri
     url: "http://{{ path_servus }}/zerotier/member"
     method: POST
     body:

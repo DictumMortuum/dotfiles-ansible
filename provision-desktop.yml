@@ -79,4 +79,4 @@
 - hosts: ubuntu
   become: yes
   roles:
-    - { role: system/setup-gnome-user, user: "draviolo", group: "orbis", window_manager: "i3-gnome" }
+    - { role: system/setup-gnome-user, user: "dimitris.raviolos", group: "domain users", window_manager: "i3-gnome" }

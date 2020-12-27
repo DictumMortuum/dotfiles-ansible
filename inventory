@@ -1,11 +1,11 @@
 [all]
-satellite ansible_host=10.144.0.1
-machina   ansible_host=10.144.0.2
-ars       ansible_host=10.144.0.4
-crustulum ansible_host=10.144.0.5
-mobilis   ansible_host=10.144.0.6
-nero      ansible_host=10.144.0.7
-athlp0451 ansible_host=10.144.2.1
+satellite    ansible_host=10.144.0.1
+machina      ansible_host=10.144.0.2
+ars          ansible_host=10.144.0.4
+crustulum    ansible_host=10.144.0.5
+mobilis      ansible_host=10.144.0.6
+nero         ansible_host=10.144.0.7
+l71txnh2-ath ansible_host=10.144.2.1
 
 [desktop:children]
 archlinux
@@ -25,7 +25,7 @@ nero
 satellite
 
 [ubuntu]
-athlp0451
+l71txnh2-ath
 
 [ldap-client]
 machina

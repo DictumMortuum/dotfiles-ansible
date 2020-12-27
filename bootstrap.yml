@@ -36,15 +36,14 @@
   become: yes
   roles:
     - system/setup-skel
-    - { role: system/setup-dependencies, enable_bootstrap: true }
     - { role: system/setup-known-hosts, keyscan_host: "{{ path_satellite }}" }
     - { role: system/setup-known-hosts, keyscan_host: "github.com" }
+    - { role: system/setup-zerotier, network_id: "83048a06326833ff" }
 
 - hosts: ldap-client
   become: yes
   roles:
     - system/setup-ldap-client
-    - { role: system/setup-zerotier, network_id: "83048a06326833ff" }
 
 - hosts: archlinux:archlinux_arm
   become: yes
@@ -60,5 +59,5 @@
 - hosts: ubuntu
   become: yes
   roles:
-    - { role: system/setup-keys, user: "draviolo", group: "orbis" }
-    - { role: system/setup-local-sudoer, user: "draviolo" }
+    - { role: system/setup-keys, user: "dimitris.raviolos", group: "domain users" }
+    - { role: system/setup-local-sudoer, user: "dimitris.raviolos" }

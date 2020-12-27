@@ -1,6 +1,6 @@
-user_thirdparty: draviolo
+user_thirdparty: dimitris.raviolos
 
-group_thirdparty: orbis
+group_thirdparty: "domain users"
 
 package_ag: silversearcher-ag
 package_vim: vim
