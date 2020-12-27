@@ -27,3 +27,10 @@
   loop:
     - live
     - archive
+
+- name: Backup the ldap configuration every day
+  become_user: consul
+  cron:
+    name: "backup ldap"
+    special_time: "daily"
+    job: "sudo slapcat -l {{ path_storage }}/backup/ldap/backup.ldif"
