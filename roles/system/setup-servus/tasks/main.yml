@@ -21,3 +21,10 @@
     enabled: yes
     masked: no
     state: started
+
+- name: check the router endpoint every so often
+  become_user: consul
+  cron:
+    name: "check router"
+    minute: "*/3"
+    job: curl "http://localhost:1234/router?check_uptime=true"
