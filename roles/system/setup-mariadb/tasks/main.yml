@@ -1,0 +1,6 @@
+- name: Backup the mariadb databases daily
+  become_user: consul
+  cron:
+    name: "backup mariadb"
+    special_time: "daily"
+    job: "sudo mysqldump --all-databases > {{ path_storage }}/backup/mariadb/backup.sql"
