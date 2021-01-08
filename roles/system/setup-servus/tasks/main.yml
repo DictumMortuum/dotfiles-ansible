@@ -27,4 +27,4 @@
   cron:
     name: "check router"
     minute: "*/3"
-    job: curl "http://localhost:1234/router?check_uptime=true"
+    job: curl "http://localhost:1234/router"
