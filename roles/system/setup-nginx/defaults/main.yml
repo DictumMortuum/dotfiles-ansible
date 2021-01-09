@@ -12,9 +12,6 @@ armv7h_mirror:
   type: armv7h
   port: 8000
   servers:
-    - http://gr.mirror.archlinuxarm.org
-    - http://de.mirror.archlinuxarm.org
-    - http://dk.mirror.archlinuxarm.org
     - http://mirror.archlinuxarm.org
 
 x86_64_mirror:
