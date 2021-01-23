@@ -3,6 +3,10 @@
   tags:
     - packages
 
+- name: setup the zerotier interface name
+    src: devicemap
+    dest: /var/lib/zerotier-one/devicemap
+
 - name: enable zerotier-one service
   systemd:
     name: zerotier-one

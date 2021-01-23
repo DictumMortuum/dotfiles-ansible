@@ -38,7 +38,7 @@
     - system/setup-skel
     - { role: system/setup-known-hosts, keyscan_host: "{{ path_satellite }}" }
     - { role: system/setup-known-hosts, keyscan_host: "github.com" }
-    - { role: system/setup-zerotier, network_id: "83048a06326833ff" }
+    - { role: system/setup-zerotier }
 
 - hosts: ldap-client
   become: yes

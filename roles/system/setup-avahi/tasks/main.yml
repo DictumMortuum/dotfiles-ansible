@@ -1,0 +1,5 @@
+- name: install avahi
+  package: name="{{ package_avahi | default('avahi') }}"
+  tags:
+    - packages
+
