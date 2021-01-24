@@ -4,6 +4,7 @@
     - packages
 
 - name: setup the zerotier interface name
+  template:
     src: devicemap
     dest: /var/lib/zerotier-one/devicemap
 
