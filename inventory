@@ -1,11 +1,11 @@
 [all]
-satellite    ansible_host=10.144.0.1
-machina      ansible_host=10.144.0.2
-ars          ansible_host=10.144.0.4
-crustulum    ansible_host=10.144.0.5
-mobilis      ansible_host=10.144.0.6
-nero         ansible_host=10.144.0.7
-l71txnh2-ath ansible_host=10.144.2.1
+satellite.dictummortuum.com
+machina.dictummortuum.com
+ars.dictummortuum.com
+crustulum.dictummortuum.com
+mobilis.dictummortuum.com
+nero.dictummortuum.com
+l71txnh2-ath.dictummortuum.com
 
 [desktop:children]
 archlinux
@@ -15,24 +15,24 @@ ubuntu
 archlinux_arm
 
 [archlinux]
-machina
-ars
-crustulum
-mobilis
-nero
+machina.dictummortuum.com
+ars.dictummortuum.com
+crustulum.dictummortuum.com
+mobilis.dictummortuum.com
+nero.dictummortuum.com
 
 [archlinux_arm]
-satellite
+satellite.dictummortuum.com
 
 [ubuntu]
-l71txnh2-ath
+l71txnh2-ath.dictummortuum.com
 
 [ldap-client]
-machina
-ars
-crustulum
-mobilis
-nero
+machina.dictummortuum.com
+ars.dictummortuum.com
+crustulum.dictummortuum.com
+mobilis.dictummortuum.com
+nero.dictummortuum.com
 
 [ldap-server]
-satellite
+satellite.dictummortuum.com

@@ -12,14 +12,14 @@
       LANG=en_US.UTF-8
     state: present
 
-- name: update the /etc/hosts file
-  blockinfile:
-    dest: /etc/hosts
-    content: |
-      {% for item in groups['all'] %}
-      {{ hostvars[item]['ansible_host'] }} {{ item }}
-      {% endfor %}
-    state: present
+#- name: update the /etc/hosts file
+#  blockinfile:
+#    dest: /etc/hosts
+#    content: |
+#      {% for item in groups['all'] %}
+#      {{ hostvars[item]['ansible_host'] }} {{ item }}
+#      {% endfor %}
+#    state: present
 
 - name: install the system xprofile
   template:
