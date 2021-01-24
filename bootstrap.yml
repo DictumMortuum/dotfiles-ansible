@@ -20,7 +20,12 @@
           - zsh
           - "{{ package_avahi | default('avahi') }}"
           - "{{ package_mdns | default('nss-mdns') }}"
+  roles:
+    - system/setup-avahi
 
+- hosts: all
+  become: yes
+  tasks:
     - name: enable bootstrap services
       systemd:
         name: "{{ item }}"

@@ -3,3 +3,10 @@
   tags:
     - packages
 
+- name: deny the zerotier interface from avahi
+  ini_file:
+    path: /etc/avahi/avahi-daemon.conf
+    section: server
+    option: deny-interfaces
+    value: zt0
+    no_extra_spaces: yes
