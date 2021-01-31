@@ -1,1 +1,1 @@
-pacman_proxy: "http://x86_64.archlinux.{{ tld }}/$repo/os/$arch"
+pacman_proxy: "http://x86.archlinux.{{ tld }}/$repo/os/$arch"
