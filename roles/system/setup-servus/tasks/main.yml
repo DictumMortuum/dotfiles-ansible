@@ -27,4 +27,11 @@
   cron:
     name: "check router"
     minute: "*/3"
-    job: curl "http://localhost:1234/router"
+    job: curl "https://{{ path_servus }}/router?ip=192.168.2.254"
+
+- name: check the boardgameprices.co.uk endpoint every so often
+  become_user: consul
+  cron:
+    name: "check boardgameprices"
+    hour: "*/4"
+    job: curl "https://{{ path_servus }}/boardgames/prices"

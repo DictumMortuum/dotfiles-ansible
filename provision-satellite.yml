@@ -1,4 +1,4 @@
-- hosts: satellite
+- hosts: satellite.dictummortuum.com
   become: yes
   roles:
     - system/setup-ldap-server
@@ -10,3 +10,4 @@
     - system/setup-minidlna
     - system/setup-servus
     - system/setup-mariadb
+    - system/setup-printers
