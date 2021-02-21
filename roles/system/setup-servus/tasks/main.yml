@@ -34,4 +34,5 @@
   cron:
     name: "check boardgameprices"
     hour: "*/4"
+    minute: "0"
     job: curl "https://{{ path_servus }}/boardgames/prices"
