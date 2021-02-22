@@ -66,6 +66,11 @@
     src: "servus.conf"
     dest: "/etc/nginx/servers/servus.conf"
 
+- name: generate the dns server
+  template:
+    src: "pihole.conf"
+    dest: "/etc/nginx/servers/pihole.conf"
+
 - name: fetch static content
   git:
     repo: "{{ repo_static }}"
