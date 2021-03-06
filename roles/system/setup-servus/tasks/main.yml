@@ -36,3 +36,18 @@
     hour: "*/4"
     minute: "0"
     job: curl "https://{{ path_servus }}/boardgames/prices"
+
+- name: notify via telegram on boardgameprices
+  become_user: consul
+  cron:
+    name: "notify price reductions"
+    hour: "*/4"
+    minute: "0"
+    job: curl "https://{{ path_servus }}/boardgames/prices/notify"
+
+- name: sync the tcalendar entries with nextcloud
+  become_user: consul
+  cron:
+    name: "sync calendars"
+    minute: "*/5"
+    job: curl "https://{{ path_servus }}/calendar/sync"
