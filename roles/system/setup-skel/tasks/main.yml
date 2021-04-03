@@ -6,5 +6,4 @@
     - .ssh
     - .cache
     - .cache/ssh
-    - .cache/screenlayout
     - .cache/zsh
