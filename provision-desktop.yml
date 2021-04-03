@@ -60,6 +60,10 @@
     - system/setup-i3
     - system/setup-gnome
     - system/setup-steam
+
+- hosts: archlinux
+  become: yes
+  roles:
     - { role: system/setup-gnome-user, user: "diabolus", group: "arcanum", system_account: "true" }
     - { role: system/setup-gnome-user, user: "dimitris", window_manager: "i3-gnome" }
     - { role: system/setup-gnome-user, user: "fofi" }
