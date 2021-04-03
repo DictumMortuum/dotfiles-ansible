@@ -28,14 +28,15 @@
 - name: check authorization status on zerotier
   local_action:
     module: uri
-    url: "http://{{ path_servus }}/zerotier/member/{{ info.stdout }}"
+    url: "https://{{ path_servus }}/zerotier/member/{{ info.stdout }}"
   register: auth
 
 - name: authorize the zerotier node
   local_action:
     module: uri
-    url: "http://{{ path_servus }}/zerotier/member"
+    url: "https://{{ path_servus }}/zerotier/member"
     method: POST
+    body_format: form-urlencoded
     body:
       member: "{{ info.stdout }}"
   when: auth.json.response.config.authorized is defined and auth.json.response.config.authorized != true | bool
