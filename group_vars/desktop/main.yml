@@ -1,1 +1,3 @@
 package_vim: gvim
+
+enable_steam: true

@@ -4,3 +4,4 @@
     group: "{{ group_steam | default('steam') }}"
     mode: 'u=rwx,g=rwx,o=rx,g+s'
     state: directory
+  when: enable_steam is defined and enable_steam | bool
