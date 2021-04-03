@@ -17,3 +17,5 @@ package_mdns: libnss-mdns
 
 path_gdm: /etc/gdm3
 path_sftp_server: /usr/lib/openssh
+
+enable_steam: false
