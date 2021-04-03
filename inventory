@@ -1,11 +1,12 @@
 [all]
-satellite.dictummortuum.com
-machina.dictummortuum.com
-ars.dictummortuum.com
-crustulum.dictummortuum.com
-mobilis.dictummortuum.com
-nero.dictummortuum.com
-l71txnh2-ath.dictummortuum.com
+satellite
+machina
+ars
+crustulum
+mobilis
+nero
+l75txnh2-ath
+sol
 
 [desktop:children]
 archlinux
@@ -15,24 +16,26 @@ ubuntu
 archlinux_arm
 
 [archlinux]
-machina.dictummortuum.com
-ars.dictummortuum.com
-crustulum.dictummortuum.com
-mobilis.dictummortuum.com
-nero.dictummortuum.com
+machina
+ars
+crustulum
+mobilis
+nero
 
 [archlinux_arm]
-satellite.dictummortuum.com
+satellite
+sol
 
 [ubuntu]
-l71txnh2-ath.dictummortuum.com
+l75txnh2-ath
 
 [ldap-client]
-machina.dictummortuum.com
-ars.dictummortuum.com
-crustulum.dictummortuum.com
-mobilis.dictummortuum.com
-nero.dictummortuum.com
+machina
+ars
+crustulum
+mobilis
+nero
+sol
 
 [ldap-server]
-satellite.dictummortuum.com
+satellite
