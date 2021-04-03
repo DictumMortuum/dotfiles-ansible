@@ -46,6 +46,16 @@
   register: dotfiles
   changed_when: dotfiles.stdout != "Already up to date."
 
+- name: make sure /etc/skel is enforced
+  file:
+    path: "{{ home }}/{{ item }}"
+    state: directory
+  loop:
+    - .ssh
+    - .cache
+    - .cache/ssh
+    - .cache/zsh
+
 - name: create async.zsh link
   file:
     src: "{{ path_thirdparty }}/zsh-async/async.zsh"
