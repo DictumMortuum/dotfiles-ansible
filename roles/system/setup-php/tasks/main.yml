@@ -2,92 +2,27 @@
   package:
     name:
       - php
-      - php-ldap
       - php-redis
       - php-intl
       - php-imagick
       - php-fpm
+      - php-igbinary
   tags:
     - packages
 
-- name: enable the bz2 php extension
+- name: enable php extensions
   lineinfile:
     dest: /etc/php/php.ini
-    regexp: '^;*extension=bz2'
-    line: 'extension=bz2'
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  loop: "{{ php_extensions }}"
 
-- name: enable the curl php extension
-  lineinfile:
-    dest: /etc/php/php.ini
-    regexp: '^;*extension=curl'
-    line: 'extension=curl'
-
-- name: enable the exif php extension
-  lineinfile:
-    dest: /etc/php/php.ini
-    regexp: '^;*extension=exif'
-    line: 'extension=exif'
-
-- name: enable the gd php extension
-  lineinfile:
-    dest: /etc/php/php.ini
-    regexp: '^;*extension=gd'
-    line: 'extension=gd'
-
-- name: enable the gettext php extension
-  lineinfile:
-    dest: /etc/php/php.ini
-    regexp: '^;*extension=gettext'
-    line: 'extension=gettext'
-
-- name: enable the iconv php extension
-  lineinfile:
-    dest: /etc/php/php.ini
-    regexp: '^;*extension=iconv'
-    line: 'extension=iconv'
-
-- name: enable the intl php extension
-  lineinfile:
-    dest: /etc/php/php.ini
-    regexp: '^;*extension=intl'
-    line: 'extension=intl'
-
-- name: enable the ldap php extension
-  lineinfile:
-    dest: /etc/php/php.ini
-    regexp: '^;*extension=ldap'
-    line: 'extension=ldap'
-
-- name: enable the mysqli php extension
-  lineinfile:
-    dest: /etc/php/php.ini
-    regexp: '^;*extension=mysqli'
-    line: 'extension=mysqli'
-
-- name: enable the opcache php zend extension
-  lineinfile:
-    dest: /etc/php/php.ini
-    regexp: '^;*zend_extension=opcache'
-    line: 'zend_extension=opcache'
-
-- name: enable the pdo_mysql php extension
-  lineinfile:
-    dest: /etc/php/php.ini
-    regexp: '^;*extension=pdo_mysql'
-    line: 'extension=pdo_mysql'
-
-- name: enable the zip php extension
-  lineinfile:
-    dest: /etc/php/php.ini
-    regexp: '^;*extension=zip'
-    line: 'extension=zip'
-
-- name: increase the php memory limit to 512M
+- name: increase the php memory limit to 2048M
   ini_file:
     path: /etc/php/php.ini
     section: PHP
     option: memory_limit
-    value: 512M
+    value: 2048M
 
 - name: set the PATH environment variable for php
   ini_file:
@@ -110,10 +45,22 @@
     option: extension
     value: redis
 
+- name: enable the imagick php extension
+  ini_file:
+    path: /etc/php/conf.d/imagick.ini
+    section: imagick
+    option: extension
+    value: imagick
+
 - name: create the /etc/systemd/system/php-fpm.service.d/ directory
   file:
     dest: "/etc/systemd/system/php-fpm.service.d/"
     state: directory
+
+- name: generate php-fpm override systemctl configuration
+  template:
+    src: php-fpm-override.conf
+    dest: /etc/systemd/system/php-fpm.service.d/override.conf
 
 - name: enable php-fpm service
   systemd:
