@@ -31,4 +31,6 @@ path_steam: /opt/steam
 path_satellite: "satellite.{{ tld }}"
 path_nextcloud: /data/nextcloud
 
+url_gitea: "git.{{ tld }}"
+
 network_id: 83048a06326833ff

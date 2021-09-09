@@ -29,28 +29,28 @@
     path: /etc/gitea/app.ini
     section: repository
     option: ROOT
-    value: /mnt/nfsserver/git
+    value: /data/gitea/git
 
 - name: set DOMAIN
   ini_file:
     path: /etc/gitea/app.ini
     section: server
     option: DOMAIN
-    value: "{{ path_satellite }}"
+    value: "{{ url_gitea }}"
 
 - name: set ROOT_URL
   ini_file:
     path: /etc/gitea/app.ini
     section: server
     option: ROOT_URL
-    value: "https://{{ path_satellite }}/git/"
+    value: "https://{{ url_gitea }}/"
 
 - name: set SSH_DOMAIN
   ini_file:
     path: /etc/gitea/app.ini
     section: server
     option: SSH_DOMAIN
-    value: "{{ path_satellite }}"
+    value: "{{ url_gitea }}"
 
 - name: set LFS_START_SERVER
   ini_file:
@@ -64,7 +64,7 @@
     path: /etc/gitea/app.ini
     section: server
     option: LFS_CONTENT_PATH
-    value: /mnt/nfsserver/lfs
+    value: /data/gitea/lfs
 
 - name: set DB_TYPE
   ini_file:
