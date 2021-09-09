@@ -1,0 +1,7 @@
+- name: create the asterisk configuration
+  template:
+    src: "{{ item }}.conf"
+    dest: "/etc/asterisk/{{ item }}.conf"
+  loop:
+    - pjsip
+    - extensions

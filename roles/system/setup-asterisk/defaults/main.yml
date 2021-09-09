@@ -1,0 +1,19 @@
+asterisk_users:
+  - username: dimitris
+    callerid: '"Δημήτρης Ραβιόλος" <1986>'
+    extension: 1986
+  - username: manolis
+    callerid: '"Μανώλης Ραβιόλος" <1956>'
+    extension: 1956
+  - username: fofi
+    callerid: '"Φώφη Κληρονόμου" <1960>'
+    extension: 1960
+  - username: theoni
+    callerid: '"Θεώνη Φύτρου" <1989>'
+    extension: 1989
+  - username: petrina
+    callerid: '"Πετρίνα Ραβιόλου" <1993>'
+    extension: 1993
+  - username: domus2
+    callerid: '"2ος όροφος" <200>'
+    extension: 200
