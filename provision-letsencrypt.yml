@@ -1,0 +1,46 @@
+- hosts: satellite
+  become: yes
+  roles:
+    - system/setup-ldap-server
+  tasks:
+    - fetch:
+        src: /etc/letsencrypt/live/dictummortuum.com/{{ item }}
+        dest: "./{{ item }}"
+        flat: true
+      loop:
+        - cert.pem
+        - chain.pem
+        - fullchain.pem
+        - privkey.pem
+
+- hosts: sol
+  become: yes
+  tasks:
+    - copy:
+        src: "./{{ item }}"
+        dest: "/data/letsencrypt/{{ item }}"
+      loop:
+        - cert.pem
+        - chain.pem
+        - fullchain.pem
+        - privkey.pem
+    - name: Recursively change group of letsencrypt
+      file:
+        path: "/data/letsencrypt"
+        state: directory
+        recurse: yes
+        owner: root
+        group: arcanum
+        mode: g+r
+
+- hosts: localhost
+  tasks:
+    - name: Delete fetch'ed certificates
+      file:
+        state: absent
+        path: "./{{ item }}"
+      loop:
+        - cert.pem
+        - chain.pem
+        - fullchain.pem
+        - privkey.pem
