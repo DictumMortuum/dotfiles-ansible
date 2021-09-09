@@ -1,4 +1,4 @@
-- hosts: satellite.dictummortuum.com
+- hosts: satellite
   become: yes
   roles:
     - system/setup-ldap-server
