@@ -33,7 +33,6 @@
         masked: no
         state: started
       loop:
-        - NetworkManager
         - sshd
         - avahi-daemon
 
