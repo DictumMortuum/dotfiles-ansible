@@ -7,6 +7,7 @@ mobilis
 nero
 l75txnh2-ath
 sol
+venus
 
 [desktop:children]
 archlinux
@@ -25,6 +26,7 @@ nero
 [archlinux_arm]
 satellite
 sol
+venus
 
 [ubuntu]
 l75txnh2-ath
@@ -36,6 +38,7 @@ crustulum
 mobilis
 nero
 sol
+venus
 
 [ldap-server]
 satellite
