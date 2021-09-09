@@ -29,13 +29,40 @@
     minute: "*/3"
     job: curl "https://{{ path_servus }}/router?ip=192.168.2.254"
 
-- name: check the boardgameprices.co.uk endpoint every so often
+- name: update telegram users
   become_user: consul
   cron:
-    name: "check boardgameprices"
-    hour: "*/4"
-    minute: "0"
-    job: curl "https://{{ path_servus }}/boardgames/prices"
+    name: "check for new telegram users"
+    minute: "*/10"
+    job: curl "https://{{ path_servus }}/boardgames/prices/new"
+
+- name: create messages
+  become_user: consul
+  cron:
+    name: "create messages"
+    minute: "*/20"
+    job: curl "https://{{ path_servus }}/boardgames/prices/msg"
+
+- name: check stores
+  become_user: consul
+  cron:
+    name: check {{ item.name }}
+    hour: "{{ item.hour }}"
+    minute: "5"
+    job: curl "https://{{ path_servus }}/boardgames/{{ item.name }}"
+  loop:
+    - name: gamerules
+      hour: 0
+    - name: vgames
+      hour: 1
+    - name: fantasygate
+      hour: 2
+    - name: mysterybay
+      hour: 3
+    - name: boardgameprices
+      hour: 4
+    - name: kaissa
+      hour: 5
 
 - name: notify via telegram on boardgameprices
   become_user: consul
