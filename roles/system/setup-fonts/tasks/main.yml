@@ -5,7 +5,7 @@
 
 - name: enable fonts configs
   file:
-    src: /etc/fonts/conf.avail/{{ item }}
+    src: /usr/share/fontconfig/conf.avail/{{ item }}
     dest: /etc/fonts/conf.d/{{ item }}
     state: link
   loop:
