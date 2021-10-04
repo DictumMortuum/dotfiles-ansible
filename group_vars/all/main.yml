@@ -30,6 +30,7 @@ path_storage: /mnt/nfsserver
 path_steam: /opt/steam
 path_satellite: "satellite.{{ tld }}"
 path_nextcloud: /data/nextcloud
+path_fonts: /usr/share/fontconfig
 
 url_gitea: "git.{{ tld }}"
 
