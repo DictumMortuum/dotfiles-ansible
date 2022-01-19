@@ -1,0 +1,3 @@
+path_certificate: "/etc/letsencrypt/live/{{ tld }}/fullchain.pem"
+path_certificate_key: "/etc/letsencrypt/live/{{ tld }}/privkey.pem"
+path_php_fpm: "/run/php-fpm7/php-fpm.sock"

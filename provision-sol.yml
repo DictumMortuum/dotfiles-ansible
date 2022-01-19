@@ -1,7 +1,7 @@
 - hosts: sol
   become: yes
   roles:
-    - system/setup-nginx-new
+    - { role: system/setup-nginx, servers: ["db", "gitea", "nextcloud", "servus", "admin", "pihole", "home", "admin", "grafana"]}
     - system/setup-servus
     - system/setup-asterisk
     - system/setup-gitea

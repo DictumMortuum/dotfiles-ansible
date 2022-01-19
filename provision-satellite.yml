@@ -1,9 +1,9 @@
 - hosts: satellite
   become: yes
   roles:
+    - { role: system/setup-nginx, servers: ["satellite", "pacman", "repo"], enable_mirror: true }
     - system/setup-repository
     - system/setup-ldap-server
-    - system/setup-nginx
     - system/setup-redis
     - system/setup-php
     - system/setup-gitea

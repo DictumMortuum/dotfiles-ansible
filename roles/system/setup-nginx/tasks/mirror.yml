@@ -16,8 +16,3 @@
   file:
     name: "{{ path_storage }}/apps/pacman/{{ mirror.type }}"
     state: directory
-
-- name: generate the {{ mirror.type }} pacman proxy
-  template:
-    src: "pacman.conf"
-    dest: "/etc/nginx/servers/pacman_{{ mirror.type }}.conf"

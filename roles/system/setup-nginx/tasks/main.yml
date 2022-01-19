@@ -6,77 +6,30 @@
   tags:
     - packages
 
-#- name: install certbot
-#  pacman: name=certbot
-#  tags:
-#    - packages
-
-#- name: install certbot-nginx
-#  pacman: name=certbot-nginx
-#  tags:
-#    - packages
-
 - name: create the nginx module directory
   file:
     name: "/etc/nginx/{{ item }}"
     state: directory
   loop:
-    - modules
     - servers
 
-- name: copy the nginx modules
-  copy:
-    src: "{{ item }}.conf"
-    dest: "/etc/nginx/modules/{{ item }}.conf"
-    mode: "0644"
-  loop: "{{ nginx_modules }}"
+- name: generate the x86_64_mirror server
+  include: mirror.yml
+  vars:
+    mirror: "{{ x86_64_mirror }}"
+  when: enable_mirror and enable_mirror | bool
 
 - name: copy the nginx configuration
-  copy:
+  template:
     src: "nginx.conf"
     dest: "/etc/nginx/nginx.conf"
     mode: "0644"
 
-- name: generate the armv7h server
-  include: mirror.yml
-  vars:
-    mirror: "{{ armv7h_mirror }}"
-
-- name: generate the x86_64 server
-  include: mirror.yml
-  vars:
-    mirror: "{{ x86_64_mirror }}"
-
-- name: generate the satellite server
+- name: create the servers
   template:
-    src: "satellite.conf"
-    dest: "/etc/nginx/servers/satellite.conf"
-  vars:
-    modules:
-      - gitea
-      - nextcloud
-      - phpldapadmin
-      - phpmyadmin
-      - static
-      - syncthing
-      - transmission
-
-- name: generate the servus server
-  template:
-    src: "servus.conf"
-    dest: "/etc/nginx/servers/servus.conf"
-
-- name: generate the dns server
-  template:
-    src: "pihole.conf"
-    dest: "/etc/nginx/servers/pihole.conf"
-
-- name: fetch static content
-  git:
-    repo: "{{ repo_static }}"
-    dest: "{{ path_thirdparty }}/static"
-    update: yes
-  become_user: consul
+    src: "{{ item }}.conf"
+    dest: "/etc/nginx/servers/{{ item }}.conf"
+  loop: "{{ servers }}"
 
 - name: enable nginx service
   systemd:

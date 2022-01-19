@@ -15,7 +15,7 @@ armv7h_mirror:
     - http://mirror.archlinuxarm.org
 
 x86_64_mirror:
-  type: x86_64
+  type: x86
   port: 9000
   servers:
     - http://ftp.cc.uoc.gr/mirrors/linux/archlinux
@@ -24,3 +24,10 @@ x86_64_mirror:
     - http://archlinux.vi-di.fr
     - http://arch.serverspace.co.uk/arch
     - http://archlinux.honkgong.info
+
+path_certificate: "/data/letsencrypt/fullchain.pem"
+path_certificate_key: "/data/letsencrypt/privkey.pem"
+path_php_fpm: "/run/php-fpm/php-fpm.sock"
+
+enable_mirror: false
+mirror: "{{ x86_64_mirror }}"
