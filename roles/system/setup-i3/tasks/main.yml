@@ -1,15 +1,3 @@
-- name: fetch i3-utils
-  git:
-    repo: "{{ repo_i3_utils }}"
-    dest: "{{ path_thirdparty }}/i3-utils"
-    update: yes
-  become_user: "{{ user_thirdparty }}"
-
-- name: make i3-utils
-  make:
-    chdir: "{{ path_thirdparty }}/i3-utils"
-    target: install
-
 - name: fetch permutations
   git:
     repo: "{{ repo_permutations }}"
