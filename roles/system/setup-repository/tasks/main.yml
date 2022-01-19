@@ -1,0 +1,23 @@
+- name: copy the x86_64 repository files
+  copy:
+    src: "{{ item }}"
+    dest: "/mnt/nfsserver/apps/repo/x86_64/"
+    mode: "0644"
+  with_fileglob:
+    - /tmp/repo/*x86_64*
+
+- name: copy the aarch64 repository files
+  copy:
+    src: "{{ item }}"
+    dest: "/mnt/nfsserver/apps/repo/aarch64/"
+    mode: "0644"
+  with_fileglob:
+    - /tmp/repo/*aarch64*
+
+- name: create the {{ item }} repository
+  ansible.builtin.shell: repo-add -R personal.db.tar.gz *.pkg.tar.zst >> build.log
+  args:
+    chdir: "/mnt/nfsserver/apps/repo/{{ item }}/"
+  loop:
+    - x86_64
+    - aarch64
