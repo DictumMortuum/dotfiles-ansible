@@ -1,0 +1,9 @@
+- hosts: all
+  become: yes
+  roles:
+    - system/setup-prometheus-client
+
+- hosts: sol
+  become: yes
+  roles:
+    - system/setup-prometheus-server

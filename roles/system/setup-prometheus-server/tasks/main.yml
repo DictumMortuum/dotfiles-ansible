@@ -1,0 +1,16 @@
+- name: install prometheus
+  package: name=prometheus
+  tags:
+    - packages
+
+- name: generate prometheus configuration
+  template:
+    src: "prometheus.conf"
+    dest: "/etc/prometheus/prometheus.yml"
+
+- name: enable prometheus service
+  systemd:
+    name: prometheus-node-exporter
+    enabled: yes
+    masked: no
+    state: started

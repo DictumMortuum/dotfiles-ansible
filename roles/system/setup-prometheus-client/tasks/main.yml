@@ -1,0 +1,11 @@
+- name: install prometheus node exporter
+  package: name=prometheus-node-exporter
+  tags:
+    - packages
+
+- name: enable prometheus node exporter service
+  systemd:
+    name: prometheus-node-exporter
+    enabled: yes
+    masked: no
+    state: started
