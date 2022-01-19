@@ -8,6 +8,7 @@ nero
 l75txnh2-ath
 sol
 venus
+mercury
 
 [desktop:children]
 archlinux
@@ -27,6 +28,7 @@ nero
 satellite
 sol
 venus
+mercury
 
 [ubuntu]
 l75txnh2-ath
@@ -39,6 +41,7 @@ mobilis
 nero
 sol
 venus
+mercury
 
 [ldap-server]
 satellite
