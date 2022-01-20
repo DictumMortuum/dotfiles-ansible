@@ -1,20 +1,3 @@
-- name: fetch servus
-  git:
-    repo: git@github.com:DictumMortuum/servus.git
-    dest: "{{ path_thirdparty }}/servus"
-    update: yes
-  become_user: consul
-
-- name: make servus
-  make:
-    chdir: "{{ path_thirdparty }}/servus"
-    target: install
-
-- name: copy servus systemd service file
-  template:
-    src: servus.service
-    dest: /etc/systemd/system/servus.service
-
 - name: enable servus service
   systemd:
     name: servus
