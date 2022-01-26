@@ -1,0 +1,24 @@
+- name: install quagga
+  package:
+    name:
+      - quagga
+  tags:
+    - packages
+
+- name: create the configuration files
+  template:
+    src: "{{ item }}.conf"
+    dest: "/etc/quagga/{{ item }}.conf"
+  loop:
+    - ospfd
+    - zebra
+
+- name: enable the services
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
+    masked: no
+    state: started
+  loop:
+    - ospfd
+    - zebra

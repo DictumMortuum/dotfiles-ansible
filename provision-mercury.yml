@@ -1,0 +1,4 @@
+- hosts: mercury
+  become: yes
+  roles:
+    - { role: system/setup-ospf, interfaces: ["wlan0", "lo", "zt0"], interface: "wlan0", subnet: "192.168.4.0", hostname: "MercuryRouter" }
