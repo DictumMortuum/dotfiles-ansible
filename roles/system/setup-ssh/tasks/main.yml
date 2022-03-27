@@ -1,4 +1,4 @@
 - name: generate sshd configuration
   template:
     src: "sshd.conf"
-    dest: "/etc/ssh/sshd_conf"
+    dest: "/etc/ssh/sshd_config"
