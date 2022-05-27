@@ -1,0 +1,12 @@
+[Unit]
+Description=Run Stash at startup
+After=network.target
+
+[Service]
+Type=simple
+User=diabolus
+ExecStart=/usr/bin/stash -c /data/apps/stash/config.yml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

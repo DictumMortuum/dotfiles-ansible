@@ -1,0 +1,11 @@
+- name: create the systemd service file
+  template:
+    src: stash.service
+    dest: /usr/lib/systemd/system/stash.service
+
+- name: enable stash service
+  systemd:
+    name: stash
+    enabled: yes
+    masked: no
+    state: started
