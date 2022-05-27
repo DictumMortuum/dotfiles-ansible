@@ -12,6 +12,15 @@
         - chain.pem
         - fullchain.pem
         - privkey.pem
+    - copy:
+        src: /etc/letsencrypt/live/dictummortuum.com/{{ item }}
+        dest: /mnt/nfsserver/letsencrypt/{{ item }}
+        remote_src: true
+      loop:
+        - cert.pem
+        - chain.pem
+        - fullchain.pem
+        - privkey.pem
 
 - hosts: sol
   become: yes
