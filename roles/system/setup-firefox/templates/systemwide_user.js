@@ -12,7 +12,7 @@
 defaultPref("network.trr.mode",2);
 
 // Enable my custom homepage
-defaultPref("browser.startup.homepage","https://satellite.dictummortuum.com/static/home/");
+defaultPref("browser.startup.homepage","https://home.dictummortuum.com/");
 
 // Set GR region
 defaultPref("browser.search.region","GR");
