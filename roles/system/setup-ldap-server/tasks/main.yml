@@ -1,7 +1,7 @@
-- name: generate slapd override for satellite
+- name: generate slapd configuration for satellite
   template:
-    src: override.conf
-    dest: /etc/systemd/system/slapd.service.d/override.conf
+    src: slapd.conf
+    dest: /etc/conf.d/slapd
 
 - name: ldap should be able to read certificates
   user:
