@@ -4,21 +4,21 @@
     owner: "{{ user }}"
     group: "{{ group | default(user) }}"
 
-- name: copy public ssh key for {{ user }}
-  get_url:
-    url: "https://{{ path_satellite }}/static/keys/{{ user }}.pub"
-    dest: "/home/{{ user }}/.ssh/id_rsa.pub"
-    mode: 0600
-    owner: "{{ user }}"
-    group: "{{ group | default(user) }}"
+# - name: copy public ssh key for {{ user }}
+#   get_url:
+#     url: "https://{{ path_satellite }}/static/keys/{{ user }}.pub"
+#     dest: "/home/{{ user }}/.ssh/id_rsa.pub"
+#     mode: 0600
+#     owner: "{{ user }}"
+#     group: "{{ group | default(user) }}"
 
-- name: copy private ssh key for {{ user }}
-  get_url:
-    url: "https://{{ path_satellite }}/static/keys/{{ user }}"
-    dest: "/home/{{ user }}/.ssh/id_rsa"
-    mode: 0600
-    owner: "{{ user }}"
-    group: "{{ group | default(user) }}"
+# - name: copy private ssh key for {{ user }}
+#   get_url:
+#     url: "https://{{ path_satellite }}/static/keys/{{ user }}"
+#     dest: "/home/{{ user }}/.ssh/id_rsa"
+#     mode: 0600
+#     owner: "{{ user }}"
+#     group: "{{ group | default(user) }}"
 
 - name: set authorized key for {{ user }}
   authorized_key:
