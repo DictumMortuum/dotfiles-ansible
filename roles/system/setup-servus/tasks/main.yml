@@ -1,13 +1,14 @@
+- name: setup the servus configuration
+  template:
+    src: servusrc.yml
+    dest: /etc/conf.d/servusrc.yml
+    mode: 0600
+    owner: root
+    group: root
+
 - name: enable servus service
   systemd:
     name: servus
     enabled: yes
     masked: no
-    state: started
-
-- name: sync the tcalendar entries with nextcloud
-  become_user: consul
-  cron:
-    name: "sync calendars"
-    minute: "*/5"
-    job: curl "https://{{ path_servus }}/calendar/sync"
+    state: restarted
