@@ -1,6 +1,6 @@
 - name: setup the servus configuration
   template:
-    src: servusrc.yml
+    src: "{{ item }}"
     dest: /etc/conf.d/{{ item }}
     mode: 0600
     owner: root
