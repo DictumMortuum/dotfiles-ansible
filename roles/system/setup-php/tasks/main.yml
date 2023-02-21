@@ -24,6 +24,20 @@
     option: memory_limit
     value: 2048M
 
+- name: increase the opcache memory consuption
+  ini_file:
+    path: /etc/php/php.ini
+    section: opcache
+    option: opcache.memory_consumption
+    value: 256
+
+- name: increase the opcache interned strings buffer
+  ini_file:
+    path: /etc/php/php.ini
+    section: opcache
+    option: opcache.interned_strings_buffer
+    value: 100
+
 - name: set the PATH environment variable for php
   ini_file:
     path: /etc/php/php-fpm.d/www.conf
