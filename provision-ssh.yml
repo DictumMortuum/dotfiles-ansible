@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: all, !router
   become: yes
   roles:
     - system/setup-ssh

@@ -1,0 +1,9 @@
+- name: setup the edgemax service file
+  template:
+    src: edgemax-exporter.service
+    dest: /lib/systemd/system/edgemax-exporter.service
+
+- name: setup the edgemax service file
+  template:
+    src: node-exporter.service
+    dest: /lib/systemd/system/node-exporter.service

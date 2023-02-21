@@ -1,0 +1,4 @@
+- hosts: router
+  become: yes
+  roles:
+    - system/setup-router

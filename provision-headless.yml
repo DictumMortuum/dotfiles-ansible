@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: all, !router
   become: yes
   tasks:
     - name: install headless dependencies
@@ -28,7 +28,7 @@
       when: ansible_distribution == "Archlinux"
       become_user: "{{ user_thirdparty }}"
 
-- hosts: all
+- hosts: all, !router
   become: yes
   roles:
     - system/setup-config
@@ -51,7 +51,7 @@
   roles:
     - { role: system/setup-user, user: "dimitris.raviolos", group: "domain users", enable_pass: true, enable_notes: true }
 
-- hosts: all
+- hosts: all, !router
   become: yes
   roles:
     - system/setup-ssh
