@@ -1,0 +1,15 @@
+- hosts: satellite, venus, sol, machina
+  become: yes
+  roles:
+    - system/setup-servus
+
+- hosts: venus
+  become: yes
+  become_user: consul
+  tasks:
+    - cron:
+        name: "run modem a stats"
+        job: "/usr/local/bin/scsa"
+    - cron:
+        name: "run modem b stats"
+        job: "/usr/local/bin/scsc"

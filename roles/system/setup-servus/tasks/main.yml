@@ -3,17 +3,14 @@
     src: "{{ item }}"
     dest: /etc/conf.d/{{ item }}
     mode: 0600
-    owner: root
+    owner: consul
     group: root
   loop:
     - servusrc.yml
-    - modem_a.yml
-    - modem_b.yml
-    - modem_c.yml
 
-- name: enable servus service
-  systemd:
-    name: servus
-    enabled: yes
-    masked: no
-    state: restarted
+# - name: enable servus service
+#   systemd:
+#     name: servus
+#     enabled: yes
+#     masked: no
+#     state: restarted
