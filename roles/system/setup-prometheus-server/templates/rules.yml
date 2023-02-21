@@ -1,0 +1,11 @@
+groups:
+- name: AllInstances
+  rules:
+  - alert: InternetDown
+    expr: modem_status{hostname="192.168.5.254"} == 0
+    for: 10m
+    annotations:
+      title: 'Internet {{ $labels.instance }} down'
+      description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 10 minutes.'
+    labels:
+      severity: 'critical'
