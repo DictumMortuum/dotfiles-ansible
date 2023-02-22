@@ -3,10 +3,32 @@
   tags:
     - packages
 
+- name: install alertmanager
+  package: name=alertmanager
+  tags:
+    - packages
+
 - name: generate prometheus configuration
   template:
     src: "prometheus.conf"
     dest: "/etc/prometheus/prometheus.yml"
+
+- name: generate prometheus configuration
+  copy:
+    src: "rules.yml"
+    dest: "/etc/prometheus/rules.yml"
+
+- name: generate alertmanager configuration
+  template:
+    src: "alertmanager.yml"
+    dest: "/etc/alertmanager/alertmanager.yml"
+
+- name: enable alertmanager service
+  systemd:
+    name: alertmanager
+    enabled: yes
+    masked: no
+    state: started
 
 - name: enable prometheus service
   systemd:
