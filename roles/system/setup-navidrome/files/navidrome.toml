@@ -1,0 +1,4 @@
+MusicFolder = "/data/apps/beets"
+ReverseProxyWhitelist = "0.0.0.0/0"
+EnableSharing = true
+DefaultTheme = "Nord"

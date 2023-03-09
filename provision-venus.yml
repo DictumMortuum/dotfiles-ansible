@@ -2,4 +2,5 @@
   become: yes
   roles:
     - { role: system/setup-nginx, servers: ["stash","navidrome"]}
+    - system/setup-navidrome
     - system/setup-stash

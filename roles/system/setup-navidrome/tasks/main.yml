@@ -1,0 +1,11 @@
+- name: generate navidrome configuration
+  copy:
+    src: "navidrome.toml"
+    dest: "/etc/navidrome/navidrome.toml"
+
+- name: enable the navidrome service
+  systemd:
+    name: navidrome
+    enabled: yes
+    masked: no
+    state: started
