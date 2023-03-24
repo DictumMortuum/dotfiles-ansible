@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  gather_facts: no
+  vars:
+    domain: "dictummortuum.com"
+    token: "{{ cloudflare_token }}"
+  roles:
+    - system/setup-cloudflare

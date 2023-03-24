@@ -1,0 +1,26 @@
+- name: create A records
+  community.general.cloudflare_dns:
+    api_token: "{{ token }}"
+    zone: "{{ domain }}"
+    record: "{{ item.record }}"
+    type: "A"
+    value: "{{ item .value }}"
+  loop: "{{ a_records }}"
+
+- name: create CNAME records
+  community.general.cloudflare_dns:
+    api_token: "{{ token }}"
+    zone: "{{ domain }}"
+    record: "{{ item.record }}"
+    type: "CNAME"
+    value: "{{ item .value }}"
+  loop: "{{ cname_records }}"
+
+- name: create CNAME records for github-hosted sites
+  community.general.cloudflare_dns:
+    api_token: "{{ token }}"
+    zone: "{{ domain }}"
+    record: "{{ item }}"
+    type: "CNAME"
+    value: "dictummortuum.github.io"
+  loop: "{{ github_cname_records }}"
