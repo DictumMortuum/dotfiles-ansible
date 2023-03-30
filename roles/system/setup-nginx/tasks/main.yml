@@ -36,4 +36,4 @@
     name: nginx
     enabled: yes
     masked: no
-    state: started
+    state: restarted
