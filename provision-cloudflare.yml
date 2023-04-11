@@ -2,7 +2,7 @@
 - hosts: localhost
   gather_facts: no
   vars:
-    domain: "dictummortuum.com"
+    domain: "{{ tld }}"
     token: "{{ cloudflare_token }}"
   roles:
     - system/setup-cloudflare
