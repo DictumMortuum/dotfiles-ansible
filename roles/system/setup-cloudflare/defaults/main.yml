@@ -69,6 +69,8 @@ cname_records:
     value: "venus.dictummortuum.com"
   - record: "lidarr"
     value: "venus.dictummortuum.com"
+  - record: "cockpit"
+    value: "venus.dictummortuum.com"
 
 github_cname_records:
   - "bitd"
