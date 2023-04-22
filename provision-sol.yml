@@ -5,3 +5,4 @@
     - system/setup-servus
     # - system/setup-asterisk
     - system/setup-gitea
+    - system/setup-cockpit

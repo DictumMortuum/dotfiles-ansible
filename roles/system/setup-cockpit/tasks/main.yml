@@ -1,0 +1,11 @@
+- name: install cockpit
+  package: name=cockpit
+  tags:
+    - packages
+
+- name: enable cockpit service
+  systemd:
+    name: cockpit
+    enabled: yes
+    masked: no
+    state: restarted

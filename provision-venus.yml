@@ -4,3 +4,4 @@
     - { role: system/setup-nginx, servers: ["stash","navidrome","radarr","sonarr","plex","bazarr","deluge","whisparr","prowlarr"]}
     - system/setup-navidrome
     - system/setup-stash
+    - system/setup-cockpit
