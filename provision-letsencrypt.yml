@@ -53,3 +53,13 @@
         - chain.pem
         - fullchain.pem
         - privkey.pem
+
+- hosts: sol, venus, satellite
+  become: yes
+  tasks:
+    - name: restart nginx
+      systemd:
+        name: nginx
+        enabled: yes
+        masked: no
+        state: restarted
