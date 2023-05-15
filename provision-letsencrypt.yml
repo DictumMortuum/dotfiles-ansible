@@ -22,7 +22,7 @@
         - fullchain.pem
         - privkey.pem
 
-- hosts: sol
+- hosts: sol, venus
   become: yes
   tasks:
     - copy:
