@@ -3,7 +3,7 @@
   roles:
     - system/setup-servus
 
-- hosts: venus
+- hosts: sol
   become: yes
   become_user: consul
   tasks:
@@ -12,4 +12,4 @@
         job: "/usr/local/bin/scsa"
     - cron:
         name: "run modem b stats"
-        job: "/usr/local/bin/scsc"
+        job: "/usr/local/bin/scsd"
