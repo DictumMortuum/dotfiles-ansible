@@ -19,6 +19,8 @@ a_records:
     value: "10.144.0.10"
   - record: "mercury"
     value: "10.144.0.11"
+  - record: "lux"
+    value: "10.144.0.12"
 
 cname_records:
   - record: "admin"
@@ -42,8 +44,6 @@ cname_records:
   - record: "pbx"
     value: "sol.dictummortuum.com"
   - record: "servus"
-    value: "sol.dictummortuum.com"
-  - record: "extapi"
     value: "sol.dictummortuum.com"
   - record: "mealie"
     value: "sol.dictummortuum.com"
@@ -85,3 +85,5 @@ github_cname_records:
   - "stats"
   - "wedding"
   - "www"
+  - "prices-admin"
+  - "boardgames"

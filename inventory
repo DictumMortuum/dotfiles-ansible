@@ -9,6 +9,7 @@ l75txnh2-ath
 sol
 venus
 mercury
+lux
 
 [desktop:children]
 archlinux
@@ -23,6 +24,7 @@ ars
 crustulum
 mobilis
 nero
+lux
 
 [archlinux_arm]
 satellite
@@ -42,6 +44,7 @@ nero
 sol
 venus
 mercury
+lux
 
 [ldap-server]
 satellite
