@@ -63,8 +63,8 @@ cname_records:
     value: "venus.dictummortuum.com"
   - record: "bazarr"
     value: "venus.dictummortuum.com"
-  - record: "nas"
-    value: "venus.dictummortuum.com"
+  # - record: "nas"
+  #   value: "venus.dictummortuum.com"
   - record: "whisparr"
     value: "venus.dictummortuum.com"
   - record: "prowlarr"
@@ -75,6 +75,8 @@ cname_records:
     value: "venus.dictummortuum.com"
   - record: "cockpit"
     value: "venus.dictummortuum.com"
+  - record: "pass"
+    value: "sol.dictummortuum.com"
 
 github_cname_records:
   - "bitd"

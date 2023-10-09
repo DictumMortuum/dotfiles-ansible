@@ -13,3 +13,36 @@
     - cron:
         name: "run modem b stats"
         job: "/usr/local/bin/scsd"
+
+- hosts: sol
+  become: yes
+  become_user: consul
+  tasks:
+    - cron:
+        name: "{{ item }}"
+        job: "/usr/local/bin/scrape scrape --store {{ item }}"
+        hour: "0"
+        minute: "{{ ansible_loop.index }}"
+      loop:
+        - avalongames
+        - boardsofmadness
+        - crystallotus
+        - efantasy
+        - epitrapezio
+        - fantasyshop
+        - gameexplorers
+        - gamerules
+        - gamesuniverse
+        - genx
+        - hobbytheory
+        - kaissaeu
+        - kaissagames
+        - meepleonboard
+        - meepleplanet
+        - mysterybay
+        - politeia
+        - rollnplay
+        - vgames
+        - xrysoftero
+      loop_control:
+        extended: true

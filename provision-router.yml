@@ -1,4 +1,7 @@
 - hosts: router
   become: yes
+  connection: network_cli
+  vars:
+    - ansible_network_os: edgeos
   roles:
     - system/setup-router

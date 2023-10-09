@@ -1,8 +1,8 @@
 - hosts: sol
   become: yes
   roles:
-    - { role: system/setup-nginx, servers: ["db", "extapi", "gitea", "nextcloud", "servus", "admin", "admin2", "pihole", "home", "admin", "grafana", "cyberchef", "mealie", "boardgames", "prometheus", "alertmanager"]}
+    - { role: system/setup-nginx, servers: ["db", "extapi", "gitea", "nextcloud", "servus", "admin", "admin2", "pihole", "home", "admin", "grafana", "cyberchef", "mealie", "boardgames", "prometheus", "alertmanager", "pass", "nas"]}
     - system/setup-servus
     # - system/setup-asterisk
-    - system/setup-gitea
+    # - system/setup-gitea TODO: FIX INI
     # - system/setup-cockpit
