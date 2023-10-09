@@ -1,0 +1,25 @@
+- name: create the webhook configuration directory
+  file:
+    name: "/etc/webhook"
+    state: directory
+
+- name: copy the webhook configuration
+  copy:
+    src: "hooks.json"
+    dest: "/etc/webhook/hooks.json"
+    mode: "0600"
+
+- name: copy the webhook scripts
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/webhook/scripts/{{ item }}"
+    mode: "0755"
+  loop:
+    - download.sh
+
+- name: restart webhook service
+  systemd:
+    name: webhook
+    enabled: yes
+    masked: no
+    state: restarted
