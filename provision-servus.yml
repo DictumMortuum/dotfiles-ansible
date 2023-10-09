@@ -13,6 +13,11 @@
     - cron:
         name: "run modem b stats"
         job: "/usr/local/bin/scsd"
+        minute: "*/5"
+    - cron:
+        name: "check for magissa daily"
+        special_time: "daily"
+        job: 'curl -H "Content-Type:application/json" "https://nas.dictummortuum.com/hooks/download" -d "$(magissa)"'
 
 # - hosts: sol
 #   become: yes
