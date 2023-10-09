@@ -2,9 +2,9 @@
   template:
     src: "{{ item }}"
     dest: /etc/conf.d/{{ item }}
-    mode: 0600
+    mode: 0640
     owner: consul
-    group: root
+    group: dimitris
   loop:
     - servusrc.yml
 
