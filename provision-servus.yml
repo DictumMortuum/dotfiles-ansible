@@ -16,7 +16,7 @@
         minute: "*/5"
     - cron:
         name: "check for magissa daily"
-        special_time: "daily"
+        special_time: "hourly"
         job: 'curl -H "Content-Type:application/json" "https://nas.dictummortuum.com/hooks/download" -d "$(magissa)"'
 
 # - hosts: sol
