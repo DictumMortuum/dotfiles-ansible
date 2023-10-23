@@ -1,23 +1,4 @@
 [{
-  "id": "download",
-  "execute-command": "/etc/webhook/scripts/download.sh",
-  "pass-arguments-to-command": [{
-    "source": "payload",
-    "name": "name"
-  }, {
-    "source": "payload",
-    "name": "path"
-  }, {
-    "source": "payload",
-    "name": "url"
-  }, {
-    "source": "payload",
-    "name": "owner"
-  }, {
-    "source": "payload",
-    "name": "group"
-  }]
-},{
   "id": "youtube-dl",
   "execute-command": "/etc/webhook/scripts/youtube-dl.sh",
   "pass-arguments-to-command": [{
