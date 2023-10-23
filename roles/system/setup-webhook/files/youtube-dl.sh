@@ -12,4 +12,5 @@ echo "$PATH $URL $OWNER $GROUP"
   -e PUID=$(/bin/id -u ${OWNER}) \
   -v "${PATH}":/workdir:rw \
   mikenye/youtube-dl \
-  ${URL}
+  ${URL} \
+  -o '%(title)s.%(ext)s'
