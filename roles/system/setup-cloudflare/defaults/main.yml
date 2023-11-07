@@ -77,6 +77,8 @@ cname_records:
     value: "venus.dictummortuum.com"
   - record: "pass"
     value: "sol.dictummortuum.com"
+  - record: "api"
+    value: "sol.dictummortuum.com"
 
 github_cname_records:
   - "bitd"
