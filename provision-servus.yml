@@ -17,7 +17,11 @@
     - cron:
         name: "check for magissa daily"
         special_time: "daily"
-        job: "/usr/local/bin/magissa"
+        job: "/usr/local/bin/series magissa"
+    - cron:
+        name: "check for nauagio daily"
+        special_time: "daily"
+        job: "/usr/local/bin/series nauagio"
 
 # - hosts: sol
 #   become: yes
