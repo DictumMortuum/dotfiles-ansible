@@ -14,7 +14,7 @@
     - servers
 
 - name: generate the x86_64_mirror server
-  include: mirror.yml
+  include_tasks: mirror.yml
   vars:
     mirror: "{{ x86_64_mirror }}"
   when: enable_mirror and enable_mirror | bool
