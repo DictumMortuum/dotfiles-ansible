@@ -1,18 +1,53 @@
 groups:
-  - name: AllInstances
+  - name: Internet
     rules:
     - alert: InternetDown
-      expr: modem_status{hostname="192.168.5.254"} == 0
+      expr: modem_status == 0
       for: 10m
       annotations:
-        title: 'Internet {{ $labels.instance }} down'
-        description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 10 minutes.'
+        title: 'Internet {{ $labels.hostname }} down'
+        description: 'Internet connection on {{ $labels.hostname }} has been down for more than 10 minutes.'
+      labels:
+        severity: 'critical'
+    - alert: PPPoEDown
+      expr: router_status == 0
+      for: 10m
+      annotations:
+        title: 'PPPoE interface {{ $labels.interface }} down'
+        description: 'PPPoE on {{ $labels.interface }} has been down for more than 10 minutes.'
+      labels:
+        severity: 'critical'
+    - alert: VoIPDown
+      expr: modem_voip_status == 0
+      for: 10m
+      annotations:
+        title: 'VoIP interface {{ $labels.hostname }} down'
+        description: 'VoIP on {{ $labels.hostname }} has been down for more than 10 minutes.'
       labels:
         severity: 'critical'
     - alert: PiholeDown
       expr: pihole_status != 1
+      for: 10m
       annotations:
         title: 'Pihole down'
         description: 'Pihole is down'
       labels:
         severity: 'warning'
+  - name: Servers
+    rules:
+    - alert: HighCPUUsage
+      expr: sum by (instance, cpu) (rate(node_cpu_seconds_total{job="prometheus",mode!="idle"}[5m])) > 0.9
+      for: 10m
+      annotations:
+        title: 'High CPU Usage on {{ $labels.instance }}'
+        description: '{{ $labels.instance }} has had high CPU usage for more than 10 minutes'
+      labels:
+        severity: 'critical'
+    - alert: HighMemUsage
+      expr: (1 - (node_memory_MemAvailable_bytes{job="prometheus"} / (node_memory_MemTotal_bytes{job="prometheus"}))) * 100 > 90
+      for: 10m
+      annotations:
+        title: 'High Mem Usage on {{ $labels.instance }}'
+        description: '{{ $labels.instance }} has had high mem usage for more than 10 minutes'
+      labels:
+        severity: 'critical'
