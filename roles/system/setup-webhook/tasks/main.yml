@@ -17,6 +17,23 @@
   loop:
     - youtube-dl.sh
 
+- name: copy the webhook service file
+  copy:
+    src: "webhook.service"
+    dest: /usr/lib/systemd/system/webhook.service
+    mode: "0644"
+
+- name: fetch the webhook binaries
+  ansible.builtin.get_url:
+    url: https://github.com/adnanh/webhook/releases/download/2.8.1/webhook-linux-amd64.tar.gz
+    dest: /tmp/webhook.tar.gz
+
+- name: unarchive webhook
+  unarchive:
+    remote_src: true
+    src: /tmp/webhook.tar.gz
+    dest: /usr/bin
+
 - name: restart webhook service
   systemd:
     name: webhook

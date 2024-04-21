@@ -1,0 +1,23 @@
+- name: copy the exporter service file
+  copy:
+    src: "exporter.service"
+    dest: /usr/lib/systemd/system/prometheus-node-exporter.service
+    mode: "0644"
+
+- name: fetch the exporter binaries
+  ansible.builtin.get_url:
+    url: https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-amd64.tar.gz
+    dest: /tmp/node_exporter.tar.gz
+
+- name: unarchive exporter
+  unarchive:
+    remote_src: true
+    src: /tmp/node_exporter.tar.gz
+    dest: /usr/bin
+
+- name: enable prometheus node exporter service
+  systemd:
+    name: prometheus-node-exporter
+    enabled: yes
+    masked: no
+    state: started

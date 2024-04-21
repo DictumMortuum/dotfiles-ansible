@@ -1,4 +1,5 @@
 - hosts: nas
   become: yes
   roles:
-    - system/setup-webhook
+    # - system/setup-webhook
+    - system/setup-prometheus-nas
